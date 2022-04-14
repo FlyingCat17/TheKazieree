@@ -30,8 +30,8 @@ public class Login2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         txt_password = new javax.swing.JPasswordField();
@@ -47,13 +47,17 @@ public class Login2 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(399, 466));
+        setMinimumSize(new java.awt.Dimension(1240, 707));
         setUndecorated(true);
         setOpacity(0.0F);
+        setPreferredSize(new java.awt.Dimension(1240, 707));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -62,7 +66,7 @@ public class Login2 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Quicksand", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 199, 0));
+        jLabel1.setForeground(new java.awt.Color(238, 238, 238));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
         jLabel1.setToolTipText("");
@@ -72,10 +76,7 @@ public class Login2 extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 100, 40));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/btn_login.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 100, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 470, 100, 40));
 
         jLabel9.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -90,37 +91,39 @@ public class Login2 extends javax.swing.JFrame {
                 jLabel9MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
+
+        jLabel2.setBackground(new java.awt.Color(255, 199, 0));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Button_Design/btn_masuk.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 470, 100, 40));
 
         jSeparator1.setBackground(new java.awt.Color(255, 199, 0));
         jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 300, 10));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 350, 300, 10));
 
         jSeparator5.setBackground(new java.awt.Color(255, 199, 0));
         jSeparator5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 300, 10));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, 300, 10));
 
         txt_password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_password.setForeground(new java.awt.Color(255, 255, 255));
         txt_password.setBorder(null);
-        txt_password.setCaretColor(new java.awt.Color(255, 255, 255));
         txt_password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_password.setOpaque(false);
+        txt_password.setSelectedTextColor(new java.awt.Color(238, 238, 238));
+        txt_password.setSelectionColor(new java.awt.Color(246, 122, 2));
         txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 300, 40));
+        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 300, 40));
 
         txt_username.setFont(new java.awt.Font("Quicksand", 1, 18)); // NOI18N
-        txt_username.setForeground(new java.awt.Color(255, 255, 255));
         txt_username.setBorder(null);
-        txt_username.setCaretColor(new java.awt.Color(255, 255, 255));
         txt_username.setOpaque(false);
-        txt_username.setSelectedTextColor(new java.awt.Color(51, 0, 255));
-        txt_username.setSelectionColor(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 153, 300, 40));
+        txt_username.setSelectedTextColor(new java.awt.Color(238, 238, 238));
+        txt_username.setSelectionColor(new java.awt.Color(246, 122, 2));
+        getContentPane().add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 310, 300, 40));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
@@ -130,17 +133,17 @@ public class Login2 extends javax.swing.JFrame {
                 jLabel7MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 30, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 0, 30, 30));
 
+        jLabel3.setBackground(new java.awt.Color(246, 122, 2));
         jLabel3.setFont(new java.awt.Font("Quicksand", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Username :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        jLabel3.setText("Nama Pengguna");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, -1, -1));
 
+        jLabel4.setBackground(new java.awt.Color(246, 122, 2));
         jLabel4.setFont(new java.awt.Font("Quicksand", 0, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Password :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        jLabel4.setText("Kata Sandi");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 360, -1, -1));
 
         txt_password1.setFont(new java.awt.Font("Quicksand", 1, 18)); // NOI18N
         txt_password1.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,12 +169,13 @@ public class Login2 extends javax.swing.JFrame {
         jSeparator4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLabel6.setBackground(new java.awt.Color(246, 122, 2));
         jLabel6.setFont(new java.awt.Font("Quicksand", 0, 30)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("LOGIN");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jLabel6.setForeground(new java.awt.Color(246, 122, 2));
+        jLabel6.setText("MASUK");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/framelogin.jpg"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bg_login.jpg"))); // NOI18N
         jLabel8.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jLabel8MouseDragged(evt);
@@ -185,7 +189,7 @@ public class Login2 extends javax.swing.JFrame {
                 jLabel8MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 470));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,29 +219,12 @@ public class Login2 extends javax.swing.JFrame {
     private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
         // TODO add your handling code here:
         System.exit(0);
+        
     }//GEN-LAST:event_jLabel7MousePressed
 
     private void txt_password1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_password1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_password1ActionPerformed
-
-    private void jLabel8MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseDragged
-        // TODO add your handling code here:
-        int ex = evt.getXOnScreen();
-        int ye = evt.getYOnScreen();
-
-        this.setLocation(ex-x, ye-y);
-    }//GEN-LAST:event_jLabel8MouseDragged
-
-    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8MouseEntered
-
-    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
-        // TODO add your handling code here:
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_jLabel8MousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -255,6 +242,17 @@ public class Login2 extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
+//        setOpacity((float) 1.0);
+//        for (double i = 1.0; i >= 1.0; i = i - 0.1) {
+//            String val = i + "";
+//            float f = Float.valueOf(val);
+//            this.setOpacity(f);
+//            try {
+//                Thread.sleep(10);
+//            } catch (Exception e) {
+//                
+//            }
+//        }
         
     }//GEN-LAST:event_formWindowClosed
 
@@ -264,6 +262,39 @@ public class Login2 extends javax.swing.JFrame {
         box.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jLabel8MousePressed
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel8MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseDragged
+        // TODO add your handling code here:
+        int ex = evt.getXOnScreen();
+        int ye = evt.getYOnScreen();
+
+        this.setLocation(ex-x, ye-y);
+    }//GEN-LAST:event_jLabel8MouseDragged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Login2.this.setOpacity((float) 1.0);
+        for (double i = 1.0; i >= 1.0; i = i - 0.1) {
+            String val = i + "";
+            float f = Float.valueOf(val);
+            this.setOpacity(f);
+            try {
+                Thread.sleep(10);
+            } catch (Exception e) {
+                
+            }
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

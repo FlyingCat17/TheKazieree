@@ -29,6 +29,30 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dashboadPanel1 = new javax.swing.JPanel();
+        icon_dashboard_putih1 = new javax.swing.JLabel();
+        btn_dashborrd1 = new javax.swing.JLabel();
+        navbar_dashboard1 = new javax.swing.JLabel();
+        barangPanel = new javax.swing.JPanel();
+        icon_package_putih = new javax.swing.JLabel();
+        btn_barang = new javax.swing.JLabel();
+        navbar_barang = new javax.swing.JLabel();
+        transjual_panel = new javax.swing.JPanel();
+        icon_transjual_putih = new javax.swing.JLabel();
+        btn_transjual = new javax.swing.JLabel();
+        navbar_transjual = new javax.swing.JLabel();
+        transbeli_panel = new javax.swing.JPanel();
+        icon_transbrli_putih = new javax.swing.JLabel();
+        btn_transbeli = new javax.swing.JLabel();
+        navbar_transbeli = new javax.swing.JLabel();
+        supplier_panel = new javax.swing.JPanel();
+        icon_supplier_putih2 = new javax.swing.JLabel();
+        btn_supplier = new javax.swing.JLabel();
+        navbar_supplier = new javax.swing.JLabel();
+        laporan_panel = new javax.swing.JPanel();
+        icon_laporan_putih = new javax.swing.JLabel();
+        btn_laporan = new javax.swing.JLabel();
+        navbar_laporan = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,6 +69,234 @@ public class Dashboard extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1241, 662));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dashboadPanel1.setBackground(new java.awt.Color(17, 17, 17));
+        dashboadPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashboadPanel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                dashboadPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dashboadPanel1MouseExited(evt);
+            }
+        });
+        dashboadPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_dashboard_putih1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/icon_dashboard_white.png"))); // NOI18N
+        dashboadPanel1.add(icon_dashboard_putih1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 5, 50, 70));
+
+        btn_dashborrd1.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
+        btn_dashborrd1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_dashborrd1.setText("Dashboard");
+        btn_dashborrd1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_dashborrd1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_dashborrd1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_dashborrd1MouseExited(evt);
+            }
+        });
+        dashboadPanel1.add(btn_dashborrd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 170, 80));
+
+        navbar_dashboard1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        dashboadPanel1.add(navbar_dashboard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 80));
+
+        getContentPane().add(dashboadPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 80));
+
+        barangPanel.setBackground(new java.awt.Color(17, 17, 17));
+        barangPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                barangPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                barangPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                barangPanelMouseExited(evt);
+            }
+        });
+        barangPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_package_putih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/icon_package_white.png"))); // NOI18N
+        barangPanel.add(icon_package_putih, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 5, 50, 70));
+
+        btn_barang.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
+        btn_barang.setForeground(new java.awt.Color(255, 255, 255));
+        btn_barang.setText("Data Barang");
+        btn_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_barangMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_barangMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_barangMouseExited(evt);
+            }
+        });
+        barangPanel.add(btn_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 170, 80));
+
+        navbar_barang.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        barangPanel.add(navbar_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 80));
+
+        getContentPane().add(barangPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, 80));
+
+        transjual_panel.setBackground(new java.awt.Color(17, 17, 17));
+        transjual_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transjual_panelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transjual_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transjual_panelMouseExited(evt);
+            }
+        });
+        transjual_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_transjual_putih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/icon_transjual_white.png"))); // NOI18N
+        transjual_panel.add(icon_transjual_putih, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 5, 50, 70));
+
+        btn_transjual.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
+        btn_transjual.setForeground(new java.awt.Color(255, 255, 255));
+        btn_transjual.setText("Transaksi Jual");
+        btn_transjual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_transjualMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_transjualMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_transjualMouseExited(evt);
+            }
+        });
+        transjual_panel.add(btn_transjual, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 170, 80));
+
+        navbar_transjual.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        transjual_panel.add(navbar_transjual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 80));
+
+        getContentPane().add(transjual_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 280, 80));
+
+        transbeli_panel.setBackground(new java.awt.Color(17, 17, 17));
+        transbeli_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transbeli_panelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transbeli_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transbeli_panelMouseExited(evt);
+            }
+        });
+        transbeli_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_transbrli_putih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/icon_transbeli_white.png"))); // NOI18N
+        transbeli_panel.add(icon_transbrli_putih, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 5, 50, 70));
+
+        btn_transbeli.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
+        btn_transbeli.setForeground(new java.awt.Color(255, 255, 255));
+        btn_transbeli.setText("Transaksi Beli");
+        btn_transbeli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_transbeliMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_transbeliMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_transbeliMouseExited(evt);
+            }
+        });
+        transbeli_panel.add(btn_transbeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 170, 80));
+
+        navbar_transbeli.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        transbeli_panel.add(navbar_transbeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 80));
+
+        getContentPane().add(transbeli_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, 80));
+
+        supplier_panel.setBackground(new java.awt.Color(17, 17, 17));
+        supplier_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                supplier_panelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                supplier_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                supplier_panelMouseExited(evt);
+            }
+        });
+        supplier_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_supplier_putih2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/icon_supplier_white.png"))); // NOI18N
+        supplier_panel.add(icon_supplier_putih2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 5, 50, 70));
+
+        btn_supplier.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
+        btn_supplier.setForeground(new java.awt.Color(255, 255, 255));
+        btn_supplier.setText("Data Supplier");
+        btn_supplier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_supplierMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_supplierMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_supplierMouseExited(evt);
+            }
+        });
+        supplier_panel.add(btn_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 170, 80));
+
+        navbar_supplier.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        supplier_panel.add(navbar_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 80));
+
+        getContentPane().add(supplier_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 280, 80));
+
+        laporan_panel.setBackground(new java.awt.Color(17, 17, 17));
+        laporan_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                laporan_panelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                laporan_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                laporan_panelMouseExited(evt);
+            }
+        });
+        laporan_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_laporan_putih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/icon_laporan_white.png"))); // NOI18N
+        laporan_panel.add(icon_laporan_putih, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 5, 50, 70));
+
+        btn_laporan.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
+        btn_laporan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_laporan.setText("Laporan");
+        btn_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporanMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_laporanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_laporanMouseExited(evt);
+            }
+        });
+        laporan_panel.add(btn_laporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 170, 80));
+
+        navbar_laporan.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        laporan_panel.add(navbar_laporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 260, 80));
+
+        getContentPane().add(laporan_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 280, 80));
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
@@ -155,6 +407,306 @@ public class Dashboard extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel12MousePressed
 
+    private void btn_dashborrd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_dashborrd1MouseClicked
+        // TODO add your handling code here:
+//        System.out.println("Menu Dashboard");
+//        ImageIcon dashboardclick = new ImageIcon("src/Image2/icon_dashboard_yellow.png");
+//        icon_dashboard_putih1.setIcon(dashboardclick);
+//        navbar_dashboard1.setIcon(navbarDashboardClick);
+//        btn_dashborrd1.setForeground(new Color(255, 199, 0));
+//        //barang
+//        icon_package_putih.setIcon(resetIconBarang);
+//        btn_barang.setForeground(new Color(255, 255, 255));
+//        navbar_barang.setIcon(resetNavbarDashboard);
+//        //transjual
+//        icon_transjual_putih.setIcon(resetIconTransJual);
+//        navbar_transjual.setIcon(resetNavbarDashboard);
+//        btn_transjual.setForeground(new Color(255,255,255));
+//        //transbeli
+//        icon_transbrli_putih.setIcon(resetIconTransBeli);
+//        btn_transbeli.setForeground(new Color(255,255,255));
+//        navbar_transbeli.setIcon(resetNavbarDashboard);
+//        //supplier
+//        icon_supplier_putih2.setIcon(resetIconSupplier);
+//        navbar_supplier.setIcon(resetNavbarDashboard);
+//        btn_supplier.setForeground(new Color(255,255,255));
+//        //laporan
+//        icon_laporan_putih.setIcon(resetIconLaporan);
+//        btn_laporan.setForeground(new Color(255,255,255));
+//        navbar_laporan.setIcon(resetNavbarDashboard);
+    }//GEN-LAST:event_btn_dashborrd1MouseClicked
+
+    private void btn_dashborrd1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_dashborrd1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_dashborrd1MouseEntered
+
+    private void btn_dashborrd1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_dashborrd1MouseExited
+
+    }//GEN-LAST:event_btn_dashborrd1MouseExited
+
+    private void dashboadPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboadPanel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboadPanel1MouseClicked
+
+    private void dashboadPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboadPanel1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboadPanel1MouseEntered
+
+    private void dashboadPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboadPanel1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboadPanel1MouseExited
+
+    private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
+        // TODO add your handling code here:
+//        System.out.println("Menu Barang");
+//        ImageIcon barangClick = new ImageIcon("src/Image2/icon_package_yellow.png");
+//        icon_package_putih.setIcon(barangClick);
+//        navbar_barang.setIcon(navbarDashboardClick);
+//        btn_barang.setForeground(new Color(255, 199, 0));
+//        //dashboard
+//        icon_dashboard_putih1.setIcon(resetIconDashboard);
+//        btn_dashborrd1.setForeground(new Color(255, 255, 255));
+//        navbar_dashboard1.setIcon(resetNavbarDashboard);
+//        //transjual
+//        icon_transjual_putih.setIcon(resetIconTransJual);
+//        navbar_transjual.setIcon(resetNavbarDashboard);
+//        btn_transjual.setForeground(new Color(255,255,255));
+//        //transbeli
+//        icon_transbrli_putih.setIcon(resetIconTransBeli);
+//        btn_transbeli.setForeground(new Color(255,255,255));
+//        navbar_transbeli.setIcon(resetNavbarDashboard);
+//        //supplier
+//        icon_supplier_putih2.setIcon(resetIconSupplier);
+//        navbar_supplier.setIcon(resetNavbarDashboard);
+//        btn_supplier.setForeground(new Color(255,255,255));
+//        //laporan
+//        icon_laporan_putih.setIcon(resetIconLaporan);
+//        btn_laporan.setForeground(new Color(255,255,255));
+//        navbar_laporan.setIcon(resetNavbarDashboard);
+    }//GEN-LAST:event_btn_barangMouseClicked
+
+    private void btn_barangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_barangMouseEntered
+
+    private void btn_barangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_barangMouseExited
+
+    private void barangPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barangPanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barangPanelMouseClicked
+
+    private void barangPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barangPanelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barangPanelMouseEntered
+
+    private void barangPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barangPanelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barangPanelMouseExited
+
+    private void btn_transjualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transjualMouseClicked
+        // TODO add your handling code here:
+//        System.out.println("Menu Transaksi Jual");
+//        ImageIcon transjualClick = new ImageIcon("src/Image2/icon_transjual_yellow.png");
+//        icon_transjual_putih.setIcon(transjualClick);
+//        navbar_transjual.setIcon(navbarDashboardClick);
+//        btn_transjual.setForeground(new Color(255, 199, 0));
+//
+//        //dashboard
+//        icon_dashboard_putih1.setIcon(resetIconDashboard);
+//        btn_dashborrd1.setForeground(new Color(255, 255, 255));
+//        navbar_dashboard1.setIcon(resetNavbarDashboard);
+//        //barang
+//        icon_package_putih.setIcon(resetIconBarang);
+//        btn_barang.setForeground(new Color(255, 255, 255));
+//        navbar_barang.setIcon(resetNavbarDashboard);
+//        //transbeli
+//        icon_transbrli_putih.setIcon(resetIconTransBeli);
+//        btn_transbeli.setForeground(new Color(255,255,255));
+//        navbar_transbeli.setIcon(resetNavbarDashboard);
+//        //supplier
+//        icon_supplier_putih2.setIcon(resetIconSupplier);
+//        navbar_supplier.setIcon(resetNavbarDashboard);
+//        btn_supplier.setForeground(new Color(255,255,255));
+//        //laporan
+//        icon_laporan_putih.setIcon(resetIconLaporan);
+//        btn_laporan.setForeground(new Color(255,255,255));
+//        navbar_laporan.setIcon(resetNavbarDashboard);
+    }//GEN-LAST:event_btn_transjualMouseClicked
+
+    private void btn_transjualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transjualMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_transjualMouseEntered
+
+    private void btn_transjualMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transjualMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_transjualMouseExited
+
+    private void transjual_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transjual_panelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transjual_panelMouseClicked
+
+    private void transjual_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transjual_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transjual_panelMouseEntered
+
+    private void transjual_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transjual_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transjual_panelMouseExited
+
+    private void btn_transbeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transbeliMouseClicked
+        // TODO add your handling code here:
+//        System.out.println("Menu Transaksi Beli");
+//        ImageIcon transbeliClicked = new ImageIcon("src/Image2/icon_transbeli_yellow.png");
+//        icon_transbrli_putih.setIcon(transbeliClicked);
+//        btn_transbeli.setForeground(new Color(255,199,0));
+//        navbar_transbeli.setIcon(navbarDashboardClick);
+//
+//        //dashboard
+//        icon_dashboard_putih1.setIcon(resetIconDashboard);
+//        btn_dashborrd1.setForeground(new Color(255, 255, 255));
+//        navbar_dashboard1.setIcon(resetNavbarDashboard);
+//        //barang
+//        icon_package_putih.setIcon(resetIconBarang);
+//        btn_barang.setForeground(new Color(255, 255, 255));
+//        navbar_barang.setIcon(resetNavbarDashboard);
+//        //transjual
+//        icon_transjual_putih.setIcon(resetIconTransJual);
+//        navbar_transjual.setIcon(resetNavbarDashboard);
+//        btn_transjual.setForeground(new Color(255,255,255));
+//        //supplier
+//        icon_supplier_putih2.setIcon(resetIconSupplier);
+//        navbar_supplier.setIcon(resetNavbarDashboard);
+//        btn_supplier.setForeground(new Color(255,255,255));
+//        //laporan
+//        icon_laporan_putih.setIcon(resetIconLaporan);
+//        btn_laporan.setForeground(new Color(255,255,255));
+//        navbar_laporan.setIcon(resetNavbarDashboard);
+
+    }//GEN-LAST:event_btn_transbeliMouseClicked
+
+    private void btn_transbeliMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transbeliMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_transbeliMouseEntered
+
+    private void btn_transbeliMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transbeliMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_transbeliMouseExited
+
+    private void transbeli_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transbeli_panelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transbeli_panelMouseClicked
+
+    private void transbeli_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transbeli_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transbeli_panelMouseEntered
+
+    private void transbeli_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transbeli_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transbeli_panelMouseExited
+
+    private void btn_supplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_supplierMouseClicked
+        // TODO add your handling code here:
+//        System.out.println("Menu Supplier");
+//        ImageIcon supplierClicked = new ImageIcon("src/Image2/icon_supplier_yellow.png");
+//        icon_supplier_putih2.setIcon(supplierClicked);
+//        btn_supplier.setForeground(new Color(255,199,0));
+//        navbar_supplier.setIcon(navbarDashboardClick);
+//
+//        //dashboard
+//        icon_dashboard_putih1.setIcon(resetIconDashboard);
+//        btn_dashborrd1.setForeground(new Color(255, 255, 255));
+//        navbar_dashboard1.setIcon(resetNavbarDashboard);
+//        //barang
+//        icon_package_putih.setIcon(resetIconBarang);
+//        btn_barang.setForeground(new Color(255, 255, 255));
+//        navbar_barang.setIcon(resetNavbarDashboard);
+//        //transjual
+//        icon_transjual_putih.setIcon(resetIconTransJual);
+//        navbar_transjual.setIcon(resetNavbarDashboard);
+//        btn_transjual.setForeground(new Color(255,255,255));
+//        //transbeli
+//        icon_transbrli_putih.setIcon(resetIconTransBeli);
+//        btn_transbeli.setForeground(new Color(255,255,255));
+//        navbar_transbeli.setIcon(resetNavbarDashboard);
+//        //laporan
+//        icon_laporan_putih.setIcon(resetIconLaporan);
+//        btn_laporan.setForeground(new Color(255,255,255));
+//        navbar_laporan.setIcon(resetNavbarDashboard);
+    }//GEN-LAST:event_btn_supplierMouseClicked
+
+    private void btn_supplierMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_supplierMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_supplierMouseEntered
+
+    private void btn_supplierMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_supplierMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_supplierMouseExited
+
+    private void supplier_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplier_panelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supplier_panelMouseClicked
+
+    private void supplier_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplier_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supplier_panelMouseEntered
+
+    private void supplier_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_supplier_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supplier_panelMouseExited
+
+    private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
+        // TODO add your handling code here:
+//        System.out.println("Menu Laporan");
+//        ImageIcon laporanClicked = new ImageIcon("src/Image2/icon_laporan_yellow.png");
+//        icon_laporan_putih.setIcon(laporanClicked);
+//        btn_laporan.setForeground(new Color(255,199,0));
+//        navbar_laporan.setIcon(navbarDashboardClick);
+//
+//        //dashboard
+//        icon_dashboard_putih1.setIcon(resetIconDashboard);
+//        btn_dashborrd1.setForeground(new Color(255, 255, 255));
+//        navbar_dashboard1.setIcon(resetNavbarDashboard);
+//        //barang
+//        icon_package_putih.setIcon(resetIconBarang);
+//        btn_barang.setForeground(new Color(255, 255, 255));
+//        navbar_barang.setIcon(resetNavbarDashboard);
+//        //transjual
+//        icon_transjual_putih.setIcon(resetIconTransJual);
+//        navbar_transjual.setIcon(resetNavbarDashboard);
+//        btn_transjual.setForeground(new Color(255,255,255));
+//        //transbeli
+//        icon_transbrli_putih.setIcon(resetIconTransBeli);
+//        btn_transbeli.setForeground(new Color(255,255,255));
+//        navbar_transbeli.setIcon(resetNavbarDashboard);
+//        //supplier
+//        icon_supplier_putih2.setIcon(resetIconSupplier);
+//        navbar_supplier.setIcon(resetNavbarDashboard);
+//        btn_supplier.setForeground(new Color(255,255,255));
+
+    }//GEN-LAST:event_btn_laporanMouseClicked
+
+    private void btn_laporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_laporanMouseEntered
+
+    private void btn_laporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_laporanMouseExited
+
+    private void laporan_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporan_panelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_laporan_panelMouseClicked
+
+    private void laporan_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporan_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_laporan_panelMouseEntered
+
+    private void laporan_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_laporan_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_laporan_panelMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -192,11 +744,35 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bar_atas;
+    private javax.swing.JPanel barangPanel;
+    private javax.swing.JLabel btn_barang;
+    private javax.swing.JLabel btn_dashborrd1;
+    private javax.swing.JLabel btn_laporan;
+    private javax.swing.JLabel btn_supplier;
+    private javax.swing.JLabel btn_transbeli;
+    private javax.swing.JLabel btn_transjual;
+    private javax.swing.JPanel dashboadPanel1;
+    private javax.swing.JLabel icon_dashboard_putih1;
+    private javax.swing.JLabel icon_laporan_putih;
+    private javax.swing.JLabel icon_package_putih;
+    private javax.swing.JLabel icon_supplier_putih2;
+    private javax.swing.JLabel icon_transbrli_putih;
+    private javax.swing.JLabel icon_transjual_putih;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel laporan_panel;
+    private javax.swing.JLabel navbar_barang;
+    private javax.swing.JLabel navbar_dashboard1;
+    private javax.swing.JLabel navbar_laporan;
+    private javax.swing.JLabel navbar_supplier;
+    private javax.swing.JLabel navbar_transbeli;
+    private javax.swing.JLabel navbar_transjual;
+    private javax.swing.JPanel supplier_panel;
+    private javax.swing.JPanel transbeli_panel;
+    private javax.swing.JPanel transjual_panel;
     // End of variables declaration//GEN-END:variables
 }
