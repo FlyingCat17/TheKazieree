@@ -8,6 +8,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -67,7 +68,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         txt_laporan = new javax.swing.JLabel();
         icon_laporan = new javax.swing.JLabel();
         navbar_laproran = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        dpane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(54, 54, 54));
@@ -216,8 +217,18 @@ public class Dashboard2 extends javax.swing.JFrame {
 
         getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 710));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bg_beranda.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
+        javax.swing.GroupLayout dpaneLayout = new javax.swing.GroupLayout(dpane);
+        dpane.setLayout(dpaneLayout);
+        dpaneLayout.setHorizontalGroup(
+            dpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 960, Short.MAX_VALUE)
+        );
+        dpaneLayout.setVerticalGroup(
+            dpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(dpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,6 +250,9 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void txt_berandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_berandaMouseClicked
         // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            dpane.add(new beranda()).setVisible(true);
+        }
         ImageIcon berandaClicked = new ImageIcon("src/Icon/btn_beranda_hitam.png");
         icon_beranda.setIcon(berandaClicked);
         txt_beranda.setForeground(new Color(46,43,43));
@@ -277,6 +291,9 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void txt_dataBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_dataBarangMouseClicked
         // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            dpane.add(new data_barang()).setVisible(true);
+        }
         ImageIcon barangClicked = new ImageIcon("src/Icon/btn_barang_hitam.png");
         icon_barang.setIcon(barangClicked);
         txt_dataBarang.setForeground(new Color(46,43,43));
@@ -544,6 +561,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dpane;
     private javax.swing.JLabel icon_barang;
     private javax.swing.JLabel icon_beranda;
     private javax.swing.JLabel icon_laporan;
@@ -551,7 +569,6 @@ public class Dashboard2 extends javax.swing.JFrame {
     private javax.swing.JLabel icon_suplai;
     private javax.swing.JLabel icon_transbeli;
     private javax.swing.JLabel icon_transjual;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel navbar_barang;
     private javax.swing.JLabel navbar_beranda;
     private javax.swing.JLabel navbar_laproran;
