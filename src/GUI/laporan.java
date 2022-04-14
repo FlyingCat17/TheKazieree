@@ -5,23 +5,17 @@
  */
 package GUI;
 
-import java.awt.event.MouseEvent;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-
 /**
  *
  * @author Lutfi
  */
-public class data_barang extends javax.swing.JInternalFrame {
+public class laporan extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form data_barang
+     * Creates new form laporan
      */
-    public data_barang() {
+    public laporan() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
-        gui.setNorthPane(null);
     }
 
     /**
@@ -57,7 +51,7 @@ public class data_barang extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 648, Short.MAX_VALUE))
+                .addGap(0, 652, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
