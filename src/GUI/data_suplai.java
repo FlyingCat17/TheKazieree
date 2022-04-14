@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author Lutfi

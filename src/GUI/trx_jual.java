@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.event.MouseEvent;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
