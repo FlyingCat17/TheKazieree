@@ -55,13 +55,13 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Salah");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(120, 90, 180, 23);
+        jLabel5.setBounds(120, 90, 180, 24);
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username/Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(120, 67, 180, 23);
+        jLabel2.setBounds(120, 67, 180, 24);
 
         jLabel1.setFont(new java.awt.Font("Quicksand Medium", 0, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,8 +74,6 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel1);
         jLabel1.setBounds(310, 150, 30, 20);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/logingagal.png"))); // NOI18N
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 0, 350, 180);
 

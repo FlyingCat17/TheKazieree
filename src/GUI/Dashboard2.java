@@ -34,6 +34,41 @@ public class Dashboard2 extends javax.swing.JFrame {
     public Dashboard2() {
         initComponents();
         setLocationRelativeTo(null);
+        dpane.add(new beranda()).setVisible(true);
+        ImageIcon berandaClicked = new ImageIcon("src/Icon/btn_beranda_hitam.png");
+        icon_beranda.setIcon(berandaClicked);
+        txt_beranda.setForeground(new Color(46,43,43));
+        navbar_beranda.setIcon(navbarClicked);
+        
+        //barang
+        txt_dataBarang.setForeground(new Color(255,255,255));
+        icon_barang.setIcon(resetBarang);
+        navbar_barang.setIcon(resetNavbar);
+        
+        //transjual
+        txt_transjual.setForeground(new Color(255,255,255));
+        icon_transjual.setIcon(resetTransjual);
+        navbar_tranjual.setIcon(resetNavbar);
+        
+        //tranbeli
+        txt_transbeli.setForeground(new Color(255,255,255));
+        icon_transbeli.setIcon(resetTransbeli);
+        navbar_transbeli.setIcon(resetNavbar);
+        
+        //suplai
+        txt_suplai.setForeground(new Color(255,255,255));
+        icon_suplai.setIcon(resetSuplai);
+        navbar_suplai.setIcon(resetNavbar);
+        
+        //riwayat
+        txt_riwayat.setForeground(new Color(255,255,255));
+        icon_riwayat.setIcon(resetRiwayat);
+        navbar_riwayat.setIcon(resetNavbar);
+        
+        //laporan
+        txt_laporan.setForeground(new Color(255,255,255));
+        icon_laporan.setIcon(resetLaporan);
+        navbar_laproran.setIcon(resetNavbar);
 
     }
 
@@ -366,6 +401,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         txt_laporan.setForeground(new Color(255,255,255));
         icon_laporan.setIcon(resetLaporan);
         navbar_laproran.setIcon(resetNavbar);
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            dpane.add(new trx_jual()).setVisible(true);
+        }
     }//GEN-LAST:event_txt_transjualMouseClicked
 
     private void txt_transbeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_transbeliMouseClicked
