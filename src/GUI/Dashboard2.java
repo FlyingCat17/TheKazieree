@@ -34,6 +34,41 @@ public class Dashboard2 extends javax.swing.JFrame {
     public Dashboard2() {
         initComponents();
         setLocationRelativeTo(null);
+        dpane.add(new beranda()).setVisible(true);
+        ImageIcon berandaClicked = new ImageIcon("src/Icon/btn_beranda_hitam.png");
+        icon_beranda.setIcon(berandaClicked);
+        txt_beranda.setForeground(new Color(46,43,43));
+        navbar_beranda.setIcon(navbarClicked);
+        
+        //barang
+        txt_dataBarang.setForeground(new Color(255,255,255));
+        icon_barang.setIcon(resetBarang);
+        navbar_barang.setIcon(resetNavbar);
+        
+        //transjual
+        txt_transjual.setForeground(new Color(255,255,255));
+        icon_transjual.setIcon(resetTransjual);
+        navbar_tranjual.setIcon(resetNavbar);
+        
+        //tranbeli
+        txt_transbeli.setForeground(new Color(255,255,255));
+        icon_transbeli.setIcon(resetTransbeli);
+        navbar_transbeli.setIcon(resetNavbar);
+        
+        //suplai
+        txt_suplai.setForeground(new Color(255,255,255));
+        icon_suplai.setIcon(resetSuplai);
+        navbar_suplai.setIcon(resetNavbar);
+        
+        //riwayat
+        txt_riwayat.setForeground(new Color(255,255,255));
+        icon_riwayat.setIcon(resetRiwayat);
+        navbar_riwayat.setIcon(resetNavbar);
+        
+        //laporan
+        txt_laporan.setForeground(new Color(255,255,255));
+        icon_laporan.setIcon(resetLaporan);
+        navbar_laproran.setIcon(resetNavbar);
 
     }
 
@@ -68,6 +103,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         txt_laporan = new javax.swing.JLabel();
         icon_laporan = new javax.swing.JLabel();
         navbar_laproran = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         dpane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -214,6 +250,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         navbar_laproran.setMinimumSize(new java.awt.Dimension(280, 40));
         navbar_laproran.setPreferredSize(new java.awt.Dimension(280, 40));
         sidebar.add(navbar_laproran, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 280, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Rectangle 291.png"))); // NOI18N
+        sidebar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 710));
 
@@ -366,6 +405,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         txt_laporan.setForeground(new Color(255,255,255));
         icon_laporan.setIcon(resetLaporan);
         navbar_laproran.setIcon(resetNavbar);
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            dpane.add(new trx_jual()).setVisible(true);
+        }
     }//GEN-LAST:event_txt_transjualMouseClicked
 
     private void txt_transbeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_transbeliMouseClicked
@@ -569,6 +611,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     private javax.swing.JLabel icon_suplai;
     private javax.swing.JLabel icon_transbeli;
     private javax.swing.JLabel icon_transjual;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel navbar_barang;
     private javax.swing.JLabel navbar_beranda;
     private javax.swing.JLabel navbar_laproran;

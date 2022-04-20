@@ -12,6 +12,7 @@ package GUI;
 public class Login2 extends javax.swing.JFrame {
 
     int x, y;
+
     /**
      * Creates new form Login2
      */
@@ -39,9 +40,7 @@ public class Login2 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txt_password1 = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
-        txt_username1 = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -50,7 +49,6 @@ public class Login2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1240, 707));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(1240, 707));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -145,26 +143,8 @@ public class Login2 extends javax.swing.JFrame {
         jLabel4.setText("Kata Sandi");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 360, -1, -1));
 
-        txt_password1.setFont(new java.awt.Font("Quicksand", 1, 18)); // NOI18N
-        txt_password1.setForeground(new java.awt.Color(255, 255, 255));
-        txt_password1.setBorder(null);
-        txt_password1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_password1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jSeparator3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        txt_username1.setFont(new java.awt.Font("Quicksand", 1, 18)); // NOI18N
-        txt_username1.setForeground(new java.awt.Color(255, 255, 255));
-        txt_username1.setBorder(null);
-        txt_username1.setCaretColor(new java.awt.Color(255, 255, 255));
-        txt_username1.setSelectedTextColor(new java.awt.Color(51, 0, 255));
-        txt_username1.setSelectionColor(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jSeparator4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -203,7 +183,7 @@ public class Login2 extends javax.swing.JFrame {
         int ex = evt.getXOnScreen();
         int ye = evt.getYOnScreen();
 
-        this.setLocation(ex-x, ye-y);
+        this.setLocation(ex - x, ye - y);
     }//GEN-LAST:event_jLabel9MouseDragged
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
@@ -219,12 +199,8 @@ public class Login2 extends javax.swing.JFrame {
     private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
         // TODO add your handling code here:
         System.exit(0);
-        
-    }//GEN-LAST:event_jLabel7MousePressed
 
-    private void txt_password1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_password1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_password1ActionPerformed
+    }//GEN-LAST:event_jLabel7MousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -235,7 +211,7 @@ public class Login2 extends javax.swing.JFrame {
             try {
                 Thread.sleep(10);
             } catch (Exception e) {
-                
+
             }
         }
     }//GEN-LAST:event_formWindowOpened
@@ -253,14 +229,20 @@ public class Login2 extends javax.swing.JFrame {
 //                
 //            }
 //        }
-        
+
     }//GEN-LAST:event_formWindowClosed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        dialogboxloginsuccess box = new dialogboxloginsuccess();
-        box.setVisible(true);
-        this.dispose();
+        if (txt_username.getText().equals("user")) {
+            if (txt_password.getText().equals("user")) {
+                dialogboxloginsuccess box = new dialogboxloginsuccess();
+                box.setVisible(true);
+                
+            }
+        } else {
+            new dialogboxloginfailed().setVisible(true);
+        }
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
@@ -278,7 +260,7 @@ public class Login2 extends javax.swing.JFrame {
         int ex = evt.getXOnScreen();
         int ye = evt.getYOnScreen();
 
-        this.setLocation(ex-x, ye-y);
+        this.setLocation(ex - x, ye - y);
     }//GEN-LAST:event_jLabel8MouseDragged
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -291,7 +273,7 @@ public class Login2 extends javax.swing.JFrame {
             try {
                 Thread.sleep(10);
             } catch (Exception e) {
-                
+
             }
         }
     }//GEN-LAST:event_formWindowClosing
@@ -345,8 +327,6 @@ public class Login2 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPasswordField txt_password;
-    private javax.swing.JPasswordField txt_password1;
     private javax.swing.JTextField txt_username;
-    private javax.swing.JTextField txt_username1;
     // End of variables declaration//GEN-END:variables
 }
