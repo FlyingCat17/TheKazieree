@@ -239,7 +239,7 @@ public class Login2 extends javax.swing.JFrame {
             if (txt_password.getText().equals("user")) {
                 dialogboxloginsuccess box = new dialogboxloginsuccess();
                 box.setVisible(true);
-                
+                this.dispose();
             }
         } else {
             new dialogboxloginfailed().setVisible(true);

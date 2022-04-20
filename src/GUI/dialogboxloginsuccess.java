@@ -64,8 +64,6 @@ public class dialogboxloginsuccess extends javax.swing.JFrame {
         Login2 log = new Login2();
         Dashboard2 dash = new Dashboard2();
         dash.setVisible(true);
-        log.setVisible(false);
-        log.dispose();
         this.dispose();
         
     }//GEN-LAST:event_jLabel1MouseClicked

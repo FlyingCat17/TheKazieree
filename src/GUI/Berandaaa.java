@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author DELL
@@ -16,6 +18,9 @@ public class Berandaaa extends javax.swing.JInternalFrame {
      */
     public Berandaaa() {
         initComponents();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
+        gui.setNorthPane(null);
     }
 
     /**

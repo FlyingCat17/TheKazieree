@@ -34,7 +34,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     public Dashboard2() {
         initComponents();
         setLocationRelativeTo(null);
-        dpane.add(new beranda()).setVisible(true);
+        dpane.add(new Berandaaa()).setVisible(true);
         ImageIcon berandaClicked = new ImageIcon("src/Icon/btn_beranda_hitam.png");
         icon_beranda.setIcon(berandaClicked);
         txt_beranda.setForeground(new Color(46,43,43));
@@ -285,9 +285,10 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void txt_berandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_berandaMouseClicked
         // TODO add your handling code here:
-        if (evt.getButton() == MouseEvent.BUTTON1) {
-            dpane.add(new beranda()).setVisible(true);
-        }
+        dpane.removeAll();
+        Berandaaa home = new Berandaaa();
+        dpane.add(home).setVisible(true);
+        
         ImageIcon berandaClicked = new ImageIcon("src/Icon/btn_beranda_hitam.png");
         icon_beranda.setIcon(berandaClicked);
         txt_beranda.setForeground(new Color(46,43,43));
@@ -527,6 +528,9 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void txt_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_laporanMouseClicked
         // TODO add your handling code here:
+        dpane.removeAll();
+        laporan lapor = new laporan();
+        dpane.add(lapor).setVisible(true);
         ImageIcon laporanCliked = new ImageIcon("src/Icon/btn_laporan_hitam.png");
         icon_laporan.setIcon(laporanCliked);
         txt_laporan.setForeground(new Color(46,43,43));
