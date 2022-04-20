@@ -110,7 +110,6 @@ public class Dashboard2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1240, 662));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(1240, 707));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {

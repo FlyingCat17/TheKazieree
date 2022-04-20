@@ -51,7 +51,7 @@ public class dialogboxloginsuccess extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 30, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 50, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dialog_Box/dialogbox_loginBerhasil.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 180));
