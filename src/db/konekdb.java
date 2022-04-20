@@ -14,7 +14,7 @@ public class konekdb {
             new Driver();
             System.out.println("Terhubung");
         
-        koneksi=DriverManager.getConnection("jdbc:mysql://localhost:3306/sticker","root","");
+        koneksi=DriverManager.getConnection("jdbc:mysql://localhost:3306/stiker","root","");
 //        koneksi=DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6452648","sql6452648","B1fMNnfMCj");
         }
         return koneksi;

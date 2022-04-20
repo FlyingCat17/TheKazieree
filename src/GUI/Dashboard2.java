@@ -103,6 +103,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         txt_laporan = new javax.swing.JLabel();
         icon_laporan = new javax.swing.JLabel();
         navbar_laproran = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         dpane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -248,6 +249,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         navbar_laproran.setMinimumSize(new java.awt.Dimension(280, 40));
         navbar_laproran.setPreferredSize(new java.awt.Dimension(280, 40));
         sidebar.add(navbar_laproran, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 280, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Rectangle 291.png"))); // NOI18N
+        sidebar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 710));
 
@@ -606,6 +610,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     private javax.swing.JLabel icon_suplai;
     private javax.swing.JLabel icon_transbeli;
     private javax.swing.JLabel icon_transjual;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel navbar_barang;
     private javax.swing.JLabel navbar_beranda;
     private javax.swing.JLabel navbar_laproran;

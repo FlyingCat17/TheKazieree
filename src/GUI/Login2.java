@@ -49,7 +49,6 @@ public class Login2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1240, 707));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(1240, 707));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
