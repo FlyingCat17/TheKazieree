@@ -72,7 +72,7 @@ public class Berandaaa extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, 20, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/Frame 46 (1).png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-290, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
