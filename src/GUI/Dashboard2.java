@@ -104,13 +104,15 @@ public class Dashboard2 extends javax.swing.JFrame {
         icon_laporan = new javax.swing.JLabel();
         navbar_laproran = new javax.swing.JLabel();
         dpane = new javax.swing.JDesktopPane();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(54, 54, 54));
-        setMinimumSize(new java.awt.Dimension(1240, 662));
+        setMinimumSize(new java.awt.Dimension(1240, 730));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(1240, 707));
+        setPreferredSize(new java.awt.Dimension(1240, 730));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -250,7 +252,7 @@ public class Dashboard2 extends javax.swing.JFrame {
         navbar_laproran.setPreferredSize(new java.awt.Dimension(280, 40));
         sidebar.add(navbar_laproran, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 280, 60));
 
-        getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 710));
+        getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 730));
 
         javax.swing.GroupLayout dpaneLayout = new javax.swing.GroupLayout(dpane);
         dpane.setLayout(dpaneLayout);
@@ -263,7 +265,20 @@ public class Dashboard2 extends javax.swing.JFrame {
             .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        getContentPane().add(dpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
+        getContentPane().add(dpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 960, 710));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/btn_close_int.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, -1, -1));
+
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -567,6 +582,13 @@ public class Dashboard2 extends javax.swing.JFrame {
         navbar_riwayat.setIcon(resetNavbar);
     }//GEN-LAST:event_txt_laporanMouseClicked
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -578,7 +600,7 @@ public class Dashboard2 extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -611,6 +633,8 @@ public class Dashboard2 extends javax.swing.JFrame {
     private javax.swing.JLabel icon_suplai;
     private javax.swing.JLabel icon_transbeli;
     private javax.swing.JLabel icon_transjual;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel navbar_barang;
     private javax.swing.JLabel navbar_beranda;
     private javax.swing.JLabel navbar_laproran;
