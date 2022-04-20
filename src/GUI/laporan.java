@@ -47,7 +47,7 @@ public class laporan extends javax.swing.JInternalFrame {
 
         jLabel3.setBackground(new java.awt.Color(238, 238, 238));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bg_laporan.jpg"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 690));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 950, 690));
 
         jButton1.setText("jButton1");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 800, -1, -1));
