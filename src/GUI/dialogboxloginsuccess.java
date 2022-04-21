@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author LenataHoma
@@ -36,7 +38,6 @@ public class dialogboxloginsuccess extends javax.swing.JFrame {
         setBackground(new java.awt.Color(17, 17, 17));
         setMinimumSize(new java.awt.Dimension(349, 178));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(349, 178));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
@@ -49,6 +50,11 @@ public class dialogboxloginsuccess extends javax.swing.JFrame {
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
+            }
+        });
+        jLabel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel1KeyPressed(evt);
             }
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 30, 20));
@@ -67,6 +73,16 @@ public class dialogboxloginsuccess extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel1KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Login2 log = new Login2();
+            Dashboard2 dash = new Dashboard2();
+            dash.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jLabel1KeyPressed
 
     /**
      * @param args the command line arguments
