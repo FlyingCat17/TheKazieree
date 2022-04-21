@@ -463,6 +463,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        ImageIcon suplaiIcon = new ImageIcon("src/Icon/btn_suplai_hitam.png");
 //        icon_suplai.setIcon(suplaiIcon);
+        dpane.removeAll();
+        data_suplai sup = new data_suplai();
+        dpane.add(sup).setVisible(true);
         ImageIcon suplaiClicked = new ImageIcon("src/Icon/btn_suplai_hitam.png");
         icon_suplai.setIcon(suplaiClicked);
         txt_suplai.setForeground(new Color(46,43,43));
