@@ -112,7 +112,6 @@ public class Dashboard2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1240, 730));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(1240, 730));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -258,14 +257,14 @@ public class Dashboard2 extends javax.swing.JFrame {
         dpane.setLayout(dpaneLayout);
         dpaneLayout.setHorizontalGroup(
             dpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 962, Short.MAX_VALUE)
         );
         dpaneLayout.setVerticalGroup(
             dpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        getContentPane().add(dpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 960, 710));
+        getContentPane().add(dpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 962, 710));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
