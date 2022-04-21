@@ -138,61 +138,66 @@ public class Tambahandata extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         hargajual.setBackground(new java.awt.Color(196, 196, 196));
+        hargajual.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
         hargajual.setBorder(null);
         hargajual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hargajualActionPerformed(evt);
             }
         });
-        getContentPane().add(hargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 380, -1));
+        getContentPane().add(hargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 380, 40));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
         kodebarang.setBackground(new java.awt.Color(196, 196, 196));
+        kodebarang.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
         kodebarang.setBorder(null);
         kodebarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kodebarangActionPerformed(evt);
             }
         });
-        getContentPane().add(kodebarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 380, -1));
+        getContentPane().add(kodebarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 380, 40));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         namabarang.setBackground(new java.awt.Color(196, 196, 196));
+        namabarang.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
         namabarang.setBorder(null);
         namabarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namabarangActionPerformed(evt);
             }
         });
-        getContentPane().add(namabarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 380, -1));
+        getContentPane().add(namabarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 380, 40));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
         jumlahbarang.setBackground(new java.awt.Color(196, 196, 196));
+        jumlahbarang.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
         jumlahbarang.setBorder(null);
         jumlahbarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jumlahbarangActionPerformed(evt);
             }
         });
-        getContentPane().add(jumlahbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 380, -1));
+        getContentPane().add(jumlahbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 380, 40));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
 
         hargabeli.setBackground(new java.awt.Color(196, 196, 196));
+        hargabeli.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
         hargabeli.setBorder(null);
         hargabeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hargabeliActionPerformed(evt);
             }
         });
-        getContentPane().add(hargabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 380, -1));
+        getContentPane().add(hargabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 380, 40));
 
         boxsatuan.setBackground(new java.awt.Color(196, 196, 196));
         boxsatuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pcs", "Cm", "M" }));
