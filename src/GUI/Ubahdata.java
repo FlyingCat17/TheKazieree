@@ -322,6 +322,7 @@ public class Ubahdata extends javax.swing.JFrame {
         } catch (Exception t){
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
+        
     }//GEN-LAST:event_jLabel16MouseClicked
 
     /**
