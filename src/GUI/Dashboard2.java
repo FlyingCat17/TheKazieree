@@ -341,9 +341,9 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void txt_dataBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_dataBarangMouseClicked
         // TODO add your handling code here:
-        if (evt.getButton() == MouseEvent.BUTTON1) {
-            dpane.add(new data_barang()).setVisible(true);
-        }
+        dpane.removeAll();
+        data_barang_1 brg = new data_barang_1();
+        dpane.add(brg).setVisible(true);
         ImageIcon barangClicked = new ImageIcon("src/Icon/btn_barang_hitam.png");
         icon_barang.setIcon(barangClicked);
         txt_dataBarang.setForeground(new Color(46,43,43));
