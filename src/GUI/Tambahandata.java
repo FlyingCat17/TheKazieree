@@ -16,7 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
+import GUI.data_barang_1;
 /**
  *
  * @author LenataHoma
@@ -269,6 +269,8 @@ public class Tambahandata extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
+    
+   
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         Tambahandata.this.setOpacity((float) 1.0);
@@ -311,6 +313,8 @@ public class Tambahandata extends javax.swing.JFrame {
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
+        
+        data_barang_1 tb = new data_barang_1();
         kb=String.valueOf(kodebarang.getText());
         nb=String.valueOf(namabarang.getText());
         st=String.valueOf(boxsatuan.getSelectedItem());
@@ -324,10 +328,14 @@ public class Tambahandata extends javax.swing.JFrame {
                 + hb + "','"+ hj + "','"+ jb +"');");
             statement.close();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            
+            
             this.dispose();
+            
         } catch (Exception t){
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
+        tb.datatable();
     }//GEN-LAST:event_jLabel16MouseClicked
 
     /**
