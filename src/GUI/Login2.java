@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author LenataHoma
@@ -49,7 +51,6 @@ public class Login2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1240, 707));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(1240, 707));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -113,6 +114,11 @@ public class Login2 extends javax.swing.JFrame {
         txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_passwordActionPerformed(evt);
+            }
+        });
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyPressed(evt);
             }
         });
         getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 300, 40));
@@ -278,6 +284,21 @@ public class Login2 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           if (txt_username.getText().equals("user")) {
+            if (txt_password.getText().equals("user")) {
+                dialogboxloginsuccess box = new dialogboxloginsuccess();
+                box.setVisible(true);
+                this.dispose();
+            }
+        } else {
+            new dialogboxloginfailed().setVisible(true);
+        } 
+        }
+    }//GEN-LAST:event_txt_passwordKeyPressed
 
     /**
      * @param args the command line arguments
