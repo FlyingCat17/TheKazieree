@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import GUI.data_barang_1;
+import java.awt.event.KeyEvent;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author LenataHoma
@@ -72,7 +74,6 @@ public class Tambahandata extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(728, 575));
         setUndecorated(true);
         setOpacity(0.0F);
-        setPreferredSize(new java.awt.Dimension(728, 575));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -145,6 +146,11 @@ public class Tambahandata extends javax.swing.JFrame {
                 hargajualActionPerformed(evt);
             }
         });
+        hargajual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hargajualKeyTyped(evt);
+            }
+        });
         getContentPane().add(hargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 380, 40));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
@@ -156,6 +162,11 @@ public class Tambahandata extends javax.swing.JFrame {
         kodebarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kodebarangActionPerformed(evt);
+            }
+        });
+        kodebarang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                kodebarangKeyTyped(evt);
             }
         });
         getContentPane().add(kodebarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 380, 40));
@@ -184,6 +195,11 @@ public class Tambahandata extends javax.swing.JFrame {
                 jumlahbarangActionPerformed(evt);
             }
         });
+        jumlahbarang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jumlahbarangKeyTyped(evt);
+            }
+        });
         getContentPane().add(jumlahbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 380, 40));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
@@ -195,6 +211,11 @@ public class Tambahandata extends javax.swing.JFrame {
         hargabeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hargabeliActionPerformed(evt);
+            }
+        });
+        hargabeli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hargabeliKeyTyped(evt);
             }
         });
         getContentPane().add(hargabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 380, 40));
@@ -210,7 +231,7 @@ public class Tambahandata extends javax.swing.JFrame {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Simpan.png"))); // NOI18N
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 100, 50));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 300.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 300_1.png"))); // NOI18N
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel16MouseClicked(evt);
@@ -220,7 +241,7 @@ public class Tambahandata extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jLabel9MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseDragged
         // TODO add your handling code here:
         int ex = evt.getXOnScreen();
@@ -313,7 +334,6 @@ public class Tambahandata extends javax.swing.JFrame {
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-        
         data_barang_1 tb = new data_barang_1();
         kb=String.valueOf(kodebarang.getText());
         nb=String.valueOf(namabarang.getText());
@@ -322,21 +342,47 @@ public class Tambahandata extends javax.swing.JFrame {
         hb=String.valueOf(hargabeli.getText());
         hj=String.valueOf(hargajual.getText());
         try {
-            
             Statement statement = (Statement) konekdb.GetConnection().createStatement();
             statement.executeUpdate("INSERT INTO tb_barang VALUES ('"  + kb + "','" + nb + "','" + st + "','"
                 + hb + "','"+ hj + "','"+ jb +"');");
             statement.close();
+            tb.datatable();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
-            
-            
             this.dispose();
             
         } catch (Exception t){
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
-        tb.datatable();
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void hargajualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargajualKeyTyped
+        // TODO add your handling code here:
+        char k = evt.getKeyChar();
+        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_hargajualKeyTyped
+
+    private void kodebarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodebarangKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_kodebarangKeyTyped
+
+    private void jumlahbarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlahbarangKeyTyped
+        // TODO add your handling code here:
+        char k = evt.getKeyChar();
+        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jumlahbarangKeyTyped
+
+    private void hargabeliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargabeliKeyTyped
+        // TODO add your handling code here:
+        char k = evt.getKeyChar();
+        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_hargabeliKeyTyped
 
     /**
      * @param args the command line arguments

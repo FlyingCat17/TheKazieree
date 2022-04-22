@@ -27,9 +27,9 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
     /**
      * Creates new form data_barang
      */
-    private String id,namabarang,satuan,hargadasar,hargajual,stok;
+    public String id,namabarang,satuan,hargadasar,hargajual,stok;
     public data_barang_1() {
-        initComponents();
+        initComponents();           
         datatable();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
@@ -40,33 +40,35 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jTable1.getTableHeader().setFont(new Font("Quicksand SemiBold", Font.BOLD, 12));
     }
      public void datatable(){
-         DefaultTableModel tbl = new DefaultTableModel();
-         tbl.addColumn("Id barang");
-         tbl.addColumn("Nama Barang");
-         tbl.addColumn("Satuan");
-         tbl.addColumn("Harga Dasar");
-         tbl.addColumn("Harga Jual");
-         tbl.addColumn("Stok");
-         jTable1.setModel(tbl);
-         try {
-            String sql = "SELECT * FROM tb_barang";
-            java.sql.Connection conn = (Connection)konekdb.GetConnection();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);
-            while(res.next())
-            {
-                tbl.addRow(new Object[]{
-                    res.getString(1),
-                    res.getString(2),
-                    res.getString(3),
-                    res.getString(4),
-                    res.getString(5),
-                    res.getString(6),
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            try {
+                String sql = "SELECT * FROM tb_barang";
+                java.sql.Connection conn = (Connection)konekdb.GetConnection();
+                java.sql.Statement stm = conn.createStatement();
+                java.sql.ResultSet res = stm.executeQuery(sql);
+                while(res.next())
+                {
+                    tbl.addRow(new Object[]{
+                        res.getString(1),
+                        res.getString(2),
+                        res.getString(3),
+                        res.getString(4),
+                        res.getString(5),
+                        res.getString(6),
             });
                 jTable1.setModel(tbl);
             }
          } catch (Exception e) {
          }
+            
+         
      }
 
     /**
@@ -93,6 +95,12 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         btnhapus = new javax.swing.JLabel();
         btntambah = new javax.swing.JLabel();
         btnubah = new javax.swing.JLabel();
+        idku = new javax.swing.JLabel();
+        nama = new javax.swing.JLabel();
+        satuann = new javax.swing.JLabel();
+        jumlah = new javax.swing.JLabel();
+        harga_b = new javax.swing.JLabel();
+        harga_j = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -143,6 +151,11 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
             }
         ));
         jTable1.setRowHeight(35);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 209, 860, -1));
@@ -157,7 +170,7 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Ubah.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 90, 30));
 
-        btnhapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Rectangle 302.png"))); // NOI18N
+        btnhapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 302.png"))); // NOI18N
         btnhapus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnhapusMouseClicked(evt);
@@ -173,8 +186,31 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btntambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
 
-        btnubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Rectangle 302.png"))); // NOI18N
+        btnubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 301.png"))); // NOI18N
+        btnubah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnubahMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, -1));
+
+        idku.setForeground(new java.awt.Color(240, 240, 240));
+        jPanel1.add(idku, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
+
+        nama.setForeground(new java.awt.Color(240, 240, 240));
+        jPanel1.add(nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
+
+        satuann.setForeground(new java.awt.Color(240, 240, 240));
+        jPanel1.add(satuann, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, -1, -1));
+
+        jumlah.setForeground(new java.awt.Color(240, 240, 240));
+        jPanel1.add(jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, -1));
+
+        harga_b.setForeground(new java.awt.Color(240, 240, 240));
+        jPanel1.add(harga_b, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, -1, -1));
+
+        harga_j.setForeground(new java.awt.Color(240, 240, 240));
+        jPanel1.add(harga_j, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,18 +253,8 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
 
     private void btnhapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnhapusMouseClicked
         // TODO add your handling code here:
-        int row = jTable1.getSelectedRow();
-        id =String.valueOf(jTable1.getModel().getValueAt(row, 0));
-        try {
-            String sql = "DELETE from tb_barang where id_barang ='" + id + "'";
-            Connection conn = (Connection)konekdb.GetConnection();
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.execute();
-            datatable();
-            JOptionPane.showMessageDialog(null, "Data Berhasil");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Data Gagal dihapus");
-        }
+        dialogboxhapusdata okw = new dialogboxhapusdata(this, idku.getText());
+        okw.setVisible(true);
     }//GEN-LAST:event_btnhapusMouseClicked
 
     private void btntambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btntambahMouseClicked
@@ -237,6 +263,23 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         j.setVisible(true);
     }//GEN-LAST:event_btntambahMouseClicked
 
+    private void btnubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnubahMouseClicked
+        // TODO add your handling code here:
+       Ubahdata gh = new Ubahdata(this, idku.getText(), nama.getText(), satuann.getText(), harga_b.getText(), harga_j.getText(), jumlah.getText());
+       gh.setVisible(true);
+    }//GEN-LAST:event_btnubahMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         //TODO add your handling code here:
+        int tbl= jTable1.getSelectedRow();
+        idku.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),0)));
+        nama.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),1)));
+        satuann.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),2)));
+        harga_b.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),3)));
+        harga_j.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),4)));
+        jumlah.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),5)));
+    }//GEN-LAST:event_jTable1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Search;
@@ -244,6 +287,9 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel btnhapus;
     private javax.swing.JLabel btntambah;
     private javax.swing.JLabel btnubah;
+    private javax.swing.JLabel harga_b;
+    private javax.swing.JLabel harga_j;
+    private javax.swing.JLabel idku;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -253,6 +299,9 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jumlah;
+    private javax.swing.JLabel nama;
+    private javax.swing.JLabel satuann;
     private javax.swing.JTextField textfieldsearch;
     // End of variables declaration//GEN-END:variables
  
