@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -22,8 +23,10 @@ public class Login2 extends javax.swing.JFrame {
     public Login2() {
         initComponents();
         setLocationRelativeTo(null);
-       
-            
+        
+        password_reveal.setEnabled(false);
+        password_reveal.setVisible(false);
+        
     }
 
     /**
@@ -38,11 +41,11 @@ public class Login2 extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        password_unreveal = new javax.swing.JLabel();
+        password_reveal = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
         txt_username = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -102,6 +105,24 @@ public class Login2 extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 40));
 
+        password_unreveal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        password_unreveal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_password_unreveal.png"))); // NOI18N
+        password_unreveal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                password_unrevealMouseClicked(evt);
+            }
+        });
+        getContentPane().add(password_unreveal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 390, 30, 20));
+
+        password_reveal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        password_reveal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_password_reveal.png"))); // NOI18N
+        password_reveal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                password_revealMouseClicked(evt);
+            }
+        });
+        getContentPane().add(password_reveal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 390, 30, 20));
+
         jLabel2.setBackground(new java.awt.Color(255, 199, 0));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Button_Design/btn_masuk.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 470, 100, 40));
@@ -114,23 +135,7 @@ public class Login2 extends javax.swing.JFrame {
         jSeparator5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, 300, 10));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/ri_eye-close-line.png"))); // NOI18N
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 390, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/ri_eye-close-line.png"))); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 390, -1, -1));
-
-        txt_password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_password.setBorder(null);
         txt_password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_password.setOpaque(false);
@@ -146,7 +151,7 @@ public class Login2 extends javax.swing.JFrame {
                 txt_passwordKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 300, 40));
+        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 380, 260, 40));
 
         txt_username.setFont(new java.awt.Font("Quicksand", 1, 18)); // NOI18N
         txt_username.setBorder(null);
@@ -325,26 +330,32 @@ public class Login2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_passwordKeyPressed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void password_unrevealMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_unrevealMouseClicked
         // TODO add your handling code here:
-        if (evt.getButton() == (MouseEvent.BUTTON1)) {
-            txt_password.setEchoChar((char) 0);
-            jLabel11.requestFocus();
-        } else {
-            txt_password.setEchoChar('*');
-        }
-    }//GEN-LAST:event_jLabel5MouseClicked
+        password_reveal.setVisible(true);
+        password_reveal.setEnabled(true);
+        
+        password_unreveal.setVisible(false);
+        password_unreveal.setVisible(false);
+        
+        txt_password.setEchoChar((char)0);
+        txt_password.setFont(new Font("Quicksand Medium", Font.PLAIN, 18));
+    }//GEN-LAST:event_password_unrevealMouseClicked
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+    private void password_revealMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_revealMouseClicked
         // TODO add your handling code here:
-        if (evt.getButton() == (MouseEvent.BUTTON1)) {
-            txt_password.setEchoChar((char) 8226);
-            jLabel5.requestFocus();
-        } else {
-            txt_password.setEchoChar('*');
-        }
-    }//GEN-LAST:event_jLabel11MouseClicked
+        password_reveal.setVisible(false);
+        password_reveal.setEnabled(false);
+        
+        password_unreveal.setVisible(true);
+        password_unreveal.setVisible(true);
+        
+        
+        txt_password.setEchoChar((char) 8226);
+        txt_password.setFont(new Font("Arial", Font.BOLD, 18));
+    }//GEN-LAST:event_password_revealMouseClicked
 
+    
     /**
      * @param args the command line arguments
      */
@@ -383,11 +394,9 @@ public class Login2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -396,6 +405,8 @@ public class Login2 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel password_reveal;
+    private javax.swing.JLabel password_unreveal;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
