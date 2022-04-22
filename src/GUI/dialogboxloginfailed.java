@@ -33,6 +33,7 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(233, 233, 233));
@@ -40,8 +41,8 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(null);
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/akar-icons_cross.png"))); // NOI18N
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -52,19 +53,16 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         jLabel7.setBounds(320, 10, 20, 20);
 
         jLabel5.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Salah");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(120, 90, 180, 24);
+        jLabel5.setBounds(120, 90, 180, 23);
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username/Password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(120, 67, 180, 24);
+        jLabel2.setBounds(120, 67, 180, 23);
 
         jLabel1.setFont(new java.awt.Font("Quicksand Medium", 0, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("OK");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,8 +72,12 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel1);
         jLabel1.setBounds(310, 150, 30, 20);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/akar-icons_circle-x-fill.png"))); // NOI18N
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 0, 350, 180);
+        jLabel6.setBounds(40, 0, 310, 180);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(50, 80, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,6 +100,7 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

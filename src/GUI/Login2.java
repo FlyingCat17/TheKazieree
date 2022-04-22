@@ -6,6 +6,7 @@
 package GUI;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Login2 extends javax.swing.JFrame {
     public Login2() {
         initComponents();
         setLocationRelativeTo(null);
+       
+            
     }
 
     /**
@@ -32,11 +35,14 @@ public class Login2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
         txt_username = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -64,6 +70,9 @@ public class Login2 extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Lupa Password_.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Quicksand", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 238, 238));
@@ -104,6 +113,22 @@ public class Login2 extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(255, 199, 0));
         jSeparator5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, 300, 10));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/ri_eye-close-line.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 390, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/ri_eye-close-line.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 390, -1, -1));
 
         txt_password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_password.setBorder(null);
@@ -300,6 +325,26 @@ public class Login2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_passwordKeyPressed
 
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == (MouseEvent.BUTTON1)) {
+            txt_password.setEchoChar((char) 0);
+            jLabel11.requestFocus();
+        } else {
+            txt_password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == (MouseEvent.BUTTON1)) {
+            txt_password.setEchoChar((char) 8226);
+            jLabel5.requestFocus();
+        } else {
+            txt_password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jLabel11MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -337,9 +382,12 @@ public class Login2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
