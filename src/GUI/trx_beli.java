@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
@@ -31,6 +32,9 @@ public class trx_beli extends javax.swing.JInternalFrame {
      */
     public trx_beli() {
         initComponents();
+         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
+        gui.setNorthPane(null);
 
 //        tgl_transaksi.setText(tanggal);
     }
