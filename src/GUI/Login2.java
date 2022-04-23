@@ -80,7 +80,7 @@ public class Login2 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Quicksand", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(238, 238, 238));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGIN");
+        jLabel1.setText("MASUK");
         jLabel1.setToolTipText("");
         jLabel1.setAlignmentY(0.9F);
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +168,7 @@ public class Login2 extends javax.swing.JFrame {
                 jLabel7MousePressed(evt);
             }
         });
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 0, 30, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 30, 30));
 
         jLabel3.setBackground(new java.awt.Color(246, 122, 2));
         jLabel3.setFont(new java.awt.Font("Quicksand", 0, 15)); // NOI18N
