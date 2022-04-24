@@ -5,10 +5,12 @@
  */
 package GUI;
 
+import db.konekdb;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import javax.swing.Timer;
 
 /**
@@ -104,6 +106,11 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Simpan");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 130, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/butn_trx_jual.png"))); // NOI18N
@@ -122,6 +129,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/butn_trx_jual.png"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
 
+        time.setEditable(false);
         time.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         time.setBorder(null);
         time.setOpaque(false);
@@ -135,6 +143,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         jLabel2.setText("Tanggal");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
+        id_trx.setEditable(false);
         id_trx.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         id_trx.setBorder(null);
         id_trx.setOpaque(false);
@@ -148,6 +157,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         jLabel4.setText("ID Transaksi");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
+        sub_total.setEditable(false);
         sub_total.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         sub_total.setBorder(null);
         sub_total.setOpaque(false);
@@ -189,6 +199,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         jLabel5.setText("Diskon");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
+        total_harga.setEditable(false);
         total_harga.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         total_harga.setBorder(null);
         total_harga.setOpaque(false);
@@ -230,6 +241,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/txt_tbh_brg.png"))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
 
+        kembalian.setEditable(false);
         kembalian.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         kembalian.setBorder(null);
         kembalian.setOpaque(false);
@@ -306,6 +318,21 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
             kembalian();
         }
     }//GEN-LAST:event_total_bayarMouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        trx_jual n = new trx_jual();
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            try {
+                String sql = "";
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                pst.execute();
+                this.dispose();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments

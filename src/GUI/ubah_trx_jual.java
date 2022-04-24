@@ -6,6 +6,7 @@
 package GUI;
 
 import db.konekdb;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -110,6 +111,11 @@ public class ubah_trx_jual extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Batal");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 130, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/butn_trx_jual.png"))); // NOI18N
@@ -118,6 +124,11 @@ public class ubah_trx_jual extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Simpan");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 130, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/butn_trx_jual.png"))); // NOI18N
@@ -144,6 +155,27 @@ public class ubah_trx_jual extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton()==MouseEvent.BUTTON1){
+            this.dispose();
+        }
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton()==MouseEvent.BUTTON1){
+            try {
+                String sql = "";
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                pst.execute();
+                this.dispose();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
