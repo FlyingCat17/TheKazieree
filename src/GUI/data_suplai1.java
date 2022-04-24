@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -24,7 +25,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 public class data_suplai1 extends javax.swing.JInternalFrame {
 
     konekdb conn = new konekdb();
-
+    EditSuplai ed = new EditSuplai();
     /**
      * Creates new form data_suplai
      */
@@ -110,7 +111,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 //        }
 //    }
 
-   private void loadTable(){
+   public void loadTable(){
         DefaultTableModel tab = new DefaultTableModel();
         tab.addColumn("ID Supplier");
         tab.addColumn("Nama_Supplier");
@@ -188,7 +189,9 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_tambahSuplai = new javax.swing.JLabel();
         btn_ubahSuplai = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        getId = new javax.swing.JLabel();
 
         setBorder(null);
         setMinimumSize(new java.awt.Dimension(962, 710));
@@ -211,9 +214,14 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 860, 420));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 860, 380));
 
         jTextField1.setFont(new java.awt.Font("Quicksand Medium", 0, 15)); // NOI18N
         jTextField1.setBorder(null);
@@ -227,6 +235,12 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         btn_hapusSuplai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_hapusSuplaiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_hapusSuplaiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_hapusSuplaiMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_hapusSuplaiMousePressed(evt);
@@ -245,6 +259,12 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_tambahSuplaiMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_tambahSuplaiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_tambahSuplaiMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_tambahSuplaiMousePressed(evt);
             }
@@ -259,6 +279,12 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ubahSuplaiMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_ubahSuplaiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_ubahSuplaiMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_ubahSuplaiMousePressed(evt);
             }
@@ -268,10 +294,33 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btn_ubahSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, -1, 40));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_refresh_suplai.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 130, -1));
+
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 960, 560));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/bg_dataSuplai.jpg"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 680));
+
+        getId.setEnabled(false);
+        jPanel2.add(getId, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         getContentPane().add(jPanel2);
 
@@ -291,7 +340,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 
     private void btn_hapusSuplaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusSuplaiMouseReleased
         // TODO add your handling code here:
-        ImageIcon releaseHapus = new ImageIcon("src/Icon/btn_hapus_suplai.png");
+        ImageIcon releaseHapus = new ImageIcon("src/Icon/btn_hapus_suplai_entered.png");
         btn_hapusSuplai.setIcon(releaseHapus);
     }//GEN-LAST:event_btn_hapusSuplaiMouseReleased
 
@@ -310,12 +359,15 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 
     private void btn_tambahSuplaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahSuplaiMouseReleased
         // TODO add your handling code here:
-        ImageIcon releasetambah = new ImageIcon("src/Icon/btn_tambah_suplai.png");
+        ImageIcon releasetambah = new ImageIcon("src/Icon/btn_tambah_suplai_hover.png");
         btn_tambahSuplai.setIcon(releasetambah);
     }//GEN-LAST:event_btn_tambahSuplaiMouseReleased
 
     private void btn_ubahSuplaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMouseClicked
         // TODO add your handling code here:
+        String supplierid = getId.getText();
+        ed.txt_id_supplier.setText(supplierid);
+        ed.setVisible(true);
     }//GEN-LAST:event_btn_ubahSuplaiMouseClicked
 
     private void btn_ubahSuplaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMousePressed
@@ -327,21 +379,109 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 
     private void btn_ubahSuplaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMouseReleased
         // TODO add your handling code here:
-        ImageIcon releaseUbah = new ImageIcon("src/Icon/btn_ubah_suplai.png");
+        ImageIcon releaseUbah = new ImageIcon("src/Icon/btn_ubah_suplai_entered.png");
         btn_ubahSuplai.setIcon(releaseUbah);
     }//GEN-LAST:event_btn_ubahSuplaiMouseReleased
 
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        // TODO add your handling code here:
+        ImageIcon pressRefresh = new ImageIcon("src/Icon/btn_refresh_click.png");
+        jLabel2.setIcon(pressRefresh);
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+        ImageIcon hoveringRefresh = new ImageIcon("src/Icon/btn_refresh_hover.png");
+        jLabel2.setIcon(hoveringRefresh);
+        
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        // TODO add your handling code here:
+        ImageIcon hoverReleaseRefresh = new ImageIcon("src/Icon/btn_refresh_suplai.png");
+        jLabel2.setIcon(hoverReleaseRefresh);
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        loadTable();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btn_tambahSuplaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahSuplaiMouseEntered
+        // TODO add your handling code here:
+        ImageIcon hoveringtambah = new ImageIcon("src/Icon/btn_tambah_suplai_entered.png");
+        btn_tambahSuplai.setIcon(hoveringtambah);
+    }//GEN-LAST:event_btn_tambahSuplaiMouseEntered
+
+    private void btn_tambahSuplaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahSuplaiMouseExited
+        // TODO add your handling code here:
+        ImageIcon hoveringReleasetambah = new ImageIcon("src/Icon/btn_tambah_suplai.png");
+        btn_tambahSuplai.setIcon(hoveringReleasetambah);
+    }//GEN-LAST:event_btn_tambahSuplaiMouseExited
+
+    private void btn_ubahSuplaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMouseEntered
+        // TODO add your handling code here:
+        ImageIcon hoveringUbah = new ImageIcon("src/Icon/btn_ubah_suplai_entered.png");
+        btn_ubahSuplai.setIcon(hoveringUbah);
+    }//GEN-LAST:event_btn_ubahSuplaiMouseEntered
+
+    private void btn_ubahSuplaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMouseExited
+        // TODO add your handling code here:
+        ImageIcon hoveringReleaseubah = new ImageIcon("src/Icon/btn_ubah_suplai.png");
+        btn_ubahSuplai.setIcon(hoveringReleaseubah);
+    }//GEN-LAST:event_btn_ubahSuplaiMouseExited
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        // TODO add your handling code here:
+        ImageIcon releaasesegarkan = new ImageIcon("src/Icon/btn_refresh_hover.png");
+        jLabel2.setIcon(releaasesegarkan);
+    }//GEN-LAST:event_jLabel2MouseReleased
+
+    private void btn_hapusSuplaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusSuplaiMouseEntered
+        // TODO add your handling code here:
+        ImageIcon enteredHapus = new ImageIcon("src/Icon/btn_hapus_suplai_entered.png");
+        btn_hapusSuplai.setIcon(enteredHapus);
+    }//GEN-LAST:event_btn_hapusSuplaiMouseEntered
+
+    private void btn_hapusSuplaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusSuplaiMouseExited
+        // TODO add your handling code here:
+        ImageIcon exitedhapus = new ImageIcon("src/Icon/btn_hapus_suplai.png");
+        btn_hapusSuplai.setIcon(exitedhapus);
+    }//GEN-LAST:event_btn_hapusSuplaiMouseExited
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        
+        int i = jTable1.getSelectedRow();
+        TableModel tm = jTable1.getModel();
+        
+        String id = tm.getValueAt(i,0).toString();
+        String nama = tm.getValueAt(i, 1).toString();
+        String usaha = tm.getValueAt(i, 2).toString();
+        String alamat = tm.getValueAt(i, 3).toString();
+        String telp = tm.getValueAt(i, 4).toString();
+        
+        
+        getId.setText(id);
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_hapusSuplai;
     private javax.swing.JLabel btn_tambahSuplai;
     private javax.swing.JLabel btn_ubahSuplai;
+    private javax.swing.JLabel getId;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel searchBox;
     // End of variables declaration//GEN-END:variables

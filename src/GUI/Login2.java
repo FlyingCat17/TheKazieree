@@ -135,7 +135,6 @@ public class Login2 extends javax.swing.JFrame {
         jSeparator5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, 300, 10));
 
-        txt_password.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_password.setBorder(null);
         txt_password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_password.setOpaque(false);
