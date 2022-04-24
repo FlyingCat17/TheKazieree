@@ -43,11 +43,12 @@ public class EditSuplai extends javax.swing.JFrame {
         jTextArea1.setOpaque(false);
         scrollText.getViewport().setOpaque(false);
         scrollText.setOpaque(false);
-        user_id();
+//        user_id();
         warning_nama.setVisible(false);
         warning_usaha.setVisible(false);
         warning_alamat.setVisible(false);
         warning_telpon.setVisible(false);
+        loadData();
         
     }
     
@@ -313,7 +314,22 @@ public class EditSuplai extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
-    
+    public void loadData(){
+        try {
+            String lihat = "SELECT * FROM tb_supplier WHERE id_supplier = '"+txt_id_supplier.getText()+"';";
+            java.sql.Connection con = (Connection)konekdb.GetConnection();
+            java.sql.Statement stm = con.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(lihat);
+            while (rs.next()) {                
+                txt_nama_supplier.setText(rs.getString("nama_supplier"));
+                txt_usaha_supplier.setText(rs.getString("nama_usaha"));
+                jTextArea1.setText(rs.getString("alamat_supplier"));
+                txt_no_telpon.setText(rs.getString("no_telp"));
+            }
+        } catch (Exception e) {
+            
+        }
+    }
    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -330,18 +346,7 @@ public class EditSuplai extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    public void user_id() {
-        String SALTCHARS = "1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        while (salt.length() < 4) {
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
-        }
-        String saltStr = salt.toString();
-        String id_kar = "SUP";
-        txt_id_supplier.setText(id_kar+saltStr);
-     }
+    
     private void btn_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMousePressed
         ImageIcon clickbatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai_click.png");
         btn_batal.setIcon(clickbatal);
