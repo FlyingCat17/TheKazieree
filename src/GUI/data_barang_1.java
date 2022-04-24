@@ -102,6 +102,9 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         harga_b = new javax.swing.JLabel();
         harga_j = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(962, 710));
+        setPreferredSize(new java.awt.Dimension(962, 710));
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Data Barang.png"))); // NOI18N

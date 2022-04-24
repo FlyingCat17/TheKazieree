@@ -329,6 +329,17 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 
     private void btn_hapusSuplaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusSuplaiMouseClicked
         // TODO add your handling code here:
+        String id = getId.getText().toString();
+        try {
+            String hapus = "DELETE FROM tb_supplier WHERE id_supplier = '"+id+"'";
+            java.sql.Connection con = (Connection)konekdb.GetConnection();
+            java.sql.PreparedStatement stm = con.prepareStatement(hapus);
+            stm.execute();
+            JOptionPane.showMessageDialog(null, "Berhasil di Hapus");
+            loadTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal Dulu!");
+        }
         
     }//GEN-LAST:event_btn_hapusSuplaiMouseClicked
 
