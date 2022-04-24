@@ -6,6 +6,7 @@
 package GUI;
 
 import db.konekdb;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -85,6 +86,11 @@ public class hapus_trx_jual extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Batal");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 130, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/butn_trx_jual.png"))); // NOI18N
@@ -124,6 +130,13 @@ public class hapus_trx_jual extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON1){
+            this.dispose();
+        }
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     /**
      * @param args the command line arguments

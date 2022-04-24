@@ -12,7 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -51,25 +53,25 @@ public class trx_jual extends javax.swing.JInternalFrame {
         otomatis();
     }
     
-    private void otomatis() {
+    public void otomatis() {  //Otomatis id transaksi, jika tanggal ganti kembali ke 1 lagi
         try {
-            DateFormat vblnth = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat vblnth = new SimpleDateFormat("yyyyMMdd");
             String blnth = vblnth.format(Calendar.getInstance().getTime());
 
             DateFormat hari = new SimpleDateFormat("yyyy-MM-dd");
             String a = hari.format(Calendar.getInstance().getTime());
 
-            String sql = "SELECT id_transjual FROM tb_transjual Where tgl_transaksi like '"+a+"';";
-            java.sql.Connection conn = (Connection) konekdb.GetConnection();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);
-
-            while (res.next()) {
-                if (res.first() == false) {
+            String sql = "SELECT MAX(right(id_transjual,6)) AS Kode_Pinjam "
+                    + "FROM tb_transjual Where tgl_transaksi like '"+a+"';";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                if (rs.first()==true) {
                     jLabel20.setText("UPB/" + blnth + "/" + "000001");
                 } else {
-                    res.last();
-                    int auto_id = res.getInt(1) + 1;
+                    rs.last();
+                    int auto_id = rs.getInt(1) + 1;
                     String no = String.valueOf(auto_id);
                     int NomorJual = no.length();
                     //MENGATUR jumlah 0
@@ -82,8 +84,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
         } catch (SQLException e) {
             System.out.println("Error : " + e.getMessage());
 
-        }catch (Exception e){
-            System.out.println(e);
         }
     }
 
@@ -100,6 +100,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 load_tbl();
+                otomatis();
                 String n = Integer.toString(countSubtotal());
                 total_harga.setText(n);
             }
@@ -187,7 +188,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -396,7 +396,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static final javax.swing.JTable jTable1 = new javax.swing.JTable();
     private javax.swing.JLabel total_harga;
     // End of variables declaration//GEN-END:variables
 }
