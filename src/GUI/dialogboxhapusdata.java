@@ -91,6 +91,7 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
             this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Data Gagal dihapus");
+            
         }
         
     }//GEN-LAST:event_jLabel1MouseClicked

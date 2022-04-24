@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author LenataHoma
  */
-public class TambahSuplai extends javax.swing.JFrame {
+public class EditSuplai extends javax.swing.JFrame {
 
     int x, y;
 
@@ -36,7 +36,7 @@ public class TambahSuplai extends javax.swing.JFrame {
      * Creates new form Login2
      */
     private String kb,nb,st,hb,hj,jb;
-    public TambahSuplai() {
+    public EditSuplai() {
         initComponents();
         setLocationRelativeTo(null);
         setBackground(new Color(0,0,0,0));
@@ -87,7 +87,6 @@ public class TambahSuplai extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(775, 606));
         setUndecorated(true);
-        setOpacity(0.0F);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -286,7 +285,7 @@ public class TambahSuplai extends javax.swing.JFrame {
         });
         getContentPane().add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 480, 130, 40));
 
-        form.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/formtambah.png"))); // NOI18N
+        form.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/formedit.png"))); // NOI18N
         getContentPane().add(form, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 590));
 
         pack();
@@ -294,18 +293,10 @@ public class TambahSuplai extends javax.swing.JFrame {
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
-            String val = i + "";
-            float f = Float.valueOf(val);
-            this.setOpacity(f);
-            try {
-                Thread.sleep(10);
-            } catch (Exception e) {
-
-            }
-        }
+        
     }//GEN-LAST:event_formWindowOpened
 
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
 //        setOpacity((float) 1.0);
@@ -326,7 +317,7 @@ public class TambahSuplai extends javax.swing.JFrame {
    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        TambahSuplai.this.setOpacity((float) 1.0);
+        EditSuplai.this.setOpacity((float) 1.0);
         for (double i = 1.0; i >= 1.0; i = i - 0.1) {
             String val = i + "";
             float f = Float.valueOf(val);
@@ -415,7 +406,7 @@ public class TambahSuplai extends javax.swing.JFrame {
         String alamat = jTextArea1.getText();
         String no = txt_no_telpon.getText();
         try {
-            String tambah = "INSERT INTO tb_supplier VALUES ('"+id+"', '"+nama+"', '"+usaha+"', '"+alamat+"', '"+no+"')";
+            String tambah = "";
             java.sql.Connection con = (Connection) konekdb.GetConnection();
             java.sql.PreparedStatement pst = con.prepareStatement(tambah);
             pst.execute();
@@ -423,7 +414,7 @@ public class TambahSuplai extends javax.swing.JFrame {
             data_suplai1 sp = new data_suplai1();
             sp.loadTable();
         } catch (Exception e) {
-            Logger.getLogger(TambahSuplai.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(EditSuplai.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_btn_simpanMouseClicked
 
@@ -537,12 +528,12 @@ public class TambahSuplai extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane scrollText;
-    private javax.swing.JTextField txt_id_supplier;
-    private javax.swing.JTextField txt_nama_supplier;
-    private javax.swing.JTextField txt_no_telpon;
-    private javax.swing.JTextField txt_usaha_supplier;
+    public javax.swing.JTextField txt_id_supplier;
+    public javax.swing.JTextField txt_nama_supplier;
+    public javax.swing.JTextField txt_no_telpon;
+    public javax.swing.JTextField txt_usaha_supplier;
     private javax.swing.JPanel warning_alamat;
     private javax.swing.JPanel warning_nama;
     private javax.swing.JPanel warning_telpon;
