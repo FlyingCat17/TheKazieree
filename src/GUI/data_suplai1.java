@@ -249,7 +249,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
                 btn_hapusSuplaiMouseReleased(evt);
             }
         });
-        jPanel1.add(btn_hapusSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 40, -1, 40));
+        jPanel1.add(btn_hapusSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, -1, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/icon_search.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 41, 40, 40));
@@ -272,7 +272,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
                 btn_tambahSuplaiMouseReleased(evt);
             }
         });
-        jPanel1.add(btn_tambahSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, 40));
+        jPanel1.add(btn_tambahSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, 40));
 
         btn_ubahSuplai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_ubah_suplai.png"))); // NOI18N
         btn_ubahSuplai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -292,7 +292,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
                 btn_ubahSuplaiMouseReleased(evt);
             }
         });
-        jPanel1.add(btn_ubahSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, -1, 40));
+        jPanel1.add(btn_ubahSuplai, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_refresh_suplai.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
