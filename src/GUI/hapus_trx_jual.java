@@ -25,12 +25,12 @@ public class hapus_trx_jual extends javax.swing.JFrame {
     
     public void load_list() {
         try {
-            String sql = "SELECT * FROM `tb_transjual`";
+            String sql = "SELECT * FROM `temp_trx_jual`";
             java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
             java.sql.Statement pst = con.createStatement();
             java.sql.ResultSet rs = pst.executeQuery(sql);
             while (rs.next()) {
-                jComboBox1.addItem(rs.getString("id_transjual"));
+                jComboBox1.addItem(rs.getString("id_brg"));
             }
             rs.last();
             int jumlahdata = rs.getRow();

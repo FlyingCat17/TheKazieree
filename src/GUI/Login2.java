@@ -338,7 +338,7 @@ public class Login2 extends javax.swing.JFrame {
         password_unreveal.setVisible(false);
         
         txt_password.setEchoChar((char)0);
-        txt_password.setFont(new Font("Quicksand Medium", Font.PLAIN, 18));
+        txt_password.setFont(new Font("Quicksand Bold", Font.PLAIN, 18));
     }//GEN-LAST:event_password_unrevealMouseClicked
 
     private void password_revealMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_revealMouseClicked

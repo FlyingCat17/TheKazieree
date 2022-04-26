@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -321,15 +322,28 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-        trx_jual n = new trx_jual();
+//        trx_jual n = new trx_jual();
+//        int a = n.jTable1.getRowCount();
+//        int b = n.jTable1.getColumnCount();
+//        for (int i = 0; i < a; i++) {
+//            for (int j = 0; j < 10; j++) {
+//                n.jTable1.getValueAt(i, j);
+//            }
+//        }
+
         if (evt.getButton() == MouseEvent.BUTTON1) {
             try {
-                String sql = "";
+                String sql = "INSERT INTO `tb_transjual`(`id_transjual`, "
+                        + "`tgl_transaksi`, `total_harga`, `nominal_bayar`, "
+                        + "`kembalian`) VALUES ('" + id_trx.getText() + "',"
+                        + "'" + time.getText() + "','" + total_harga.getText() + "',"
+                        + "'" + total_bayar.getText() + "','" + kembalian.getText() + "')";
                 java.sql.Connection con = (Connection) konekdb.GetConnection();
                 java.sql.PreparedStatement pst = con.prepareStatement(sql);
                 pst.execute();
                 this.dispose();
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e);
             }
         }
     }//GEN-LAST:event_jLabel9MouseClicked

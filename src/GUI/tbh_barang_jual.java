@@ -5,7 +5,19 @@
  */
 package GUI;
 
+import db.konekdb;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -14,12 +26,72 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class tbh_barang_jual extends javax.swing.JFrame {
 
+    public String id;
+
     /**
      * Creates new form tbh_barang_jual
      */
     public tbh_barang_jual() {
         initComponents();
         setLocationRelativeTo(null);
+        load_list();
+        refresh();
+    }
+    
+    public void refresh() {
+        ActionListener task = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                otomatis();
+            }
+        };
+        new Timer(1, task).start();
+    }
+
+    public void load_list() {
+        try {
+            String sql = "SELECT * FROM `tb_barang`";
+            java.sql.Connection con = (Connection) konekdb.GetConnection();
+            java.sql.Statement st = con.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                jComboBox1.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    public void otomatis() {  //Otomatis id transaksi, jika tanggal ganti kembali ke 1 lagi
+        try {
+            DateFormat hari = new SimpleDateFormat("yyyy-MM-dd");
+            String a = hari.format(Calendar.getInstance().getTime());
+
+            String sql = "SELECT MAX(right(id_brg,6)) AS Kode_Pinjam "
+                    + "FROM temp_trx_jual Where tgl like '" + a + "';";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                if (rs.first() == true) 
+//                {
+//                    id = "id_0000001";
+//                } else 
+                {
+                    rs.last();
+                    int auto_id = rs.getInt(1) + 1;
+                    String no = String.valueOf(auto_id);
+                    int NomorJual = no.length();
+                    //MENGATUR jumlah 0
+                    for (int j = 0; j < 6 - NomorJual; j++) {
+                        no = "0" + no;
+                    }
+                    id = "id_" + no;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error : " + e.getMessage());
+
+        }
     }
 
     /**
@@ -36,7 +108,7 @@ public class tbh_barang_jual extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tbh_kode_barang = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         tbh_nama_barang = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -68,10 +140,16 @@ public class tbh_barang_jual extends javax.swing.JFrame {
         jLabel4.setText("Jumlah Barang");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        tbh_kode_barang.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
-        tbh_kode_barang.setBorder(null);
-        tbh_kode_barang.setOpaque(false);
-        jPanel1.add(tbh_kode_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 370, 40));
+        jComboBox1.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
+        jComboBox1.setBorder(null);
+        jComboBox1.setLightWeightPopupEnabled(false);
+        jComboBox1.setOpaque(false);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 370, 40));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/txt_tbh_brg.png"))); // NOI18N
@@ -140,8 +218,36 @@ public class tbh_barang_jual extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
+        String nama;
+        int harga, jml, ttl;
+        DateFormat hari = new SimpleDateFormat("yyyy-MM-dd");
+        String a = hari.format(Calendar.getInstance().getTime());
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            this.dispose();
+            try {
+                String sql1 = "SELECT * FROM tb_barang WHERE id_barang = '" + jComboBox1.getSelectedItem() + "'";
+
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.Statement st = con.createStatement();
+                java.sql.ResultSet rs = st.executeQuery(sql1);
+                if (rs.next()) {
+                    nama = rs.getString("nama_barang");
+                    harga = rs.getInt("harga_jual");
+                    jml = Integer.parseInt(tbh_jumlah_barang.getText());
+                    ttl = harga * jml;
+                    try {
+                        String sql = "INSERT INTO `temp_trx_jual`(`id_brg`, `nama`, `harga`, "
+                                + "`jumlah`, `total`, `tgl`) VALUES "
+                                + "('" + id + "','" + nama + "','" + harga + "','" + jml + "','" + ttl + "','" + a + "')";
+                        java.sql.PreparedStatement ps = con.prepareStatement(sql);
+                        ps.execute();
+                        this.dispose();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(rootPane, e);
+                    }
+
+                }
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_jLabel9MouseClicked
 
@@ -151,6 +257,21 @@ public class tbh_barang_jual extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String sql = "select * from `tb_barang` where id_barang='" + jComboBox1.getSelectedItem() + "'";
+            java.sql.Connection con = (Connection) konekdb.GetConnection();
+            java.sql.Statement st = con.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                tbh_nama_barang.setText(rs.getString("nama_barang"));
+                tbh_jumlah_barang.setText("0");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +309,7 @@ public class tbh_barang_jual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -202,7 +324,6 @@ public class tbh_barang_jual extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tbh_jumlah_barang;
-    private javax.swing.JTextField tbh_kode_barang;
     private javax.swing.JTextField tbh_nama_barang;
     // End of variables declaration//GEN-END:variables
 }
