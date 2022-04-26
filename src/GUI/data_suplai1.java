@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -28,7 +29,8 @@ import javax.swing.table.TableModel;
  */
 public class data_suplai1 extends javax.swing.JInternalFrame {
 
-    konekdb conn = new konekdb();
+    
+    
     EditSuplai ed = new EditSuplai();
     /**
      * Creates new form data_suplai
@@ -44,6 +46,11 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         scrollText.getViewport().setOpaque(false);
         scrollText.setOpaque(false);
         PanelUbah.setVisible(false);
+        PanelTambah.setVisible(false);
+        user_id();
+        scrollText1.getViewport().setOpaque(false);
+        jTextArea2.setOpaque(false);
+        scrollText1.setOpaque(false);
 //        jPanel3.setEnabled(false);
 //        jPanel3.setOpaque(false);
 //        formtambah.setEnabled(false);
@@ -125,6 +132,19 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 //        }
 //    }
 
+    public void user_id() {
+        String SALTCHARS = "1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 4) {
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        String id_kar = "SUP";
+        txt_add_id_supplier.setText(id_kar+saltStr);
+     }
+    
    public void loadTable(){
         DefaultTableModel tab = new DefaultTableModel();
         tab.addColumn("ID Supplier");
@@ -151,6 +171,25 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
             
         }
     }
+   
+   public void loadData(){
+       try {
+            String lihat = "SELECT * FROM tb_supplier WHERE id_supplier = '" + txt_id_supplier.getText() + "';";
+            java.sql.Connection con = (Connection) konekdb.GetConnection();
+            java.sql.Statement stm = con.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(lihat);
+            while (rs.next()) {
+                txt_nama_supplier.setText(rs.getString("nama_supplier"));
+                txt_usaha_supplier.setText(rs.getString("nama_usaha"));
+                jTextArea1.setText(rs.getString("alamat_supplier"));
+                txt_no_telpon.setText(rs.getString("no_telp"));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(EditSuplai.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+   
+   }
 //    public void cariData() {
 //        DefaultTableModel tabel = new DefaultTableModel();
 //
@@ -193,6 +232,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         PanelUbah = new javax.swing.JPanel();
         txt_id_supplier = new javax.swing.JTextField();
         txt_nama_supplier = new javax.swing.JTextField();
@@ -200,10 +240,19 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         scrollText = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         txt_no_telpon = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         btn_batal = new javax.swing.JLabel();
-        btn_simpan = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        PanelTambah = new javax.swing.JPanel();
+        txt_add_id_supplier = new javax.swing.JTextField();
+        btn_add_simpan = new javax.swing.JLabel();
+        txt_add_nama_supplier = new javax.swing.JTextField();
+        txt_add_usaha_supplier = new javax.swing.JTextField();
+        scrollText1 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        txt_add_no_telp = new javax.swing.JTextField();
+        btn_tambah_batal = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -220,7 +269,9 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         setBorder(null);
         setMinimumSize(new java.awt.Dimension(962, 710));
         setPreferredSize(new java.awt.Dimension(962, 710));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelUbah.setEnabled(false);
         PanelUbah.setMinimumSize(new java.awt.Dimension(780, 625));
@@ -286,6 +337,16 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         });
         PanelUbah.add(txt_no_telpon, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 423, 400, 37));
 
+        jLabel6.setBackground(new java.awt.Color(204, 204, 0));
+        jLabel6.setText("jLabel6");
+        jLabel6.setOpaque(true);
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        PanelUbah.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 494, 120, 40));
+
         btn_batal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_batal_tambahSuplai.png"))); // NOI18N
         btn_batal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -301,31 +362,111 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         });
         PanelUbah.add(btn_batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 130, 40));
 
-        btn_simpan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_simpan_tambahSuplai.png"))); // NOI18N
-        btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_simpanMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseReleased(evt);
-            }
-        });
-        PanelUbah.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 130, 40));
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/formedit.png"))); // NOI18N
         PanelUbah.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 620));
 
-        getContentPane().add(PanelUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 780, 620));
+        jPanel2.add(PanelUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 780, 620));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelTambah.setEnabled(false);
+        PanelTambah.setMinimumSize(new java.awt.Dimension(780, 625));
+        PanelTambah.setOpaque(false);
+        PanelTambah.setPreferredSize(new java.awt.Dimension(780, 625));
+        PanelTambah.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_add_id_supplier.setEditable(false);
+        txt_add_id_supplier.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        txt_add_id_supplier.setBorder(null);
+        txt_add_id_supplier.setOpaque(false);
+        txt_add_id_supplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_add_id_supplierActionPerformed(evt);
+            }
+        });
+        PanelTambah.add(txt_add_id_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 220, 37));
+
+        btn_add_simpan.setBackground(new java.awt.Color(255, 204, 0));
+        btn_add_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_simpan_tambahSuplai.png"))); // NOI18N
+        btn_add_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_add_simpanMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_add_simpanMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_add_simpanMouseReleased(evt);
+            }
+        });
+        PanelTambah.add(btn_add_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 130, 40));
+
+        txt_add_nama_supplier.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        txt_add_nama_supplier.setBorder(null);
+        txt_add_nama_supplier.setOpaque(false);
+        txt_add_nama_supplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_add_nama_supplierActionPerformed(evt);
+            }
+        });
+        PanelTambah.add(txt_add_nama_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 400, 37));
+
+        txt_add_usaha_supplier.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        txt_add_usaha_supplier.setBorder(null);
+        txt_add_usaha_supplier.setOpaque(false);
+        txt_add_usaha_supplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_add_usaha_supplierActionPerformed(evt);
+            }
+        });
+        PanelTambah.add(txt_add_usaha_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 242, 400, 37));
+
+        scrollText1.setBorder(null);
+        scrollText1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollText1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scrollText1.setOpaque(false);
+
+        jTextArea2.setBackground(new Color(0,0,0,0)
+        );
+        jTextArea2.setColumns(15);
+        jTextArea2.setFont(new java.awt.Font("Quicksand Medium", 0, 13)); // NOI18N
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(5);
+        jTextArea2.setWrapStyleWord(true);
+        jTextArea2.setOpaque(false);
+        scrollText1.setViewportView(jTextArea2);
+
+        PanelTambah.add(scrollText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 312, 416, 80));
+
+        txt_add_no_telp.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        txt_add_no_telp.setBorder(null);
+        txt_add_no_telp.setOpaque(false);
+        txt_add_no_telp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_add_no_telpActionPerformed(evt);
+            }
+        });
+        PanelTambah.add(txt_add_no_telp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 423, 400, 37));
+
+        btn_tambah_batal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_tambah_batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_batal_tambahSuplai.png"))); // NOI18N
+        btn_tambah_batal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambah_batalMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_tambah_batalMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_tambah_batalMouseReleased(evt);
+            }
+        });
+        PanelTambah.add(btn_tambah_batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 130, 40));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/formtambah.png"))); // NOI18N
+        PanelTambah.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 620));
+
+        jPanel2.add(PanelTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 780, 620));
 
         jPanel1.setBackground(new java.awt.Color(238, 238, 238));
-        jPanel1.setEnabled(false);
-        jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -447,14 +588,14 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         getId.setEnabled(false);
         jPanel2.add(getId, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 962, 683));
+        getContentPane().add(jPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_hapusSuplaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusSuplaiMouseClicked
         // TODO add your handling code here:
-        String id = getId.getText().toString();
+        String id = getId.getText();
         try {
             String hapus = "DELETE FROM tb_supplier WHERE id_supplier = '"+id+"'";
             java.sql.Connection con = (Connection)konekdb.GetConnection();
@@ -482,8 +623,10 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 
     private void btn_tambahSuplaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahSuplaiMouseClicked
         // TODO add your handling code here:
-        TambahSuplai tmb = new TambahSuplai();
-        tmb.setVisible(true);
+//        TambahSuplai tmb = new TambahSuplai();
+//        tmb.setVisible(true);
+          jPanel1.setVisible(false);
+          PanelTambah.setVisible(true);
         
     }//GEN-LAST:event_btn_tambahSuplaiMouseClicked
 
@@ -501,7 +644,10 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
 
     private void btn_ubahSuplaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMouseClicked
         // TODO add your handling code here:
-        String supplierid = getId.getText();
+        if (getId.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Harap Pilih salah satu Data!");
+        } else {
+            String supplierid = getId.getText();
 //        ed.txt_id_supplier.setText(supplierid);
 //        ed.setVisible(true);
 //        PanelUbah.setVisible(true);
@@ -509,8 +655,12 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         PanelUbah.setVisible(true);
         jPanel1.setVisible(false);
         txt_id_supplier.setText(supplierid);
+        loadData();
+        }
+        
     }//GEN-LAST:event_btn_ubahSuplaiMouseClicked
 
+    
     private void btn_ubahSuplaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahSuplaiMousePressed
         // TODO add your handling code here:
         ImageIcon clickUbah = new ImageIcon("src/Icon/btn_ubah_suplai_hover.png");
@@ -546,6 +696,7 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         loadTable();
+        getId.setText("");
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void btn_tambahSuplaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahSuplaiMouseEntered
@@ -609,21 +760,16 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void txt_id_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_supplierActionPerformed
+    private void btn_batalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_id_supplierActionPerformed
+        ImageIcon releasebatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai.png");
+        btn_batal.setIcon(releasebatal);
+    }//GEN-LAST:event_btn_batalMouseReleased
 
-    private void txt_nama_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nama_supplierActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nama_supplierActionPerformed
-
-    private void txt_usaha_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usaha_supplierActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usaha_supplierActionPerformed
-
-    private void txt_no_telponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_no_telponActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_no_telponActionPerformed
+    private void btn_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMousePressed
+        ImageIcon clickbatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai_click.png");
+        btn_batal.setIcon(clickbatal);
+    }//GEN-LAST:event_btn_batalMousePressed
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
@@ -631,19 +777,92 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         jPanel1.setVisible(true);
     }//GEN-LAST:event_btn_batalMouseClicked
 
-    private void btn_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMousePressed
-        ImageIcon clickbatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai_click.png");
-        btn_batal.setIcon(clickbatal);
-
-    }//GEN-LAST:event_btn_batalMousePressed
-
-    private void btn_batalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseReleased
+    private void txt_no_telponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_no_telponActionPerformed
         // TODO add your handling code here:
-        ImageIcon releasebatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai.png");
-        btn_batal.setIcon(releasebatal);
-    }//GEN-LAST:event_btn_batalMouseReleased
+    }//GEN-LAST:event_txt_no_telponActionPerformed
 
-    private void btn_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseClicked
+    private void txt_usaha_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usaha_supplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usaha_supplierActionPerformed
+
+    private void txt_nama_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nama_supplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nama_supplierActionPerformed
+
+    private void txt_id_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_supplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_id_supplierActionPerformed
+
+    private void txt_add_id_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_add_id_supplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_add_id_supplierActionPerformed
+
+    private void txt_add_nama_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_add_nama_supplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_add_nama_supplierActionPerformed
+
+    private void txt_add_usaha_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_add_usaha_supplierActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_add_usaha_supplierActionPerformed
+
+    private void txt_add_no_telpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_add_no_telpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_add_no_telpActionPerformed
+
+    private void btn_tambah_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambah_batalMouseClicked
+        PanelTambah.setVisible(false);
+        jPanel1.setVisible(true);
+        loadTable();
+    }//GEN-LAST:event_btn_tambah_batalMouseClicked
+
+    private void btn_tambah_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambah_batalMousePressed
+        // TODO add your handling code here:
+        ImageIcon clickbatal1 = new ImageIcon("src/Icon/btn_batal_tambahSuplai_click.png");
+        btn_tambah_batal.setIcon(clickbatal1);
+        
+    }//GEN-LAST:event_btn_tambah_batalMousePressed
+
+    private void btn_tambah_batalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambah_batalMouseReleased
+        // TODO add your handling code here:
+        ImageIcon releasebatal1 = new ImageIcon("src/Icon/btn_batal_tambahSuplai.png");
+        btn_tambah_batal.setIcon(releasebatal1);
+    }//GEN-LAST:event_btn_tambah_batalMouseReleased
+
+    private void btn_add_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_simpanMouseClicked
+        // TODO add your handling code here:
+        String id = txt_add_id_supplier.getText();
+        String nama = txt_add_nama_supplier.getText();
+        String usaha = txt_add_usaha_supplier.getText();
+        String alamat = jTextArea2.getText();
+        String no = txt_add_no_telp.getText();
+        
+        try {
+            String adddd = "INSERT INTO tb_supplier VALUES ('"+id+"','"+nama+"','"+usaha+"','"+alamat+"','"+no+"')";
+            java.sql.Connection conn1 = (Connection)konekdb.GetConnection();
+            java.sql.PreparedStatement stm = conn1.prepareStatement(adddd);
+            stm.execute();
+            JOptionPane.showMessageDialog(null, "Berhasil");
+            PanelTambah.setVisible(false);
+            jPanel1.setVisible(true);
+            loadTable();
+        } catch (Exception e) {
+            Logger.getLogger(data_suplai1.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_btn_add_simpanMouseClicked
+
+    private void btn_add_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_simpanMousePressed
+        // TODO add your handling code here:
+        ImageIcon SimpanTambahPress = new ImageIcon("src/Icon/btn_simpan_tambahSuplai_click.png");
+        btn_add_simpan.setIcon(SimpanTambahPress);
+    }//GEN-LAST:event_btn_add_simpanMousePressed
+
+    private void btn_add_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_simpanMouseReleased
+        // TODO add your handling code here:
+        ImageIcon SimpanTambahRelease = new ImageIcon("src/Icon/btn_simpan_tambahSuplai.png");
+        btn_add_simpan.setIcon(SimpanTambahRelease);
+    }//GEN-LAST:event_btn_add_simpanMouseReleased
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
         //        Dialog_Box.dialogbox_namaSupplierKosong namaKosong = new dialogbox_namaSupplierKosong();
         //        namaKosong.setVisible(true);
@@ -664,50 +883,55 @@ public class data_suplai1 extends javax.swing.JInternalFrame {
         String alamat = jTextArea1.getText();
         String no = txt_no_telpon.getText();
         try {
-            String tambah = "";
-            java.sql.Connection con = (Connection) konekdb.GetConnection();
-            java.sql.PreparedStatement pst = con.prepareStatement(tambah);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Berhasil !!");
-            data_suplai1 sp = new data_suplai1();
-            sp.loadTable();
+            String edit ="UPDATE `tb_supplier` SET `nama_supplier`='"+nama+"',"
+                    + "`nama_usaha`='"+usaha+"',`alamat_supplier`='"+alamat+"',"
+                    + "`no_telp`='"+no+"' "
+                    + "WHERE id_supplier = '"+id+"';";
+            java.sql.Connection conn = (Connection)konekdb.GetConnection();
+            java.sql.Statement stmm1 = conn.createStatement();
+            stmm1.execute(edit);
+            JOptionPane.showMessageDialog(null, "Berhasil di Ubah !!");
+            jPanel1.setVisible(true);
+            PanelUbah.setVisible(false);
+            loadTable();
+            
         } catch (Exception e) {
             Logger.getLogger(EditSuplai.class.getName()).log(Level.SEVERE, null, e);
         }
-    }//GEN-LAST:event_btn_simpanMouseClicked
-
-    private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
-        ImageIcon clickSimpan = new ImageIcon("src/Icon/btn_simpan_tambahSuplai_click.png");
-        btn_simpan.setIcon(clickSimpan);
-    }//GEN-LAST:event_btn_simpanMousePressed
-
-    private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
-        ImageIcon releaseSimpan = new ImageIcon("src/Icon/btn_simpan_tambahSuplai.png");
-        btn_simpan.setIcon(releaseSimpan);
-    }//GEN-LAST:event_btn_simpanMouseReleased
+    }//GEN-LAST:event_jLabel6MouseClicked
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelTambah;
     private javax.swing.JPanel PanelUbah;
+    private javax.swing.JLabel btn_add_simpan;
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_hapusSuplai;
-    private javax.swing.JLabel btn_simpan;
     private javax.swing.JLabel btn_tambahSuplai;
+    private javax.swing.JLabel btn_tambah_batal;
     private javax.swing.JLabel btn_ubahSuplai;
     private javax.swing.JLabel getId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     public javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JScrollPane scrollText;
+    private javax.swing.JScrollPane scrollText1;
     private javax.swing.JLabel searchBox;
+    public javax.swing.JTextField txt_add_id_supplier;
+    public javax.swing.JTextField txt_add_nama_supplier;
+    public javax.swing.JTextField txt_add_no_telp;
+    public javax.swing.JTextField txt_add_usaha_supplier;
     public javax.swing.JTextField txt_id_supplier;
     public javax.swing.JTextField txt_nama_supplier;
     public javax.swing.JTextField txt_no_telpon;
