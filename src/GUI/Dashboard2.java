@@ -423,6 +423,9 @@ public class Dashboard2 extends javax.swing.JFrame {
 
     private void txt_transbeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_transbeliMouseClicked
         // TODO add your handling code here:
+        dpane.removeAll();
+        trx_beli beli = new trx_beli();
+        dpane.add(beli).setVisible(true);
         ImageIcon transbeliClicked = new ImageIcon("src/Icon/btn_transbeli_hitam.png");
         icon_transbeli.setIcon(transbeliClicked);
         txt_transbeli.setForeground(new Color(46,43,43));
