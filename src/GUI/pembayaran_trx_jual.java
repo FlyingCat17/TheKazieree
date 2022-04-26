@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -26,6 +28,16 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
     public pembayaran_trx_jual() {
         initComponents();
         setLocationRelativeTo(null);
+        Tampil_tgl();
+    }
+
+    public void Tampil_tgl() {
+
+        java.util.Date tglsekarang = new java.util.Date();
+        SimpleDateFormat smpdtfmt = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String tanggal = smpdtfmt.format(tglsekarang);
+
+        time.setText(tanggal);
     }
 
     public void diskon() {
