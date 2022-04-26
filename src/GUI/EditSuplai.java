@@ -35,11 +35,12 @@ public class EditSuplai extends javax.swing.JFrame {
     /**
      * Creates new form Login2
      */
-    private String kb,nb,st,hb,hj,jb;
+    private String kb, nb, st, hb, hj, jb;
+
     public EditSuplai() {
         initComponents();
         setLocationRelativeTo(null);
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
         jTextArea1.setOpaque(false);
         scrollText.getViewport().setOpaque(false);
         scrollText.setOpaque(false);
@@ -49,10 +50,9 @@ public class EditSuplai extends javax.swing.JFrame {
         warning_alamat.setVisible(false);
         warning_telpon.setVisible(false);
         loadData();
-        
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -291,13 +291,13 @@ public class EditSuplai extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_formWindowOpened
 
-    
+
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
 //        setOpacity((float) 1.0);
@@ -314,23 +314,24 @@ public class EditSuplai extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
-    public void loadData(){
+    public void loadData() {
         try {
-            String lihat = "SELECT * FROM tb_supplier WHERE id_supplier = '"+txt_id_supplier.getText()+"';";
-            java.sql.Connection con = (Connection)konekdb.GetConnection();
+            String lihat = "SELECT * FROM tb_supplier WHERE id_supplier = '" + txt_id_supplier.getText() + "';";
+            java.sql.Connection con = (Connection) konekdb.GetConnection();
             java.sql.Statement stm = con.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(lihat);
-            while (rs.next()) {                
+            while (rs.next()) {
                 txt_nama_supplier.setText(rs.getString("nama_supplier"));
                 txt_usaha_supplier.setText(rs.getString("nama_usaha"));
                 jTextArea1.setText(rs.getString("alamat_supplier"));
                 txt_no_telpon.setText(rs.getString("no_telp"));
             }
         } catch (Exception e) {
-            
+            Logger.getLogger(EditSuplai.class.getName()).log(Level.SEVERE, null, e);
+
         }
     }
-   
+
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         EditSuplai.this.setOpacity((float) 1.0);
@@ -346,11 +347,11 @@ public class EditSuplai extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    
+
     private void btn_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMousePressed
         ImageIcon clickbatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai_click.png");
         btn_batal.setIcon(clickbatal);
-        
+
     }//GEN-LAST:event_btn_batalMousePressed
 
     private void btn_batalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseReleased
@@ -545,5 +546,4 @@ public class EditSuplai extends javax.swing.JFrame {
     private javax.swing.JPanel warning_usaha;
     // End of variables declaration//GEN-END:variables
 
-    
 }

@@ -78,7 +78,7 @@ public class TambahSuplai extends javax.swing.JFrame {
         txt_no_telpon = new javax.swing.JTextField();
         txt_usaha_supplier = new javax.swing.JTextField();
         txt_nama_supplier = new javax.swing.JTextField();
-        txt_id_supplier = new javax.swing.JTextField();
+        txt_id_supplier1 = new javax.swing.JTextField();
         btn_batal = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
         form = new javax.swing.JLabel();
@@ -245,16 +245,16 @@ public class TambahSuplai extends javax.swing.JFrame {
         });
         getContentPane().add(txt_nama_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 165, 400, 37));
 
-        txt_id_supplier.setEditable(false);
-        txt_id_supplier.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
-        txt_id_supplier.setBorder(null);
-        txt_id_supplier.setOpaque(false);
-        txt_id_supplier.addActionListener(new java.awt.event.ActionListener() {
+        txt_id_supplier1.setEditable(false);
+        txt_id_supplier1.setFont(new java.awt.Font("Quicksand Medium", 0, 14)); // NOI18N
+        txt_id_supplier1.setBorder(null);
+        txt_id_supplier1.setOpaque(false);
+        txt_id_supplier1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id_supplierActionPerformed(evt);
+                txt_id_supplier1ActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_id_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 104, 220, 37));
+        getContentPane().add(txt_id_supplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 104, 220, 37));
 
         btn_batal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btn_batal_tambahSuplai.png"))); // NOI18N
@@ -349,7 +349,7 @@ public class TambahSuplai extends javax.swing.JFrame {
         }
         String saltStr = salt.toString();
         String id_kar = "SUP";
-        txt_id_supplier.setText(id_kar+saltStr);
+        txt_id_supplier1.setText(id_kar+saltStr);
      }
     private void btn_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMousePressed
         ImageIcon clickbatal = new ImageIcon("src/Icon/btn_batal_tambahSuplai_click.png");
@@ -368,9 +368,9 @@ public class TambahSuplai extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btn_batalMouseClicked
 
-    private void txt_id_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_supplierActionPerformed
+    private void txt_id_supplier1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_supplier1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_id_supplierActionPerformed
+    }//GEN-LAST:event_txt_id_supplier1ActionPerformed
 
     private void txt_nama_supplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nama_supplierActionPerformed
         // TODO add your handling code here:
@@ -409,16 +409,18 @@ public class TambahSuplai extends javax.swing.JFrame {
 ////        } else {
 ////            System.out.println("Lengkap");
 //        }
-        String id = txt_id_supplier.getText();
+        String id = txt_id_supplier1.getText();
         String nama = txt_nama_supplier.getText();
         String usaha = txt_usaha_supplier.getText();
         String alamat = jTextArea1.getText();
         String no = txt_no_telpon.getText();
         try {
-            String tambah = "INSERT INTO tb_supplier VALUES ('"+id+"', '"+nama+"', '"+usaha+"', '"+alamat+"', '"+no+"')";
+            String tambah = "INSERT INTO tb_supplier VALUES ('"+id+"', '"+nama+"', '"+usaha+"', '"+alamat+"', '"+no+"');";
+//            String tambah = "INSERT INTO `tb_supplier`(`id_supplier`, `nama_supplier`, `nama_usaha`, `alamat_supplier`, `no_telp`) "
+//                    + "VALUES ('"+id+"','"+nama+"','"+usaha+"','"+alamat+"','"+no+"')";
             java.sql.Connection con = (Connection) konekdb.GetConnection();
             java.sql.PreparedStatement pst = con.prepareStatement(tambah);
-            pst.execute();
+            pst.executeQuery();
             JOptionPane.showMessageDialog(null, "Berhasil !!");
             data_suplai1 sp = new data_suplai1();
             sp.loadTable();
@@ -539,7 +541,7 @@ public class TambahSuplai extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane scrollText;
-    private javax.swing.JTextField txt_id_supplier;
+    private javax.swing.JTextField txt_id_supplier1;
     private javax.swing.JTextField txt_nama_supplier;
     private javax.swing.JTextField txt_no_telpon;
     private javax.swing.JTextField txt_usaha_supplier;
