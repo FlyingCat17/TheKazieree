@@ -67,10 +67,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
             java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             java.sql.ResultSet rs = pst.executeQuery(sql);
             while (rs.next()) {
-                if (rs.first()==true) {
-                    jLabel20.setText("UPB/" + blnth + "/" + "000001");
-                } else {
-                    rs.last();
+                if (rs.last()) {
                     int auto_id = rs.getInt(1) + 1;
                     String no = String.valueOf(auto_id);
                     int NomorJual = no.length();
@@ -78,7 +75,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
                     for (int j = 0; j < 6 - NomorJual; j++) {
                         no = "0" + no;
                     }
-                    jLabel20.setText("UPB/" + blnth + "/" + no);
+                    jLabel20.setText("TJ/" + blnth + "/" + no);
                 }
             }
         } catch (SQLException e) {
@@ -90,7 +87,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
     public int countSubtotal() {
         subTotal = 0;
         for (int i = 0; i < jTable1.getRowCount(); i++) {
-            subTotal = subTotal + Integer.parseInt(jTable1.getValueAt(i, 3).toString());
+            subTotal = subTotal + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
         }
         return subTotal;
     }
@@ -146,12 +143,13 @@ public class trx_jual extends javax.swing.JInternalFrame {
 
     public void load_tbl() {
         DefaultTableModel mdl = new DefaultTableModel();
+        mdl.addColumn("ID Barang");
         mdl.addColumn("Nama Barang");
         mdl.addColumn("Harga");
         mdl.addColumn("Jumlah");
         mdl.addColumn("Total Harga");
         try {
-            String sql = "SELECT * FROM `tb_transjual`";
+            String sql = "SELECT * FROM `temp_trx_jual`";
             java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
             java.sql.Statement pst = con.createStatement();
             java.sql.ResultSet rs = pst.executeQuery(sql);
@@ -160,7 +158,10 @@ public class trx_jual extends javax.swing.JInternalFrame {
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
-                    rs.getString(4)});
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6)
+                });
             }
             jTable1.setModel(mdl);
         } catch (Exception e) {
@@ -354,7 +355,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
             pembayaran_trx_jual n = new pembayaran_trx_jual();
-            n.time.setText(jLabel19.getText());
             n.id_trx.setText(jLabel20.getText());
             n.sub_total.setText(total_harga.getText());
             n.setVisible(true);
