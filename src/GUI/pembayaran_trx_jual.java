@@ -71,6 +71,41 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         new Timer(1, task).start();
     }
 
+    private void simpan() {
+        int jumlah_baris = trx_jual.jTable1.getRowCount();
+        String id_barang;
+        if (jumlah_baris == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Table Masih Kosong!");
+        } else {
+            try {
+                String sqli = "SELECT * FROM `temp_trx_jual` WHERE `id_trx`='" + id_trx.getText() + "'";
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.Statement st = con.createStatement();
+                java.sql.ResultSet rs = st.executeQuery(sqli);
+                if (rs.next()) {
+                    id_barang = rs.getString("fk_data_brg");
+                    int i = 0;
+                    while (i < jumlah_baris) {
+                        String sql = "insert into tb_detail_transjual (id_transjual, id_barang, jumlah, harga) values("
+                                + "'" + id_trx.getText() + "', "
+                                + "'" + trx_jual.jTable1.getValueAt(i, 6) + "', "
+                                + "'" + trx_jual.jTable1.getValueAt(i, 3) + "', "
+                                + "'" + trx_jual.jTable1.getValueAt(i, 4) + "')";
+                        java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                        pst.execute();
+                        i++;
+                    }
+                    String query = "DELETE FROM `temp_trx_jual` WHERE id_trx='"+id_trx.getText()+"'";
+                    java.sql.PreparedStatement pst = con.prepareStatement(query);
+                    pst.execute();
+                }
+                JOptionPane.showMessageDialog(rootPane, "Berhasil Menyimpan!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan! Error : " + e);
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -353,6 +388,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
                 java.sql.Connection con = (Connection) konekdb.GetConnection();
                 java.sql.PreparedStatement pst = con.prepareStatement(sql);
                 pst.execute();
+                simpan();
                 this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, e);

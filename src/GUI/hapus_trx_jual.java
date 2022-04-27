@@ -7,6 +7,7 @@ package GUI;
 
 import db.konekdb;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 
 /**
  *
@@ -31,6 +32,7 @@ public class hapus_trx_jual extends javax.swing.JFrame {
             java.sql.ResultSet rs = pst.executeQuery(sql);
             while (rs.next()) {
                 jComboBox1.addItem(rs.getString("id_brg"));
+                hapus_nama_barang.setText(rs.getString("nama"));
             }
             rs.last();
             int jumlahdata = rs.getRow();
@@ -58,7 +60,7 @@ public class hapus_trx_jual extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        ubah_nama_barang = new javax.swing.JTextField();
+        hapus_nama_barang = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -99,6 +101,11 @@ public class hapus_trx_jual extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Hapus");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 130, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/butn_trx_jual.png"))); // NOI18N
@@ -108,10 +115,10 @@ public class hapus_trx_jual extends javax.swing.JFrame {
         jLabel4.setText("Nama Barang");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        ubah_nama_barang.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
-        ubah_nama_barang.setBorder(null);
-        ubah_nama_barang.setOpaque(false);
-        jPanel1.add(ubah_nama_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 370, 40));
+        hapus_nama_barang.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
+        hapus_nama_barang.setBorder(null);
+        hapus_nama_barang.setOpaque(false);
+        jPanel1.add(hapus_nama_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 370, 40));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/txt_tbh_brg.png"))); // NOI18N
@@ -137,6 +144,20 @@ public class hapus_trx_jual extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            try {
+                String sql = "DELETE FROM `temp_trx_jual` WHERE id_brg='"+jComboBox1.getSelectedItem()+"'";
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                pst.execute();
+                this.dispose();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,6 +195,7 @@ public class hapus_trx_jual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField hapus_nama_barang;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -185,6 +207,5 @@ public class hapus_trx_jual extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField ubah_nama_barang;
     // End of variables declaration//GEN-END:variables
 }
