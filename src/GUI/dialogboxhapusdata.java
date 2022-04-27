@@ -39,6 +39,8 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(17, 17, 17));
@@ -47,12 +49,12 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 1, 18)); // NOI18N
-        jLabel2.setText("Hapus Data");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 120, 30));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Yakin ingin Hapus _.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 300, 30));
 
         jLabel1.setFont(new java.awt.Font("Quicksand Medium", 0, 15)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("OK");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/OK_1.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -63,11 +65,11 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
                 jLabel1KeyPressed(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 30, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 70, 50));
 
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Vector.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 310, 180));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 90, 140));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/akar-icons_cross.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +77,18 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 396.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 80, 50));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Batal_1.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 219, -1, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -88,6 +101,7 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
             Connection conn = (Connection)konekdb.GetConnection();
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
+            data_barang_1.datatable();
             this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Data Gagal dihapus");
@@ -105,6 +119,7 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
             Connection conn = (Connection)konekdb.GetConnection();
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
+            data_barang_1.datatable();
             this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Data Gagal dihapus");
@@ -117,6 +132,11 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -127,5 +147,7 @@ public class dialogboxhapusdata extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

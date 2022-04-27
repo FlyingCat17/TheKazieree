@@ -30,11 +30,12 @@ public class Ubahdata extends javax.swing.JFrame {
      * Creates new form Login2
      */
     
-    
+    public String id_barang;
     public Ubahdata (data_barang_1 aThis, String idku, String nama, String satuann, String harga_b, String harga_j,String jumlah) {
         initComponents();
         setLocationRelativeTo(null);
         kodebarang.setText(idku);
+        id_barang= idku;
         namabarang.setText(nama);
         boxsatuan.setSelectedItem(satuann);
         hargabeli.setText(harga_b);
@@ -353,13 +354,13 @@ public class Ubahdata extends javax.swing.JFrame {
         String hb= hargabeli.getText();
         String hj= hargajual.getText();
         try {
-            String update = "UPDATE tb_barang SET nama_barang = '"
-                    + nb + "', satuan = '"+ st +"', harga_dasar = '"+ hb +"', harga_jual = '"+ hj +"', stok = '"+ jb +
-                    "' WHERE id_barang = '"+ kb +"'";
+            String update = "UPDATE tb_barang SET id_barang = '"+ kb +"',nama_barang = '"+ nb +"', satuan = '"+ st +"', harga_dasar = '"+ hb +"', harga_jual = '"+ hj +"', stok = '"+ jb +
+                    "' WHERE id_barang = '"+ id_barang +"'";
             java.sql.Connection con = (Connection)konekdb.GetConnection();
             java.sql.PreparedStatement stm = con.prepareStatement(update);
             stm.execute();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            data_barang_1.datatable();
             this.dispose();
         } catch (Exception t){
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
@@ -376,6 +377,9 @@ public class Ubahdata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
+        if (jumlahbarang.getText().length()>=11) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jumlahbarangKeyTyped
 
     private void hargabeliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargabeliKeyTyped
@@ -384,12 +388,18 @@ public class Ubahdata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
+        if (hargabeli.getText().length()>=11) {
+            evt.consume();
+        }
     }//GEN-LAST:event_hargabeliKeyTyped
 
     private void hargajualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargajualKeyTyped
         // TODO add your handling code here:
         char k = evt.getKeyChar();
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+        if (hargajual.getText().length()>=11) {
             evt.consume();
         }
     }//GEN-LAST:event_hargajualKeyTyped

@@ -334,7 +334,6 @@ public class Tambahandata extends javax.swing.JFrame {
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-        data_barang_1 tb = new data_barang_1();
         kb=String.valueOf(kodebarang.getText());
         nb=String.valueOf(namabarang.getText());
         st=String.valueOf(boxsatuan.getSelectedItem());
@@ -346,8 +345,9 @@ public class Tambahandata extends javax.swing.JFrame {
             statement.executeUpdate("INSERT INTO tb_barang VALUES ('"  + kb + "','" + nb + "','" + st + "','"
                 + hb + "','"+ hj + "','"+ jb +"');");
             statement.close();
-            tb.datatable();
+            data_barang_1.datatable();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            
             this.dispose();
             
         } catch (Exception t){
@@ -359,6 +359,9 @@ public class Tambahandata extends javax.swing.JFrame {
         // TODO add your handling code here:
         char k = evt.getKeyChar();
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+        if (hargajual.getText().length()>=11) {
             evt.consume();
         }
     }//GEN-LAST:event_hargajualKeyTyped
@@ -374,6 +377,9 @@ public class Tambahandata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
+        if (jumlahbarang.getText().length()>=11) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jumlahbarangKeyTyped
 
     private void hargabeliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargabeliKeyTyped
@@ -382,45 +388,15 @@ public class Tambahandata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
+        if (hargabeli.getText().length()>=11) {
+            evt.consume();
+        }
     }//GEN-LAST:event_hargabeliKeyTyped
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tambahandata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tambahandata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tambahandata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tambahandata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tambahandata().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxsatuan;

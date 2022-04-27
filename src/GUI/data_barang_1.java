@@ -8,6 +8,8 @@ package GUI;
 import db.konekdb;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,6 +34,7 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
     public data_barang_1() {
         initComponents();           
         datatable();
+        //refresh();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
         gui.setNorthPane(null);
@@ -39,7 +43,16 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jTable1.getTableHeader().setOpaque(false);
         jTable1.getTableHeader().setFont(new Font("Quicksand SemiBold", Font.BOLD, 12));
     }
-     public void datatable(){
+    public void refresh() {
+        ActionListener task = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                datatable();
+            }
+        };
+        new Timer(1, task).start();
+    }
+     public static void datatable(){
             DefaultTableModel tbl = new DefaultTableModel();
             tbl.addColumn("Id barang");
             tbl.addColumn("Nama Barang");
@@ -88,7 +101,6 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         txtcari = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -138,6 +150,7 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Rectangle 298.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
+        jTable1.setFont(new java.awt.Font("Quicksand SemiBold", 0, 16)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -496,7 +509,7 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static final javax.swing.JTable jTable1 = new javax.swing.JTable();
     private javax.swing.JLabel jumlah;
     private javax.swing.JLabel nama;
     private javax.swing.JLabel satuann;
