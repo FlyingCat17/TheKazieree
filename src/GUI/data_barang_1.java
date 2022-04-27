@@ -85,7 +85,7 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         barcode = new javax.swing.JLabel();
         Search = new javax.swing.JLabel();
-        textfieldsearch = new javax.swing.JTextField();
+        txtcari = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -124,11 +124,16 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         });
         jPanel1.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 152, -1, 40));
 
-        textfieldsearch.setBackground(new java.awt.Color(196, 196, 196));
-        textfieldsearch.setFont(new java.awt.Font("Quicksand SemiBold", 0, 18)); // NOI18N
-        textfieldsearch.setBorder(null);
-        textfieldsearch.setOpaque(false);
-        jPanel1.add(textfieldsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 151, 300, 40));
+        txtcari.setBackground(new java.awt.Color(196, 196, 196));
+        txtcari.setFont(new java.awt.Font("Quicksand SemiBold", 0, 18)); // NOI18N
+        txtcari.setBorder(null);
+        txtcari.setOpaque(false);
+        txtcari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcariKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 151, 300, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Rectangle 298.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
@@ -231,23 +236,178 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
 
     private void SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchMouseClicked
         // TODO add your handling code here:
-        /*try {
-            String sql = "SELECT * FROM tbl_mobil WHERE Id_mobil=('"+txt_cari.getText()+"');";
-            java.sql.Connection conn=(Connection)Config.configDB();
+        /*String c = txtcari.getText();
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE Id_barang=('"+c+"');";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
             java.sql.Statement stm=conn.createStatement();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             java.sql.ResultSet res=stm.executeQuery(sql);
             pst.execute();
             while (res.next()) {
                 tbl.addRow(new Object[]{
-                    res.getString("Id_Mobil"),
-                    res.getString("merek"),
-                    res.getString("Seri"),
-                    res.getString("plat_nomor"),
-                    res.getString("harga"),
-                    res.getString("Status")
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
                 });
-                tabel.setModel(tbl);
+                jTable1.setModel(tbl);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "salah");
+        }
+        
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE nama_barang=('"+c+"');";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            java.sql.ResultSet res=stm.executeQuery(sql);
+            pst.execute();
+            while (res.next()) {
+                tbl.addRow(new Object[]{
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
+                });
+                jTable1.setModel(tbl);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "salah");
+        }
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE satuan=('"+c+"');";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            java.sql.ResultSet res=stm.executeQuery(sql);
+            pst.execute();
+            while (res.next()) {
+                tbl.addRow(new Object[]{
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
+                });
+                jTable1.setModel(tbl);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "salah");
+        }
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE harga_dasar=('"+c+"');";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            java.sql.ResultSet res=stm.executeQuery(sql);
+            pst.execute();
+            while (res.next()) {
+                tbl.addRow(new Object[]{
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
+                });
+                jTable1.setModel(tbl);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "salah");
+        }
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE harga_jual=('"+c+"');";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            java.sql.ResultSet res=stm.executeQuery(sql);
+            pst.execute();
+            while (res.next()) {
+                tbl.addRow(new Object[]{
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
+                });
+                jTable1.setModel(tbl);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "salah");
+        }
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE stok=('"+c+"');";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            java.sql.ResultSet res=stm.executeQuery(sql);
+            pst.execute();
+            while (res.next()) {
+                tbl.addRow(new Object[]{
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
+                });
+                jTable1.setModel(tbl);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "salah");
@@ -283,6 +443,41 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jumlah.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(),5)));
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void txtcariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariKeyReleased
+        // TODO add your handling code here:
+        String c = txtcari.getText();
+        try {
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            String sql = "SELECT * FROM tb_barang WHERE Id_barang LIKE '"+c+"%' OR nama_barang LIKE '"+c+"%'";
+            java.sql.Connection conn=(Connection)konekdb.GetConnection();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            java.sql.ResultSet res=stm.executeQuery(sql);
+            pst.execute();
+            while (res.next()) {
+                tbl.addRow(new Object[]{
+                    res.getString("id_barang"),
+                    res.getString("nama_barang"),
+                    res.getString("satuan"),
+                    res.getString("harga_dasar"),
+                    res.getString("harga_jual"),
+                    res.getString("stok")
+                });
+                jTable1.setModel(tbl);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "salah");
+            datatable();
+        }
+    }//GEN-LAST:event_txtcariKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Search;
@@ -305,7 +500,7 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jumlah;
     private javax.swing.JLabel nama;
     private javax.swing.JLabel satuann;
-    private javax.swing.JTextField textfieldsearch;
+    private javax.swing.JTextField txtcari;
     // End of variables declaration//GEN-END:variables
  
 }
