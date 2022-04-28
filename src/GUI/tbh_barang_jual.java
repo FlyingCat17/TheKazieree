@@ -236,8 +236,9 @@ public class tbh_barang_jual extends javax.swing.JFrame {
                     ttl = harga * jml;
                     try {
                         String sql = "INSERT INTO `temp_trx_jual`(`id_brg`, `nama`, `harga`, "
-                                + "`jumlah`, `total`, `tgl`) VALUES "
-                                + "('" + id + "','" + nama + "','" + harga + "','" + jml + "','" + ttl + "','" + a + "')";
+                                + "`jumlah`, `total`, `tgl`, `fk_data_brg`, `id_trx`) VALUES "
+                                + "('" + id + "','" + nama + "','" + harga + "',"
+                                + "'" + jml + "','" + ttl + "','" + a + "','"+jComboBox1.getSelectedItem()+"','"+trx_jual.jLabel20.getText()+"')";
                         java.sql.PreparedStatement ps = con.prepareStatement(sql);
                         ps.execute();
                         this.dispose();

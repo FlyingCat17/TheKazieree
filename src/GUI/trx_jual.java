@@ -141,13 +141,14 @@ public class trx_jual extends javax.swing.JInternalFrame {
         new Timer(1, taskPerformer).start();
     }
 
-    public void load_tbl() {
+    public static void load_tbl() {
         DefaultTableModel mdl = new DefaultTableModel();
         mdl.addColumn("ID Barang");
         mdl.addColumn("Nama Barang");
         mdl.addColumn("Harga");
         mdl.addColumn("Jumlah");
         mdl.addColumn("Total Harga");
+        mdl.addColumn("barang");
         try {
             String sql = "SELECT * FROM `temp_trx_jual`";
             java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
@@ -160,7 +161,8 @@ public class trx_jual extends javax.swing.JInternalFrame {
                     rs.getString(3),
                     rs.getString(4),
                     rs.getString(5),
-                    rs.getString(6)
+                    rs.getString(6),
+                    rs.getString(7)
                 });
             }
             jTable1.setModel(mdl);
@@ -184,7 +186,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -387,7 +388,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
+    public static final javax.swing.JLabel jLabel20 = new javax.swing.JLabel();
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

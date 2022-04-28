@@ -9,12 +9,14 @@ import db.konekdb;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.text.NumberFormat;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -52,6 +54,8 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
                 } else if (disk > 0) {
                     int ttl = sub - disk;
                     total_harga.setText(Integer.toString(ttl));
+                } else {
+
                 }
             }
         };
@@ -62,13 +66,65 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
         ActionListener task = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int sub = Integer.parseInt(total_harga.getText());
-                int disk = Integer.parseInt(total_bayar.getText());
-                int ttl = disk - sub;
-                kembalian.setText(Integer.toString(ttl));
+                if (total_bayar.getText().equals("0")) {
+
+                } else {
+                    int sub = Integer.parseInt(total_harga.getText());
+                    int disk = Integer.parseInt(total_bayar.getText());
+                    int ttl = disk - sub;
+                    kembalian.setText(Integer.toString(ttl));
+                }
             }
         };
         new Timer(1, task).start();
+    }
+
+    private void simpan() {
+        DefaultTableModel mdl = new DefaultTableModel();
+        mdl.addColumn("id");
+        int jumlah_baris = trx_jual.jTable1.getRowCount();
+        JOptionPane.showMessageDialog(rootPane, jumlah_baris);
+        String id_barang;
+        if (jumlah_baris == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Table Masih Kosong!");
+        } else {
+            try {
+                String sqli = "SELECT * FROM `temp_trx_jual` WHERE `id_trx`='" + id_trx.getText() + "'";
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.Statement st = con.createStatement();
+                java.sql.ResultSet rs = st.executeQuery(sqli);
+                while (rs.next()) {
+                    JOptionPane.showMessageDialog(rootPane, "select temporary");
+                    mdl.addRow(new Object[]{
+                        rs.getString(7)
+                    });
+                    try {
+                        for (int i = 0; i < jumlah_baris; i++) {
+                            String sql = "INSERT INTO `tb_detail_transjual`(`id_transjual`, `id_barang`, `jumlah`, `harga`) VALUES ("
+                                    + "'" + id_trx.getText() + "', "
+                                    + "'" + mdl.getValueAt(i, 0) + "', "
+                                    + "'" + trx_jual.jTable1.getValueAt(i, 3) + "', "
+                                    + "'" + trx_jual.jTable1.getValueAt(i, 4) + "')";
+                            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                            pst.execute();
+                        }
+                        try {
+                            JOptionPane.showMessageDialog(rootPane, "Berhasil Menyimpan!");
+                            String query = "DELETE FROM `temp_trx_jual` WHERE id_trx='" + id_trx.getText() + "'";
+                            java.sql.PreparedStatement pst = con.prepareStatement(query);
+                            pst.execute();
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(rootPane, e);
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(rootPane, e);
+                    }
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan! Error : " + e);
+            }
+        }
     }
 
     /**
@@ -334,15 +390,6 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-//        trx_jual n = new trx_jual();
-//        int a = n.jTable1.getRowCount();
-//        int b = n.jTable1.getColumnCount();
-//        for (int i = 0; i < a; i++) {
-//            for (int j = 0; j < 10; j++) {
-//                n.jTable1.getValueAt(i, j);
-//            }
-//        }
-
         if (evt.getButton() == MouseEvent.BUTTON1) {
             try {
                 String sql = "INSERT INTO `tb_transjual`(`id_transjual`, "
@@ -353,6 +400,7 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
                 java.sql.Connection con = (Connection) konekdb.GetConnection();
                 java.sql.PreparedStatement pst = con.prepareStatement(sql);
                 pst.execute();
+                simpan();
                 this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, e);

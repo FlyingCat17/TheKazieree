@@ -18,6 +18,8 @@ import java.sql.SQLException;
  */
 public class ubah_trx_jual extends javax.swing.JFrame {
 
+    public int total, harga;
+
     /**
      * Creates new form ubah_trx_jual
      */
@@ -26,7 +28,7 @@ public class ubah_trx_jual extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         load_list();
     }
-    
+
     public void load_list() {
         try {
             String sql = "SELECT * FROM `temp_trx_jual`";
@@ -35,6 +37,8 @@ public class ubah_trx_jual extends javax.swing.JFrame {
             java.sql.ResultSet rs = pst.executeQuery(sql);
             while (rs.next()) {
                 jComboBox1.addItem(rs.getString("id_brg"));
+                ubah_nama_barang.setText(rs.getString("nama"));
+                ubah_jumlah_barang.setText(rs.getString("jumlah"));
             }
             rs.last();
             int jumlahdata = rs.getRow();
@@ -84,6 +88,11 @@ public class ubah_trx_jual extends javax.swing.JFrame {
         jComboBox1.setBorder(null);
         jComboBox1.setLightWeightPopupEnabled(false);
         jComboBox1.setOpaque(false);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 370, 40));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,24 +167,54 @@ public class ubah_trx_jual extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-        if (evt.getButton()==MouseEvent.BUTTON1){
+        if (evt.getButton() == MouseEvent.BUTTON1) {
             this.dispose();
         }
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-        if (evt.getButton()==MouseEvent.BUTTON1){
+        int ubah = Integer.parseInt(ubah_jumlah_barang.getText());
+        int jml;
+        if (evt.getButton() == MouseEvent.BUTTON1) {
             try {
-                String sql = "";
-                java.sql.Connection con = (Connection) konekdb.GetConnection();
-                java.sql.PreparedStatement pst = con.prepareStatement(sql);
-                pst.execute();
-                this.dispose();
+                String sqli = "SELECT * FROM `temp_trx_jual` WHERE id_brg='" + jComboBox1.getSelectedItem() + "'";
+                java.sql.Connection cone = (Connection) konekdb.GetConnection();
+                java.sql.Statement sta = cone.createStatement();
+                java.sql.ResultSet rs = sta.executeQuery(sqli);
+                if (rs.next()) {
+                    harga = rs.getInt("harga");
+                    jml = ubah * harga;
+                    try {
+                        String sql = "UPDATE `temp_trx_jual` "
+                                + "SET `jumlah`='" + ubah_jumlah_barang.getText() + "',`total`='" + jml + "' WHERE id_brg='" + jComboBox1.getSelectedItem() + "'";
+                        java.sql.Connection con = (Connection) konekdb.GetConnection();
+                        java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                        pst.execute();
+                        this.dispose();
+                    } catch (Exception e) {
+                    }
+                }
             } catch (Exception e) {
             }
+
         }
     }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String sqli = "SELECT * FROM `temp_trx_jual` WHERE id_brg='" + jComboBox1.getSelectedItem() + "'";
+            java.sql.Connection cone = (Connection) konekdb.GetConnection();
+            java.sql.Statement sta = cone.createStatement();
+            java.sql.ResultSet rs = sta.executeQuery(sqli);
+            if (rs.next()) {
+                ubah_nama_barang.setText(rs.getString("nama"));
+                ubah_jumlah_barang.setText(rs.getString("jumlah"));
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
