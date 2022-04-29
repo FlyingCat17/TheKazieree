@@ -100,22 +100,25 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
                     });
                     try {
                         for (int i = 0; i < jumlah_baris; i++) {
+                            String harga = (String) trx_jual.jTable1.getValueAt(i, 3);
+                            JOptionPane.showMessageDialog(rootPane, harga);
+                            String jumlah = (String) trx_jual.jTable1.getValueAt(i, 4);
+                            JOptionPane.showMessageDialog(rootPane, jumlah);
                             String sql = "INSERT INTO `tb_detail_transjual`(`id_transjual`, `id_barang`, `jumlah`, `harga`) VALUES ("
-                                    + "'" + id_trx.getText() + "', "
-                                    + "'" + mdl.getValueAt(i, 0) + "', "
-                                    + "'" + trx_jual.jTable1.getValueAt(i, 3) + "', "
-                                    + "'" + trx_jual.jTable1.getValueAt(i, 4) + "')";
+                                    + "'" + id_trx.getText() + "',"
+                                    + "'" + mdl.getValueAt(i, 0) + "',"
+                                    + "'" + jumlah + "','" + harga + "')";
                             java.sql.PreparedStatement pst = con.prepareStatement(sql);
                             pst.execute();
+                            try {
+                                String query = "DELETE FROM `temp_trx_jual` WHERE id_trx='" + id_trx.getText() + "'";
+                                java.sql.PreparedStatement ps = con.prepareStatement(query);
+                                ps.execute();
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(rootPane, "ini salah");
+                            }
                         }
-                        try {
-                            JOptionPane.showMessageDialog(rootPane, "Berhasil Menyimpan!");
-                            String query = "DELETE FROM `temp_trx_jual` WHERE id_trx='" + id_trx.getText() + "'";
-                            java.sql.PreparedStatement pst = con.prepareStatement(query);
-                            pst.execute();
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(rootPane, e);
-                        }
+
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(rootPane, e);
                     }
@@ -400,18 +403,47 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
                 java.sql.Connection con = (Connection) konekdb.GetConnection();
                 java.sql.PreparedStatement pst = con.prepareStatement(sql);
                 pst.execute();
-                simpan();
-                this.dispose();
-            } catch (Exception e) {
+                DefaultTableModel mdl = new DefaultTableModel();
+                mdl.addColumn("id");
+                int jumlah_baris = trx_jual.jTable1.getRowCount();
+                JOptionPane.showMessageDialog(rootPane, jumlah_baris);
+                if (jumlah_baris == 0) {
+                    JOptionPane.showMessageDialog(rootPane, "Table Masih Kosong!");
+                } else {
+                    try {
+                        for (int i = 0; i < jumlah_baris; i++) {
+                            String jumlah = (String) trx_jual.jTable1.getValueAt(i, 3);
+                            String harga = (String) trx_jual.jTable1.getValueAt(i, 4);
+                            String id_brg = (String) trx_jual.jTable1.getValueAt(i, 5);
+                            String sql1 = "INSERT INTO `tb_detail_transjual`(`id_transjual`, `id_barang`, `jumlah`, `harga`) VALUES ("
+                                    + "'" + id_trx.getText() + "',"
+                                    + "'" + id_brg + "',"
+                                    + "'" + jumlah + "','" + harga + "')";
+                            java.sql.PreparedStatement ps1 = con.prepareStatement(sql1);
+                            ps1.execute();
+                        }
+                        try {
+                            String query = "DELETE FROM `temp_trx_jual` WHERE id_trx='" + id_trx.getText() + "'";
+                            java.sql.PreparedStatement ps = con.prepareStatement(query);
+                            ps.execute();
+                            this.dispose();
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(rootPane, "ini salah");
+                        }
+                }catch (Exception e) {
+                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan! Error : " + e);
+                    }
+            }
+        }catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, e);
             }
-        }
+    }
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -425,13 +457,33 @@ public class pembayaran_trx_jual extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pembayaran_trx_jual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pembayaran_trx_jual
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pembayaran_trx_jual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pembayaran_trx_jual
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pembayaran_trx_jual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pembayaran_trx_jual
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pembayaran_trx_jual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pembayaran_trx_jual
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
