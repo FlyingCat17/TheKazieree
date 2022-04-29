@@ -148,7 +148,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
         mdl.addColumn("Harga");
         mdl.addColumn("Jumlah");
         mdl.addColumn("Total Harga");
-        mdl.addColumn("barang");
+        mdl.addColumn("Barang");
         try {
             String sql = "SELECT * FROM `temp_trx_jual`";
             java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
@@ -161,7 +161,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
                     rs.getString(3),
                     rs.getString(4),
                     rs.getString(5),
-                    rs.getString(6),
                     rs.getString(7)
                 });
             }
