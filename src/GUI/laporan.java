@@ -87,6 +87,7 @@ public class laporan extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -154,6 +155,12 @@ public class laporan extends javax.swing.JInternalFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 62, 792, 290));
 
+        jLabel1.setFont(new java.awt.Font("Quicksand Medium", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(245, 121, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("LAPORAN LABA HARIAN");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 260, 40));
+
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 850, 380));
 
         jLabel3.setBackground(new java.awt.Color(238, 238, 238));
@@ -169,6 +176,7 @@ public class laporan extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
