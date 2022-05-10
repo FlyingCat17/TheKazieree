@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import static GUI.trx_jual.jTable1;
+
 import db.konekdb;
 import java.awt.Color;
 import java.awt.Font;
