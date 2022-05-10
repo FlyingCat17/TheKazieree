@@ -5,17 +5,22 @@
  */
 package trxx_beli;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author LENOVO
  */
-public class transbeli extends javax.swing.JInternalFrame {
+public class a_transbeli_utama extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form transbeli
      */
-    public transbeli() {
+    public a_transbeli_utama() {
         initComponents();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        BasicInternalFrameUI gui = (BasicInternalFrameUI)this.getUI();
+        gui.setNorthPane(null);
     }
 
     /**
@@ -33,10 +38,10 @@ public class transbeli extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btn_tambah = new javax.swing.JLabel();
         btn_tambah3 = new javax.swing.JLabel();
         btn_tambah2 = new javax.swing.JLabel();
         btn_tambah1 = new javax.swing.JLabel();
-        btn_tambah = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -78,10 +83,16 @@ public class transbeli extends javax.swing.JInternalFrame {
         jLabel5.setText("-");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
+        btn_tambah.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        btn_tambah.setForeground(new java.awt.Color(255, 255, 255));
+        btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_tambah.setText("Tambah");
+        getContentPane().add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 350, 120, -1));
+
         btn_tambah3.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         btn_tambah3.setForeground(new java.awt.Color(255, 255, 255));
         btn_tambah3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah3.setText("Bayar");
+        btn_tambah3.setText("Simpan");
         getContentPane().add(btn_tambah3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 345, 130, 30));
 
         btn_tambah2.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
@@ -96,12 +107,6 @@ public class transbeli extends javax.swing.JInternalFrame {
         btn_tambah1.setText("Ubah");
         getContentPane().add(btn_tambah1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 346, 130, 30));
 
-        btn_tambah.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
-        btn_tambah.setForeground(new java.awt.Color(255, 255, 255));
-        btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah.setText("Tambah");
-        getContentPane().add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 350, 120, -1));
-
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         jLabel2.setText("Supplier");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
@@ -115,7 +120,7 @@ public class transbeli extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
         panel_atas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panel_atas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tra_beli/panel_atas.png"))); // NOI18N
+        panel_atas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_panel_atas.png"))); // NOI18N
         getContentPane().add(panel_atas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 860, 170));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,22 +139,22 @@ public class transbeli extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 860, 260));
 
         bg_bayar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bg_bayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tra_beli/button_bayar.png"))); // NOI18N
+        bg_bayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_bayar.png"))); // NOI18N
         getContentPane().add(bg_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(778, 340, 130, 40));
 
         bg_hapuis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bg_hapuis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tra_beli/button_hapus.png"))); // NOI18N
+        bg_hapuis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_hapus.png"))); // NOI18N
         getContentPane().add(bg_hapuis, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 340, 130, 40));
 
         bg_ubah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bg_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tra_beli/button_ubah.png"))); // NOI18N
+        bg_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_ubah.png"))); // NOI18N
         getContentPane().add(bg_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 130, 40));
 
         bg_btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bg_btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tra_beli/buton_tambah.png"))); // NOI18N
+        bg_btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_buton_tambah.png"))); // NOI18N
         getContentPane().add(bg_btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 340, 130, 40));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tra_beli/transbelix.png"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_transbelix.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 670));
 
         pack();
