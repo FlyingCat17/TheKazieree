@@ -158,7 +158,12 @@ public class tbh_barang_jual extends javax.swing.JFrame {
         tbh_nama_barang.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         tbh_nama_barang.setBorder(null);
         tbh_nama_barang.setOpaque(false);
-        jPanel1.add(tbh_nama_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 370, 40));
+        tbh_nama_barang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbh_nama_barangActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tbh_nama_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 370, 40));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/txt_tbh_brg.png"))); // NOI18N
@@ -273,6 +278,10 @@ public class tbh_barang_jual extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void tbh_nama_barangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbh_nama_barangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbh_nama_barangActionPerformed
 
     /**
      * @param args the command line arguments

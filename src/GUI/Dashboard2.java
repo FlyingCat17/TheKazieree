@@ -10,6 +10,7 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import trxx_beli.a_transbeli_utama;
 
 /**
  *
@@ -459,7 +460,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     private void txt_transbeliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_transbeliMouseClicked
         // TODO add your handling code here:
         dpane.removeAll();
-        NewJInternalFrame beli = new NewJInternalFrame();
+        a_transbeli_utama beli = new  a_transbeli_utama();
         dpane.add(beli).setVisible(true);
         ImageIcon transbeliClicked = new ImageIcon("src/Icon/btn_transbeli_hitam.png");
         icon_transbeli.setIcon(transbeliClicked);
