@@ -6,6 +6,8 @@
 package trxx_beli;
 
 import db.konekdb;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +19,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +37,12 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         gui.setNorthPane(null);
         id_trans();
         set_tanggal();
+        isi_tabel();
+        jTable1.getTableHeader().setFont(new Font("Quicksand", Font.PLAIN, 17));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(254, 149, 46));
+        jTable1.getTableHeader().setForeground(new Color(255, 255, 255));
+        jTable1.setRowHeight(20);
     }
     
     public void id_trans() {
@@ -102,6 +111,34 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         new Timer(1, taskPerformer).start();
         
     }
+    public void isi_tabel(){
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("ID Barang");
+        tableModel.addColumn("Nama Barang");
+        tableModel.addColumn("Harga Jual");
+        tableModel.addColumn("Jumlah");
+        tableModel.addColumn("Total Harga");
+        try {
+            String sql = "SELECT * FROM `temp_trx_beli`";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement();
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                tableModel.addRow(new Object[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(7)
+                });
+            }
+            jTable1.setModel(tableModel);
+            
+        } catch (Exception e) {
+        }
+       
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,7 +153,6 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btn_tambah = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
@@ -260,7 +296,12 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         b_tamb_panel tamb = new b_tamb_panel();
         if (evt.getButton() == MouseEvent.BUTTON1) {
             tamb.setVisible(true);
-            
+//            btn_tambah.setVisible(false);
+//            bg_btn_tambah.setVisible(false);
+//            
+//        }else if (tamb.isVisible()){
+//         btn_tambah.setVisible(true);
+//         bg_btn_tambah.setVisible(true);
         }
     }//GEN-LAST:event_btn_tambahMouseClicked
 
@@ -291,7 +332,7 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public static final javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

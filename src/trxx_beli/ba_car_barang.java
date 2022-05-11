@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package trxx_beli;
+import db.konekdb;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,7 +21,39 @@ public class ba_car_barang extends javax.swing.JFrame {
     public ba_car_barang() {
         initComponents();
          setLocationRelativeTo(null);
+         datatable();
     }
+      public void datatable(){
+            DefaultTableModel tbl = new DefaultTableModel();
+            tbl.addColumn("Id barang");
+            tbl.addColumn("Nama Barang");
+            tbl.addColumn("Satuan");
+            tbl.addColumn("Harga Dasar");
+            tbl.addColumn("Harga Jual");
+            tbl.addColumn("Stok");
+            jTable1.setModel(tbl);
+            try {
+                String sql = "SELECT * FROM tb_barang";
+                java.sql.Connection conn = (Connection)konekdb.GetConnection();
+                java.sql.Statement stm = conn.createStatement();
+                java.sql.ResultSet res = stm.executeQuery(sql);
+                while(res.next())
+                {
+                    tbl.addRow(new Object[]{
+                        res.getString(1),
+                        res.getString(2),
+                        res.getString(3),
+                        res.getString(4),
+                        res.getString(5),
+                        res.getString(6),
+            });
+                jTable1.setModel(tbl);
+            }
+         } catch (Exception e) {
+         }
+            
+         
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
