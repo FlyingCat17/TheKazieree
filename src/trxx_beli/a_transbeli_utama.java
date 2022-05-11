@@ -5,7 +5,17 @@
  */
 package trxx_beli;
 
+import db.konekdb;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -22,6 +32,75 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
         gui.setNorthPane(null);
+        id_trans();
+        set_tanggal();
+    }
+    
+    public void id_trans() {
+        try {
+            DateFormat tanggals = new SimpleDateFormat("yyyyMMdd");
+            String bulan_tahun = tanggals.format(Calendar.getInstance().getTime());
+            
+            DateFormat haris = new SimpleDateFormat("yyyy-MM-dd");
+            String hr = haris.format(Calendar.getInstance().getTime());
+            
+            String sql = "SELECT MAX(right(id_transbeli,6)) AS ambil_id "
+                    + "FROM tb_transbeli Where tgl_transaksi like '" + hr + "';";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                if (rs.last()) {
+                    int auto_id = rs.getInt(1) + 1;
+                    String no = String.valueOf(auto_id);
+                    int NomorJual = no.length();
+                    //MENGATUR jumlah 0
+                    for (int j = 0; j < 6 - NomorJual; j++) {
+                        no = "0" + no;
+                    }
+                    jLabel4.setText("TB/" + bulan_tahun + "/" + no);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+        }
+        
+    }
+    
+    public void set_tanggal() {
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                String zero_jam = "", zero_menit = "", zero_detik = "";
+                
+                java.util.Date tanggalss = new java.util.Date();
+                int point_jam = tanggalss.getHours();
+                int point_menit = tanggalss.getMinutes();
+                int point_detik = tanggalss.getSeconds();
+                
+                if (point_jam <= 9) {
+                    zero_jam = "0";
+                }
+                if (point_menit <= 9) {
+                    zero_menit = "0";
+                    
+                }
+                if (point_detik <= 9) {
+                    zero_detik = "0";
+                }
+                String ejam = zero_jam + Integer.toString(point_jam);
+                String emenenit = zero_menit + Integer.toString(point_menit);
+                String edetik = zero_detik + Integer.toString(point_detik);
+                
+                java.util.Date nowDate = new java.util.Date();
+                SimpleDateFormat formatTgl = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String tanggalString = formatTgl.format(nowDate);
+                
+                jLabel5.setText(tanggalString + " " + ejam + ":" + emenenit + ":" + edetik + ":");
+            }
+        };
+        new Timer(1, taskPerformer).start();
+        
     }
 
     /**
@@ -177,8 +256,11 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        
+        b_tamb_panel tamb = new b_tamb_panel();
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            new b_tamb_panel().setVisible(true);
+            tamb.setVisible(true);
+            
         }
     }//GEN-LAST:event_btn_tambahMouseClicked
 

@@ -49,6 +49,11 @@ public class b_tamb_panel extends javax.swing.JFrame {
         btn_hapus.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_hapus.setText("Batal");
+        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseClicked(evt);
+            }
+        });
         getContentPane().add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 130, 30));
 
         btn_cari_barang.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
@@ -128,6 +133,11 @@ if (evt.getButton() == MouseEvent.BUTTON1) {
     private void tex_kode_barang2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tex_kode_barang2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tex_kode_barang2ActionPerformed
+
+    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btn_hapusMouseClicked
 
     /**
      * @param args the command line arguments
