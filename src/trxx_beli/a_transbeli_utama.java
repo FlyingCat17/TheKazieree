@@ -5,6 +5,7 @@
  */
 package trxx_beli;
 
+import java.awt.event.MouseEvent;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -18,8 +19,8 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
      */
     public a_transbeli_utama() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI gui = (BasicInternalFrameUI)this.getUI();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
         gui.setNorthPane(null);
     }
 
@@ -39,9 +40,9 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btn_tambah = new javax.swing.JLabel();
-        btn_tambah3 = new javax.swing.JLabel();
-        btn_tambah2 = new javax.swing.JLabel();
-        btn_tambah1 = new javax.swing.JLabel();
+        btn_simpan = new javax.swing.JLabel();
+        btn_hapus = new javax.swing.JLabel();
+        btn_ubah = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -87,25 +88,40 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         btn_tambah.setForeground(new java.awt.Color(255, 255, 255));
         btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_tambah.setText("Tambah");
+        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
+            }
+        });
         getContentPane().add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 350, 120, -1));
 
-        btn_tambah3.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
-        btn_tambah3.setForeground(new java.awt.Color(255, 255, 255));
-        btn_tambah3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah3.setText("Simpan");
-        getContentPane().add(btn_tambah3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 345, 130, 30));
+        btn_simpan.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        btn_simpan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_simpan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_simpan.setText("Simpan");
+        btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_simpanMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 345, 130, 30));
 
-        btn_tambah2.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
-        btn_tambah2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_tambah2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah2.setText("Hapus");
-        getContentPane().add(btn_tambah2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 345, 130, 30));
+        btn_hapus.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        btn_hapus.setForeground(new java.awt.Color(255, 255, 255));
+        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_hapus.setText("Hapus");
+        getContentPane().add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 345, 130, 30));
 
-        btn_tambah1.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
-        btn_tambah1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_tambah1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah1.setText("Ubah");
-        getContentPane().add(btn_tambah1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 346, 130, 30));
+        btn_ubah.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        btn_ubah.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ubah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_ubah.setText("Ubah");
+        btn_ubah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_ubahMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 346, 130, 30));
 
         jLabel2.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         jLabel2.setText("Supplier");
@@ -160,6 +176,24 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new b_tamb_panel().setVisible(true);
+        }
+    }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new c_ubh_panel().setVisible(true);
+        }
+    }//GEN-LAST:event_btn_ubahMouseClicked
+
+    private void btn_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new d_simp_beli().setVisible(true);
+        }
+    }//GEN-LAST:event_btn_simpanMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
@@ -167,10 +201,10 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
     private javax.swing.JLabel bg_btn_tambah;
     private javax.swing.JLabel bg_hapuis;
     private javax.swing.JLabel bg_ubah;
+    private javax.swing.JLabel btn_hapus;
+    private javax.swing.JLabel btn_simpan;
     private javax.swing.JLabel btn_tambah;
-    private javax.swing.JLabel btn_tambah1;
-    private javax.swing.JLabel btn_tambah2;
-    private javax.swing.JLabel btn_tambah3;
+    private javax.swing.JLabel btn_ubah;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

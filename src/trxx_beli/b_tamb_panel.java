@@ -5,18 +5,20 @@
  */
 package trxx_beli;
 
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author LENOVO
  */
-public class b_tambah_panel extends javax.swing.JPanel {
+public class b_tamb_panel extends javax.swing.JFrame {
 
     /**
-     * Creates new form b_tambah_panel
+     * Creates new form b_tamb_panel
      */
-    public b_tambah_panel() {
+    public b_tamb_panel() {
         initComponents();
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -28,8 +30,8 @@ public class b_tambah_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_cari_barang = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
+        btn_cari_barang = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
         tex_kode_barang = new javax.swing.JTextField();
         tex_kode_barang1 = new javax.swing.JTextField();
@@ -39,22 +41,30 @@ public class b_tambah_panel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         gambar_tambah_barang = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_cari_barang.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
-        btn_cari_barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari_barang.setText("Cari Barang");
-        add(btn_cari_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 130, 30));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_hapus.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_hapus.setText("Batal");
-        add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 130, 30));
+        getContentPane().add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 130, 30));
+
+        btn_cari_barang.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        btn_cari_barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_cari_barang.setText("Cari Barang");
+        btn_cari_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cari_barangMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_cari_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 130, 30));
 
         btn_simpan.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         btn_simpan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_simpan.setText("Simpan");
-        add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 130, 30));
+        getContentPane().add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 130, 30));
 
         tex_kode_barang.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         tex_kode_barang.setBorder(null);
@@ -64,7 +74,7 @@ public class b_tambah_panel extends javax.swing.JPanel {
                 tex_kode_barangActionPerformed(evt);
             }
         });
-        add(tex_kode_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 350, 40));
+        getContentPane().add(tex_kode_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 350, 40));
 
         tex_kode_barang1.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         tex_kode_barang1.setBorder(null);
@@ -74,7 +84,7 @@ public class b_tambah_panel extends javax.swing.JPanel {
                 tex_kode_barang1ActionPerformed(evt);
             }
         });
-        add(tex_kode_barang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 350, 40));
+        getContentPane().add(tex_kode_barang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 350, 40));
 
         tex_kode_barang2.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         tex_kode_barang2.setBorder(null);
@@ -84,20 +94,28 @@ public class b_tambah_panel extends javax.swing.JPanel {
                 tex_kode_barang2ActionPerformed(evt);
             }
         });
-        add(tex_kode_barang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 350, 40));
+        getContentPane().add(tex_kode_barang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 350, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_bayar.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_bayar.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 130, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 130, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_hapus.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 130, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 130, 30));
 
         gambar_tambah_barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_tambahBEli.png"))); // NOI18N
-        add(gambar_tambah_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 410));
+        getContentPane().add(gambar_tambah_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 410));
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_cari_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cari_barangMouseClicked
+if (evt.getButton() == MouseEvent.BUTTON1) {
+            new ba_car_barang().setVisible(true);
+        }
+    }//GEN-LAST:event_btn_cari_barangMouseClicked
 
     private void tex_kode_barangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tex_kode_barangActionPerformed
         // TODO add your handling code here:
@@ -111,6 +129,40 @@ public class b_tambah_panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tex_kode_barang2ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(b_tamb_panel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(b_tamb_panel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(b_tamb_panel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(b_tamb_panel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new b_tamb_panel().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_cari_barang;

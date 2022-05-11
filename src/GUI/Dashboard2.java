@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
-import trxx_beli.NewJInternalFrame;
+import trxx_beli.*;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -219,6 +219,9 @@ public class Dashboard2 extends javax.swing.JFrame {
         txt_transbeli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_transbeliMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txt_transbeliMouseEntered(evt);
             }
         });
         sidebar.add(txt_transbeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 190, 60));
@@ -641,6 +644,10 @@ public class Dashboard2 extends javax.swing.JFrame {
     private void sethiddenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sethiddenMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_sethiddenMouseClicked
+
+    private void txt_transbeliMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_transbeliMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_transbeliMouseEntered
 
     /**
      * @param args the command line arguments
