@@ -163,7 +163,7 @@ public class tbh_barang_jual extends javax.swing.JFrame {
                 tbh_nama_barangActionPerformed(evt);
             }
         });
-        jPanel1.add(tbh_nama_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 370, 40));
+        jPanel1.add(tbh_nama_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 370, 40));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image2/txt_tbh_brg.png"))); // NOI18N

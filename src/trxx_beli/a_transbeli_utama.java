@@ -5,8 +5,21 @@
  */
 package trxx_beli;
 
+import db.konekdb;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +35,109 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
         gui.setNorthPane(null);
+        id_trans();
+        set_tanggal();
+        isi_tabel();
+        jTable1.getTableHeader().setFont(new Font("Quicksand", Font.PLAIN, 17));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(254, 149, 46));
+        jTable1.getTableHeader().setForeground(new Color(255, 255, 255));
+        jTable1.setRowHeight(20);
+    }
+    
+    public void id_trans() {
+        try {
+            DateFormat tanggals = new SimpleDateFormat("yyyyMMdd");
+            String bulan_tahun = tanggals.format(Calendar.getInstance().getTime());
+            
+            DateFormat haris = new SimpleDateFormat("yyyy-MM-dd");
+            String hr = haris.format(Calendar.getInstance().getTime());
+            
+            String sql = "SELECT MAX(right(id_transbeli,6)) AS ambil_id "
+                    + "FROM tb_transbeli Where tgl_transaksi like '" + hr + "';";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                if (rs.last()) {
+                    int auto_id = rs.getInt(1) + 1;
+                    String no = String.valueOf(auto_id);
+                    int NomorJual = no.length();
+                    //MENGATUR jumlah 0
+                    for (int j = 0; j < 6 - NomorJual; j++) {
+                        no = "0" + no;
+                    }
+                    jLabel4.setText("TB/" + bulan_tahun + "/" + no);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+        }
+        
+    }
+    
+    public void set_tanggal() {
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                String zero_jam = "", zero_menit = "", zero_detik = "";
+                
+                java.util.Date tanggalss = new java.util.Date();
+                int point_jam = tanggalss.getHours();
+                int point_menit = tanggalss.getMinutes();
+                int point_detik = tanggalss.getSeconds();
+                
+                if (point_jam <= 9) {
+                    zero_jam = "0";
+                }
+                if (point_menit <= 9) {
+                    zero_menit = "0";
+                    
+                }
+                if (point_detik <= 9) {
+                    zero_detik = "0";
+                }
+                String ejam = zero_jam + Integer.toString(point_jam);
+                String emenenit = zero_menit + Integer.toString(point_menit);
+                String edetik = zero_detik + Integer.toString(point_detik);
+                
+                java.util.Date nowDate = new java.util.Date();
+                SimpleDateFormat formatTgl = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String tanggalString = formatTgl.format(nowDate);
+                
+                jLabel5.setText(tanggalString + " " + ejam + ":" + emenenit + ":" + edetik + ":");
+            }
+        };
+        new Timer(1, taskPerformer).start();
+        
+    }
+    public void isi_tabel(){
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("ID Barang");
+        tableModel.addColumn("Nama Barang");
+        tableModel.addColumn("Harga Jual");
+        tableModel.addColumn("Jumlah");
+        tableModel.addColumn("Total Harga");
+        try {
+            String sql = "SELECT * FROM `temp_trx_beli`";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement();
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                tableModel.addRow(new Object[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(7)
+                });
+            }
+            jTable1.setModel(tableModel);
+            
+        } catch (Exception e) {
+        }
+       
     }
 
     /**
@@ -37,7 +153,6 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btn_tambah = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
@@ -177,8 +292,16 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        
+        b_tamb_panel tamb = new b_tamb_panel();
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            new b_tamb_panel().setVisible(true);
+            tamb.setVisible(true);
+//            btn_tambah.setVisible(false);
+//            bg_btn_tambah.setVisible(false);
+//            
+//        }else if (tamb.isVisible()){
+//         btn_tambah.setVisible(true);
+//         bg_btn_tambah.setVisible(true);
         }
     }//GEN-LAST:event_btn_tambahMouseClicked
 
@@ -209,7 +332,7 @@ public class a_transbeli_utama extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public static final javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

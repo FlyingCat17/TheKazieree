@@ -5,7 +5,20 @@
  */
 package trxx_beli;
 
+import db.konekdb;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
@@ -13,12 +26,62 @@ import java.awt.event.MouseEvent;
  */
 public class b_tamb_panel extends javax.swing.JFrame {
 
+    public String id_barangs;
+
     /**
      * Creates new form b_tamb_panel
      */
     public b_tamb_panel() {
         initComponents();
         setLocationRelativeTo(null);
+        load_list();
+        automatic();
+
+    }
+
+    public void load_list() {
+        try {
+            String sql = "SELECT * FROM `tb_barang`";
+            java.sql.Connection con = (Connection) konekdb.GetConnection();
+            java.sql.Statement st = con.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                jComboBox1.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    public void automatic() {  //Otomatis id transaksi, jika tanggal ganti kembali ke 1 lagi
+        try {
+            DateFormat hari = new SimpleDateFormat("yyyy-MM-dd");
+            String a = hari.format(Calendar.getInstance().getTime());
+
+            String sql = "SELECT MAX(right(id_brg,6)) AS ambil "
+                    + "FROM temp_trx_beli Where tgl like '" + a + "';";
+            java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
+            java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            java.sql.ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                if (rs.first() == true) //                {
+                //                    id = "id_0000001";
+                //                } else 
+                {
+                    rs.last();
+                    int auto_id = rs.getInt(1) + 1;
+                    String no = String.valueOf(auto_id);
+                    int NomorJual = no.length();
+                    //MENGATUR jumlah 0
+                    for (int j = 0; j < 6 - NomorJual; j++) {
+                        no = "0" + no;
+                    }
+                    id_barangs = "id_" + no;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error : " + e.getMessage());
+
+        }
     }
 
     /**
@@ -30,12 +93,12 @@ public class b_tamb_panel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         btn_hapus = new javax.swing.JLabel();
         btn_cari_barang = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
-        tex_kode_barang = new javax.swing.JTextField();
-        tex_kode_barang1 = new javax.swing.JTextField();
-        tex_kode_barang2 = new javax.swing.JTextField();
+        jumlah_brg = new javax.swing.JTextField();
+        nama_brg = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -46,9 +109,21 @@ public class b_tamb_panel extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 350, 40));
+
         btn_hapus.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_hapus.setText("Batal");
+        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseClicked(evt);
+            }
+        });
         getContentPane().add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 130, 30));
 
         btn_cari_barang.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
@@ -64,37 +139,22 @@ public class b_tamb_panel extends javax.swing.JFrame {
         btn_simpan.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
         btn_simpan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_simpan.setText("Simpan");
+        btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_simpanMouseClicked(evt);
+            }
+        });
         getContentPane().add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 130, 30));
 
-        tex_kode_barang.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
-        tex_kode_barang.setBorder(null);
-        tex_kode_barang.setOpaque(false);
-        tex_kode_barang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tex_kode_barangActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tex_kode_barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 350, 40));
+        jumlah_brg.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
+        jumlah_brg.setBorder(null);
+        jumlah_brg.setOpaque(false);
+        getContentPane().add(jumlah_brg, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 350, 40));
 
-        tex_kode_barang1.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
-        tex_kode_barang1.setBorder(null);
-        tex_kode_barang1.setOpaque(false);
-        tex_kode_barang1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tex_kode_barang1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tex_kode_barang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 350, 40));
-
-        tex_kode_barang2.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
-        tex_kode_barang2.setBorder(null);
-        tex_kode_barang2.setOpaque(false);
-        tex_kode_barang2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tex_kode_barang2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tex_kode_barang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 350, 40));
+        nama_brg.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
+        nama_brg.setBorder(null);
+        nama_brg.setOpaque(false);
+        getContentPane().add(nama_brg, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 350, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trxx_beli/gmbr_button_bayar.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, 30));
@@ -112,22 +172,64 @@ public class b_tamb_panel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cari_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cari_barangMouseClicked
-if (evt.getButton() == MouseEvent.BUTTON1) {
+        if (evt.getButton() == MouseEvent.BUTTON1) {
             new ba_car_barang().setVisible(true);
         }
     }//GEN-LAST:event_btn_cari_barangMouseClicked
 
-    private void tex_kode_barangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tex_kode_barangActionPerformed
+    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tex_kode_barangActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_hapusMouseClicked
 
-    private void tex_kode_barang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tex_kode_barang1ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tex_kode_barang1ActionPerformed
+        try {
+            String sql = "select * from `tb_barang` where id_barang='" + jComboBox1.getSelectedItem() + "'";
+            java.sql.Connection con = (Connection) konekdb.GetConnection();
+            java.sql.Statement st = con.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                nama_brg.setText(rs.getString("nama_barang"));
+                jumlah_brg.setText("0");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void tex_kode_barang2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tex_kode_barang2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tex_kode_barang2ActionPerformed
+    private void btn_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseClicked
+        String nama;
+        int harga, jml, ttl;
+        DateFormat hari = new SimpleDateFormat("yyyy-MM-dd");
+        String a = hari.format(Calendar.getInstance().getTime());
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            try {
+                String sql1 = "SELECT * FROM tb_barang WHERE id_barang = '" + jComboBox1.getSelectedItem() + "'";
+
+                java.sql.Connection con = (Connection) konekdb.GetConnection();
+                java.sql.Statement st = con.createStatement();
+                java.sql.ResultSet rs = st.executeQuery(sql1);
+                if (rs.next()) {
+                    nama = rs.getString("nama_barang");
+                    harga = rs.getInt("harga_jual");
+                    jml = Integer.parseInt(jumlah_brg.getText());
+                    ttl = harga * jml;
+                    try {
+                         String sql = "INSERT INTO `temp_trx_beli`(`id_brg`, `nama_brg`, `harga_jual`, "
+                                + "`jumlah`, `total_harga`, `tanggal`, `fk_data_brg`, `id_trx`) VALUES "
+                                + "('" + id_barangs + "','" + nama + "','" + harga + "',"
+                                + "'" + jml + "','" + ttl + "','" + a + "','"+jComboBox1.getSelectedItem()+"','"+a_transbeli_utama.jLabel4.getText()+"')";
+                        java.sql.PreparedStatement ps = con.prepareStatement(sql);
+                        ps.execute();
+                        this.dispose();
+                    } catch (Exception e) {
+                    }
+
+                }
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_btn_simpanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -169,11 +271,11 @@ if (evt.getButton() == MouseEvent.BUTTON1) {
     private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_simpan;
     private javax.swing.JLabel gambar_tambah_barang;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField tex_kode_barang;
-    private javax.swing.JTextField tex_kode_barang1;
-    private javax.swing.JTextField tex_kode_barang2;
+    private javax.swing.JTextField jumlah_brg;
+    private javax.swing.JTextField nama_brg;
     // End of variables declaration//GEN-END:variables
 }
