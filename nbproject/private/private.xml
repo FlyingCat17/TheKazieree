@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/trx_beli.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/Dashboard2.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/Login2.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/Tambahandata.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/utility/Date.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/utility/save_akun.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/trx_jual.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/data_barang.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/data_barang_1.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/GUI/Berandaaa.java</file>
-            <file>file:/D:/Project%20NB/POSTk/The_Kazieree/src/Master/generate_id_transjual.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/trx_jual/hps_trx_jual.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/trx_jual/trx_jual.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/trx_jual/bayar_trx_jual.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/trx_jual/ubah_tjual.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/GUI/data_barang_1.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/trx_jual/pembayaran_trx_jual.java</file>
+            <file>file:/C:/Users/Lutfi/Documents/NetBeansProjects/TheKazieree_copy/src/trx_jual/tambah_barang.java</file>
         </group>
     </open-files>
 </project-private>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package trx_jual;
 
 import db.konekdb;
 import java.awt.Color;
@@ -20,6 +20,7 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
 
     public int uk_jml, hrg_tbl, ttl_brs, tl_harga;
     public int subTotal;
+    public String id;
     public DefaultTableModel model1 = new DefaultTableModel();
 
     /**
@@ -49,10 +51,10 @@ public class trx_jual extends javax.swing.JInternalFrame {
         jTable1.setRowHeight(20);
         Tampil_Jam();
         load_tbl();
-        refresh();
         otomatis();
+        System.out.println(id);
     }
-    
+
     public void otomatis() {  //Otomatis id transaksi, jika tanggal ganti kembali ke 1 lagi
         try {
             DateFormat vblnth = new SimpleDateFormat("yyyyMMdd");
@@ -62,7 +64,7 @@ public class trx_jual extends javax.swing.JInternalFrame {
             String a = hari.format(Calendar.getInstance().getTime());
 
             String sql = "SELECT MAX(right(id_transjual,6)) AS Kode_Pinjam "
-                    + "FROM tb_transjual Where tgl_transaksi like '"+a+"';";
+                    + "FROM tb_transjual Where tgl_transaksi like '" + a + "';";
             java.sql.Connection con = (java.sql.Connection) konekdb.GetConnection();
             java.sql.Statement pst = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             java.sql.ResultSet rs = pst.executeQuery(sql);
@@ -93,16 +95,8 @@ public class trx_jual extends javax.swing.JInternalFrame {
     }
 
     public void refresh() {
-        ActionListener task = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                load_tbl();
-                otomatis();
-                String n = Integer.toString(countSubtotal());
-                total_harga.setText(n);
-            }
-        };
-        new Timer(1, task).start();
+        String n = Integer.toString(countSubtotal());
+        total_harga.setText(n);
     }
 
     public void Tampil_Jam() {
@@ -136,6 +130,15 @@ public class trx_jual extends javax.swing.JInternalFrame {
                 String tanggal = smpdtfmt.format(tglsekarang);
 
                 jLabel19.setText(tanggal + " " + jam + ":" + menit + ":" + detik + "");
+//                total_harga.setText(NumberFormat.getNumberInstance().format(countSubtotal()));
+
+                int total = 0;
+                for (int i = 0; i < jTable1.getRowCount(); i++) {
+                    int amount = Integer.parseInt((String) jTable1.getValueAt(i, 4));
+                    total += amount;
+                }
+                total_harga.setText("" + total);
+                otomatis();
             }
         };
         new Timer(1, taskPerformer).start();
@@ -179,7 +182,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        total_harga = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -266,6 +268,11 @@ public class trx_jual extends javax.swing.JInternalFrame {
         jTable1.setRowHeight(20);
         jTable1.getTableHeader().setResizingAllowed(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 870, 270));
@@ -347,16 +354,17 @@ public class trx_jual extends javax.swing.JInternalFrame {
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            new tbh_barang_jual().setVisible(true);
+            this.getDesktopPane().add(new tambah_barang()).setVisible(true);
         }
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            pembayaran_trx_jual n = new pembayaran_trx_jual();
+            bayar_trx_jual n = new bayar_trx_jual();
             n.id_trx.setText(jLabel20.getText());
             n.sub_total.setText(total_harga.getText());
+            getDesktopPane().add(n);
             n.setVisible(true);
         }
     }//GEN-LAST:event_jLabel18MouseClicked
@@ -364,16 +372,30 @@ public class trx_jual extends javax.swing.JInternalFrame {
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            new hapus_trx_jual().setVisible(true);
+            if (id == null) {
+                JOptionPane.showMessageDialog(this, "Silahkan pilih baris pada tabel");
+            } else {
+                this.getDesktopPane().add(new hps_trx_jual(id)).setVisible(true);
+            }
         }
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            new ubah_trx_jual().setVisible(true);
+            if (id == null) {
+                JOptionPane.showMessageDialog(this, "Silahkan pilih baris pada tabel");
+            } else { 
+                this.getDesktopPane().add(new ubah_tjual(id)).setVisible(true);
+            }
         }
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int tbl = jTable1.getSelectedRow();
+        id = (String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -397,6 +419,6 @@ public class trx_jual extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public static final javax.swing.JTable jTable1 = new javax.swing.JTable();
-    private javax.swing.JLabel total_harga;
+    public static final javax.swing.JLabel total_harga = new javax.swing.JLabel();
     // End of variables declaration//GEN-END:variables
 }

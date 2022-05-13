@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+import trx_jual.trx_jual;
 import trxx_beli.*;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -118,7 +119,6 @@ public class Dashboard2 extends javax.swing.JFrame {
         icon_laporan = new javax.swing.JLabel();
         navbar_laproran = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        dpane = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -685,7 +685,7 @@ public class Dashboard2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane dpane;
+    public static final javax.swing.JDesktopPane dpane = new javax.swing.JDesktopPane();
     private javax.swing.JLabel icon_barang;
     private javax.swing.JLabel icon_beranda;
     private javax.swing.JLabel icon_laporan;
