@@ -8,6 +8,7 @@ package Main;
 import javax.swing.ImageIcon;
 import DataProduk.form_addProduct;
 import DataProdukBarang.form_tambahProdukBarang;
+import TransaksiBeli.tambah_barang_cari;
 import db.konekdb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +48,25 @@ public class Mainhome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel_transaksiBeli = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        pilihPemasok = new javax.swing.JLabel();
+        btnTambah3 = new javax.swing.JLabel();
+        btnUbah = new javax.swing.JLabel();
+        btnBayar = new javax.swing.JLabel();
+        btnUbah1 = new javax.swing.JLabel();
+        IdTransaksi = new javax.swing.JLabel();
+        namaSupplier = new javax.swing.JLabel();
+        tgalTransaksi = new javax.swing.JLabel();
+        idSupplier = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        bg_transaksiBeli = new javax.swing.JLabel();
+        Welcome_Screen = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         panel_dataProduk = new javax.swing.JPanel();
         btn_hapusProduk = new javax.swing.JLabel();
         btn_ubahProduk = new javax.swing.JLabel();
@@ -65,15 +85,11 @@ public class Mainhome extends javax.swing.JFrame {
         };
         bg_dataProduk = new javax.swing.JLabel();
         lbl_id = new javax.swing.JLabel();
-        Welcome_Screen = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         panel_beranda = new javax.swing.JPanel();
         greetingpanel = new javax.swing.JLabel();
         bg_berand = new javax.swing.JLabel();
         panel_dataStok = new javax.swing.JPanel();
         bg_dataStok = new javax.swing.JLabel();
-        panel_transaksiBeli = new javax.swing.JPanel();
-        bg_transaksiBeli = new javax.swing.JLabel();
         panel_transaksiJual = new javax.swing.JPanel();
         bg_transaksiJual = new javax.swing.JLabel();
         panel_dataPemasok = new javax.swing.JPanel();
@@ -98,6 +114,87 @@ public class Mainhome extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1240, 707));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_transaksiBeli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        panel_transaksiBeli.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 850, -1));
+
+        pilihPemasok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/1.6.png"))); // NOI18N
+        panel_transaksiBeli.add(pilihPemasok, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 40));
+
+        btnTambah3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/1.2.png"))); // NOI18N
+        btnTambah3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTambah3MouseClicked(evt);
+            }
+        });
+        panel_transaksiBeli.add(btnTambah3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 110, 40));
+
+        btnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/1.5.png"))); // NOI18N
+        panel_transaksiBeli.add(btnUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 110, 40));
+
+        btnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/1.4.png"))); // NOI18N
+        panel_transaksiBeli.add(btnBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 110, 40));
+
+        btnUbah1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/1.3.png"))); // NOI18N
+        panel_transaksiBeli.add(btnUbah1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 110, 40));
+
+        IdTransaksi.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        IdTransaksi.setText("TB/17052022/001");
+        panel_transaksiBeli.add(IdTransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
+
+        namaSupplier.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        namaSupplier.setText("SUJAKI");
+        panel_transaksiBeli.add(namaSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
+
+        tgalTransaksi.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        tgalTransaksi.setText("17-05-2022");
+        panel_transaksiBeli.add(tgalTransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
+
+        idSupplier.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        idSupplier.setText("PMS123");
+        panel_transaksiBeli.add(idSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        jLabel3.setText("Pemasok");
+        panel_transaksiBeli.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 220, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        jLabel5.setText("ID Transaksi");
+        panel_transaksiBeli.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 180, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Quicksand Medium", 0, 17)); // NOI18N
+        jLabel4.setText("Tanggal Transaksi");
+        panel_transaksiBeli.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 140, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/1.1.png"))); // NOI18N
+        panel_transaksiBeli.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 870, 200));
+
+        bg_transaksiBeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/formTransbeli.png"))); // NOI18N
+        panel_transaksiBeli.add(bg_transaksiBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 710));
+
+        getContentPane().add(panel_transaksiBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
+
+        Welcome_Screen.setBackground(new java.awt.Color(237, 237, 237));
+        Welcome_Screen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Main/tampilan_welcome.png"))); // NOI18N
+        Welcome_Screen.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, -1));
+
+        getContentPane().add(Welcome_Screen, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 0, 960, 710));
 
         panel_dataProduk.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -207,14 +304,6 @@ public class Mainhome extends javax.swing.JFrame {
 
         getContentPane().add(panel_dataProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
 
-        Welcome_Screen.setBackground(new java.awt.Color(237, 237, 237));
-        Welcome_Screen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Main/tampilan_welcome.png"))); // NOI18N
-        Welcome_Screen.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, -1));
-
-        getContentPane().add(Welcome_Screen, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 0, 960, 710));
-
         panel_beranda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         greetingpanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -232,13 +321,6 @@ public class Mainhome extends javax.swing.JFrame {
         panel_dataStok.add(bg_dataStok, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 710));
 
         getContentPane().add(panel_dataStok, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
-
-        panel_transaksiBeli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        bg_transaksiBeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TransaksiBeli/formTransbeli.png"))); // NOI18N
-        panel_transaksiBeli.add(bg_transaksiBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 710));
-
-        getContentPane().add(panel_transaksiBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 960, 710));
 
         panel_transaksiJual.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -645,6 +727,12 @@ public class Mainhome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_hapusProdukMouseClicked
 
+    private void btnTambah3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTambah3MouseClicked
+        // TODO add your handling code here:
+        tambah_barang_cari tambar = new tambah_barang_cari(this, true);
+        tambar.setVisible(true);
+    }//GEN-LAST:event_btnTambah3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -682,6 +770,7 @@ public class Mainhome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IdTransaksi;
     public static javax.swing.JTable TabelProduk;
     private javax.swing.JPanel Welcome_Screen;
     private javax.swing.JLabel bg_Lainnya;
@@ -693,6 +782,10 @@ public class Mainhome extends javax.swing.JFrame {
     private javax.swing.JLabel bg_transaksiBeli;
     private javax.swing.JLabel bg_transaksiJual;
     private javax.swing.JLabel bgt_serachBox;
+    private javax.swing.JLabel btnBayar;
+    private javax.swing.JLabel btnTambah3;
+    private javax.swing.JLabel btnUbah;
+    private javax.swing.JLabel btnUbah1;
     private javax.swing.JLabel btn_beranda;
     private javax.swing.JLabel btn_dataPemasok;
     private javax.swing.JLabel btn_dataProduk;
@@ -706,9 +799,17 @@ public class Mainhome extends javax.swing.JFrame {
     private javax.swing.JLabel btn_transjual1;
     public static javax.swing.JLabel btn_ubahProduk;
     private javax.swing.JLabel greetingpanel;
+    private javax.swing.JLabel idSupplier;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     public static javax.swing.JLabel lbl_id;
+    private javax.swing.JLabel namaSupplier;
     private javax.swing.JPanel panel_Lainnya;
     private javax.swing.JPanel panel_Laporan;
     private javax.swing.JPanel panel_beranda;
@@ -717,7 +818,9 @@ public class Mainhome extends javax.swing.JFrame {
     private javax.swing.JPanel panel_dataStok;
     private javax.swing.JPanel panel_transaksiBeli;
     private javax.swing.JPanel panel_transaksiJual;
+    private javax.swing.JLabel pilihPemasok;
     private javax.swing.JLabel sidebar;
+    private javax.swing.JLabel tgalTransaksi;
     private javax.swing.JTextField txt_searchProduk;
     // End of variables declaration//GEN-END:variables
 }
