@@ -10,6 +10,7 @@ import db.konekdb;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
@@ -51,28 +52,38 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
 
     public void diskon() {
         int sub = Integer.parseInt(sub_total.getText());
-        int disk = Integer.parseInt(diskon.getText());
-        if (disk == 0) {
-            int ttl = sub;
-            total_harga.setText(Integer.toString(ttl));
-        } else if (disk > 0) {
-            int ttl = sub - disk;
-            total_harga.setText(Integer.toString(ttl));
-        } else {
-
+        int disk;
+        if (!(diskon.getText().equals(""))) {
+            disk = Integer.parseInt(diskon.getText());
+            if (disk == 0) {
+                int ttl = sub;
+                total_harga.setText(Integer.toString(ttl));
+            } else if (disk > 0) {
+                int ttl = sub - disk;
+                if (!(ttl < 0)) {
+                    total_harga.setText(Integer.toString(ttl));
+                } else {
+                    diskon.setText("0");
+                    JOptionPane.showMessageDialog(null, "Diskon tidak boleh lebih dari Sub Total!");
+                }
+            }
         }
     }
 
     public void kembalian() {
-        if (total_bayar.getText().equals("0")) {
-
-        } else {
-            int sub = Integer.parseInt(total_harga.getText());
-            int disk = Integer.parseInt(total_bayar.getText());
+        int sub = Integer.parseInt(total_harga.getText());
+        int disk;
+        if (!(total_bayar.getText().equals(""))) {
+            disk = Integer.parseInt(total_bayar.getText());
             int ttl = disk - sub;
-            kembalian.setText(Integer.toString(ttl));
+            if (!(ttl < 0)) {
+                kembalian.setText(Integer.toString(ttl));
+            } else {
+                kembalian.setText("");
+            }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,8 +93,8 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        date = new javax.swing.JTextField();
         diskon = new javax.swing.JTextField();
+        date = new javax.swing.JTextField();
         total_harga = new javax.swing.JTextField();
         total_bayar = new javax.swing.JTextField();
         kembalian = new javax.swing.JTextField();
@@ -92,6 +103,19 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        diskon.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
+        diskon.setBorder(null);
+        diskon.setOpaque(false);
+        diskon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                diskonKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                diskonKeyTyped(evt);
+            }
+        });
+        getContentPane().add(diskon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 370, 40));
 
         date.setEditable(false);
         date.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
@@ -111,16 +135,6 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
         sub_total.setOpaque(false);
         getContentPane().add(sub_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 370, 30));
 
-        diskon.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
-        diskon.setBorder(null);
-        diskon.setOpaque(false);
-        diskon.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                diskonKeyReleased(evt);
-            }
-        });
-        getContentPane().add(diskon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 370, 40));
-
         total_harga.setEditable(false);
         total_harga.setFont(new java.awt.Font("Quicksand", 0, 17)); // NOI18N
         total_harga.setBorder(null);
@@ -133,6 +147,9 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
         total_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 total_bayarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                total_bayarKeyTyped(evt);
             }
         });
         getContentPane().add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 370, 40));
@@ -175,48 +192,47 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            try {
-                String sql = "INSERT INTO `tb_transjual`(`id_transjual`, "
-                        + "`tgl_transaksi`, `total_harga`, `nominal_bayar`, "
-                        + "`kembalian`) VALUES ('" + id_trx.getText() + "',"
-                        + "'" + date.getText() + "','" + total_harga.getText() + "',"
-                        + "'" + total_bayar.getText() + "','" + kembalian.getText() + "')";
-                java.sql.Connection con = (Connection) konekdb.GetConnection();
-                java.sql.PreparedStatement pst = con.prepareStatement(sql);
-                pst.execute();
-                DefaultTableModel mdl = new DefaultTableModel();
-                mdl.addColumn("id");
-                int jumlah_baris = trx_jual.jTable1.getRowCount();
-                if (jumlah_baris == 0) {
-                    JOptionPane.showMessageDialog(rootPane, "Table Masih Kosong!");
-                } else {
-                    try {
-                        for (int i = 0; i < jumlah_baris; i++) {
-                            String jumlah = (String) trx_jual.jTable1.getValueAt(i, 3);
-                            String harga = (String) trx_jual.jTable1.getValueAt(i, 4);
-                            String id_brg = (String) trx_jual.jTable1.getValueAt(i, 5);
-                            String sql1 = "INSERT INTO `tb_detail_transjual`(`id_transjual`, `id_barang`, `jumlah`, `harga`) VALUES ("
-                                    + "'" + id_trx.getText() + "',"
-                                    + "'" + id_brg + "',"
-                                    + "'" + jumlah + "','" + harga + "')";
-                            java.sql.PreparedStatement ps1 = con.prepareStatement(sql1);
-                            ps1.execute();
-                        }
+            if (diskon.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "diskon harus di isi minimal 0");
+            } else if (total_bayar.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "total bayar harus di isi minimal 0");
+            } else {
+                try {
+                    String sql = "INSERT INTO `tb_jual`(`id_transaksi`, "
+                            + "`tgl_transaksi`,`id_pengguna`, `total_harga`, `total_diskon`, "
+                            + "`nominal_bayar`) VALUES ('" + id_trx.getText() + "',"
+                            + "'" + date.getText() + "', 'USER', '" + total_harga.getText() + "',"
+                            + "'" + diskon.getText() + "', '" + total_bayar.getText() + "')";
+                    java.sql.Connection con = (Connection) konekdb.GetConnection();
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.execute();
+                    int jumlah_baris = trx_jual.jTable1.getRowCount();
+                    DefaultTableModel model = (DefaultTableModel) trx_jual.jTable1.getModel();
+                    if (jumlah_baris == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Table Masih Kosong!");
+                    } else {
                         try {
-                            String query = "DELETE FROM `temp_trx_jual` WHERE id_trx='" + id_trx.getText() + "'";
-                            java.sql.PreparedStatement ps = con.prepareStatement(query);
-                            ps.execute();
-                            getDesktopPane().add(new trx_jual()).setVisible(true);
-                            dispose();
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(rootPane, "ini salah");
+                                for (int i = 0; i < jumlah_baris; i++) {
+                                    String jumlah = (String) model.getValueAt(i, 4);
+                                    String harga = (String) model.getValueAt(i, 5);
+                                    String id_prodk = (String) model.getValueAt(i, 1);
+                                    String nama_p = (String) model.getValueAt(i, 2);
+                                    String sql1 = "INSERT INTO `tb_detailjual`(`id_transaksi`, `id_produk`, `nama_produk`, `jumlah_produk`, `total_harga`) VALUES ("
+                                            + "'" + id_trx.getText() + "', '" + id_prodk + "', '" + nama_p + "', '" + jumlah + "', '" + harga + "')";
+                                    java.sql.PreparedStatement ps1 = con.prepareStatement(sql1);
+                                    ps1.execute();
+                                }
+                                for (int i = jumlah_baris - 1; i >= 0; i--) {
+                                    System.out.println("hapus baris ke-"+i);
+                                    model.removeRow(i);
+                            }
+                            }catch (Exception e) {
+                            JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan! Error : " + e);
                         }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan! Error : " + e);
                     }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, e);
                 }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, e);
             }
         }
 
@@ -232,6 +248,22 @@ public class bayar_trx_jual extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         kembalian();
     }//GEN-LAST:event_total_bayarKeyReleased
+
+    private void total_bayarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_total_bayarKeyTyped
+        // TODO add your handling code here:
+        char k = evt.getKeyChar();
+        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_total_bayarKeyTyped
+
+    private void diskonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diskonKeyTyped
+        // TODO add your handling code here:
+        char k = evt.getKeyChar();
+        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_diskonKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
