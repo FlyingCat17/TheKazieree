@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,8 +24,9 @@ public class hps_trx_jual extends javax.swing.JInternalFrame {
      * Creates new form hps_trx_jual
      */
     public String idk;
+    trx_jual ujual = new trx_jual();
 
-    public hps_trx_jual(String id) {
+    public hps_trx_jual() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI gui = (BasicInternalFrameUI) this.getUI();
@@ -34,8 +36,12 @@ public class hps_trx_jual extends javax.swing.JInternalFrame {
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
                 (desktopSize.height - jInternalFrameSize.height) / 2);
-        idk = id;
-        System.out.println(id);
+    }
+    
+    public void hapus() {
+        DefaultTableModel model = (DefaultTableModel) trx_jual.jTable1.getModel();
+        model.removeRow(ujual.jTable1.getSelectedRow());
+        
     }
 
     /**
@@ -83,16 +89,7 @@ public class hps_trx_jual extends javax.swing.JInternalFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         if (evt.getButton() == MouseEvent.BUTTON1) {
-            try {
-                String sql = "DELETE FROM `temp_trx_jual` WHERE id_brg='" + idk + "'";
-                java.sql.Connection con = (Connection) konekdb.GetConnection();
-                java.sql.PreparedStatement pst = con.prepareStatement(sql);
-                pst.execute();
-                getDesktopPane().add(new trx_jual()).setVisible(true);
-                dispose();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, e);
-            }
+            hapus();
         }
     }//GEN-LAST:event_jLabel1MouseClicked
 
