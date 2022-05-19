@@ -126,6 +126,11 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 92, 900, -1));
 
         barcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/bi_qr-code-scan.png"))); // NOI18N
+        barcode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                barcodeMouseClicked(evt);
+            }
+        });
         jPanel1.add(barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
 
         Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/bx_search.png"))); // NOI18N
@@ -429,8 +434,15 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
 
     private void btnhapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnhapusMouseClicked
         // TODO add your handling code here:
-        dialogboxhapusdata okw = new dialogboxhapusdata(this, idku.getText());
-        okw.setVisible(true);
+        String g = idku.getText();
+        switch (g){
+            case "":
+                JOptionPane.showMessageDialog(this, "Data tidak ditemukan!!");
+                break;
+            default:
+                dialogboxhapusdata okw = new dialogboxhapusdata(this, idku.getText());
+                okw.setVisible(true);
+        }
     }//GEN-LAST:event_btnhapusMouseClicked
 
     private void btntambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btntambahMouseClicked
@@ -441,8 +453,15 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
 
     private void btnubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnubahMouseClicked
         // TODO add your handling code here:
-       Ubahdata gh = new Ubahdata(this, idku.getText(), nama.getText(), satuann.getText(), harga_b.getText(), harga_j.getText(), jumlah.getText());
-       gh.setVisible(true);
+        String g = idku.getText();
+        switch (g){
+            case "":
+                JOptionPane.showMessageDialog(this, "Data tidak ditemukan!!");
+                break;
+            default:
+                Ubahdata gh = new Ubahdata(this, idku.getText(), nama.getText(), satuann.getText(), harga_b.getText(), harga_j.getText(), jumlah.getText());
+                gh.setVisible(true);
+        }
     }//GEN-LAST:event_btnubahMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -490,6 +509,11 @@ public class data_barang_1 extends javax.swing.JInternalFrame {
             datatable();
         }
     }//GEN-LAST:event_txtcariKeyReleased
+
+    private void barcodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barcodeMouseClicked
+        // TODO add your handling code here:
+        txtcari.requestFocus();
+    }//GEN-LAST:event_barcodeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -239,6 +239,11 @@ public class Ubahdata extends javax.swing.JFrame {
         getContentPane().add(boxsatuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 190, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/bi_qr-code-scan.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, -1, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Simpan.png"))); // NOI18N
@@ -353,6 +358,9 @@ public class Ubahdata extends javax.swing.JFrame {
         String jb= jumlahbarang.getText();
         String hb= hargabeli.getText();
         String hj= hargajual.getText();
+        int b = Integer.parseInt(hargabeli.getText());
+        int j = Integer.parseInt(hargajual.getText());
+        if (b < j) {
         try {
             String update = "UPDATE tb_barang SET id_barang = '"+ kb +"',nama_barang = '"+ nb +"', satuan = '"+ st +"', harga_dasar = '"+ hb +"', harga_jual = '"+ hj +"', stok = '"+ jb +
                     "' WHERE id_barang = '"+ id_barang +"'";
@@ -365,6 +373,9 @@ public class Ubahdata extends javax.swing.JFrame {
         } catch (Exception t){
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Harga jual harus lebih besar dari harga beli");
+    }
     }//GEN-LAST:event_btn_simpanMouseClicked
 
     private void kodebarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodebarangKeyTyped
@@ -388,9 +399,10 @@ public class Ubahdata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
-        if (hargabeli.getText().length()>=11) {
+        if (hargabeli.getText().length()>=12){
             evt.consume();
         }
+        
     }//GEN-LAST:event_hargabeliKeyTyped
 
     private void hargajualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargajualKeyTyped
@@ -399,10 +411,16 @@ public class Ubahdata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
-        if (hargajual.getText().length()>=11) {
+        if (hargajual.getText().length()>=12){
             evt.consume();
         }
+        
     }//GEN-LAST:event_hargajualKeyTyped
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+        kodebarang.requestFocus();
+    }//GEN-LAST:event_jLabel13MouseClicked
 
     /**
      * @param args the command line arguments
