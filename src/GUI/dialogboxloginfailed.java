@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author LenataHoma
@@ -17,6 +19,7 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
     public dialogboxloginfailed() {
         initComponents();
         setLocationRelativeTo(null);
+        jLabel1.requestFocus();
     }
 
     /**
@@ -73,6 +76,14 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+        jLabel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel1KeyPressed(evt);
+            }
         });
         getContentPane().add(jLabel1);
         jLabel1.setBounds(300, 140, 50, 40);
@@ -106,6 +117,18 @@ public class dialogboxloginfailed extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel1KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            dispose();
+        }
+    }//GEN-LAST:event_jLabel1KeyPressed
 
     /**
      * @param args the command line arguments

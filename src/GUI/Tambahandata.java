@@ -30,10 +30,14 @@ public class Tambahandata extends javax.swing.JFrame {
     /**
      * Creates new form Login2
      */
-    private String kb,nb,st,hb,hj,jb;
+    //private String kb,nb,st,hb,hj,jb;
     public Tambahandata() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    public void saring(){
+        
     }
 
     /**
@@ -49,21 +53,21 @@ public class Tambahandata extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         hargajual = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         kodebarang = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         namabarang = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jumlahbarang = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         hargabeli = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         boxsatuan = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -119,9 +123,6 @@ public class Tambahandata extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Kode Barang _.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Nama Barang _.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
@@ -141,20 +142,15 @@ public class Tambahandata extends javax.swing.JFrame {
         hargajual.setBackground(new java.awt.Color(196, 196, 196));
         hargajual.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
         hargajual.setBorder(null);
-        hargajual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hargajualActionPerformed(evt);
-            }
-        });
         hargajual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 hargajualKeyTyped(evt);
             }
         });
-        getContentPane().add(hargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 380, 40));
+        getContentPane().add(hargajual, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 386, 380, 30));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         kodebarang.setBackground(new java.awt.Color(196, 196, 196));
         kodebarang.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
@@ -171,8 +167,8 @@ public class Tambahandata extends javax.swing.JFrame {
         });
         getContentPane().add(kodebarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 380, 40));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
         namabarang.setBackground(new java.awt.Color(196, 196, 196));
         namabarang.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
@@ -184,8 +180,8 @@ public class Tambahandata extends javax.swing.JFrame {
         });
         getContentPane().add(namabarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 380, 40));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         jumlahbarang.setBackground(new java.awt.Color(196, 196, 196));
         jumlahbarang.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
@@ -202,8 +198,8 @@ public class Tambahandata extends javax.swing.JFrame {
         });
         getContentPane().add(jumlahbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 380, 40));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
         hargabeli.setBackground(new java.awt.Color(196, 196, 196));
         hargabeli.setFont(new java.awt.Font("Quicksand Medium", 0, 16)); // NOI18N
@@ -220,12 +216,20 @@ public class Tambahandata extends javax.swing.JFrame {
         });
         getContentPane().add(hargabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 380, 40));
 
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Rectangle 298.png"))); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
+
         boxsatuan.setBackground(new java.awt.Color(196, 196, 196));
-        boxsatuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pcs", "Cm", "M" }));
+        boxsatuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pcs", "Cm", "M", "Box" }));
         boxsatuan.setBorder(null);
         getContentPane().add(boxsatuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 190, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/bi_qr-code-scan.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, -1, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logodatabarang/Simpan.png"))); // NOI18N
@@ -312,10 +316,6 @@ public class Tambahandata extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void hargajualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargajualActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hargajualActionPerformed
-
     private void kodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodebarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kodebarangActionPerformed
@@ -334,12 +334,15 @@ public class Tambahandata extends javax.swing.JFrame {
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-        kb=String.valueOf(kodebarang.getText());
-        nb=String.valueOf(namabarang.getText());
-        st=String.valueOf(boxsatuan.getSelectedItem());
-        jb=String.valueOf(jumlahbarang.getText());
-        hb=String.valueOf(hargabeli.getText());
-        hj=String.valueOf(hargajual.getText());
+        String kb=String.valueOf(kodebarang.getText());
+        String nb=String.valueOf(namabarang.getText());
+        String st=String.valueOf(boxsatuan.getSelectedItem());
+        String jb=String.valueOf(jumlahbarang.getText());
+        String hb=String.valueOf(hargabeli.getText());
+        String hj=String.valueOf(hargajual.getText());
+        int b = Integer.parseInt(hargabeli.getText());
+        int j = Integer.parseInt(hargajual.getText());
+    if (b < j) {
         try {
             Statement statement = (Statement) konekdb.GetConnection().createStatement();
             statement.executeUpdate("INSERT INTO tb_barang VALUES ('"  + kb + "','" + nb + "','" + st + "','"
@@ -347,24 +350,14 @@ public class Tambahandata extends javax.swing.JFrame {
             statement.close();
             data_barang_1.datatable();
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
-            
             this.dispose();
-            
         } catch (Exception t){
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
+    } else {
+            JOptionPane.showMessageDialog(null, "Harga jual harus lebih besar dari harga beli");
+    }
     }//GEN-LAST:event_jLabel16MouseClicked
-
-    private void hargajualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargajualKeyTyped
-        // TODO add your handling code here:
-        char k = evt.getKeyChar();
-        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
-        if (hargajual.getText().length()>=11) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_hargajualKeyTyped
 
     private void kodebarangKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kodebarangKeyTyped
         // TODO add your handling code here:
@@ -388,10 +381,26 @@ public class Tambahandata extends javax.swing.JFrame {
         if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
-        if (hargabeli.getText().length()>=11) {
+        if (hargabeli.getText().length()>=12){
             evt.consume();
         }
     }//GEN-LAST:event_hargabeliKeyTyped
+
+    private void hargajualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hargajualKeyTyped
+        // TODO add your handling code here:
+        char k = evt.getKeyChar();
+        if (!(Character.isDigit(k) || k == KeyEvent.VK_BACK_SPACE || k == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+        if (hargajual.getText().length()>=12){
+            evt.consume();
+        }
+    }//GEN-LAST:event_hargajualKeyTyped
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+        kodebarang.requestFocus();
+    }//GEN-LAST:event_jLabel13MouseClicked
 
     /**
      * @param args the command line arguments
